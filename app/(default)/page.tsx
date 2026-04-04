@@ -8,8 +8,6 @@ import Hero from "@/components/hero-home";
 import Workflows from "@/components/workflows";
 import Team from "@/components/team";
 import Pricing from "@/components/pricing";
-import Features from "@/components/features";
-import Testimonials from "@/components/testimonials";
 import Cta from "@/components/cta";
 
 export default function Home() {
@@ -20,8 +18,6 @@ export default function Home() {
       <Workflows />
       <Team />
       <Pricing />
-      <Features />
-      <Testimonials />
       <Cta />
     </>
   );

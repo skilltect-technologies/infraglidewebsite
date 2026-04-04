@@ -38,7 +38,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-indigo-200/65 transition hover:text-indigo-500"
-                  href="#features"
+                  href="/#features"
                 >
                   Features
                 </Link>
@@ -46,7 +46,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-indigo-200/65 transition hover:text-indigo-500"
-                  href="#pricing"
+                  href="/#pricing"
                 >
                   Pricing
                 </Link>
@@ -54,7 +54,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-indigo-200/65 transition hover:text-indigo-500"
-                  href="#docs"
+                  href="/docs"
                 >
                   Documentation
                 </Link>

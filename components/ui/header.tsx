@@ -15,16 +15,16 @@ export default function Header() {
 
           {/* Navigation links */}
           <nav className="hidden md:flex flex-1 items-center justify-center gap-6">
-            <Link href="#features" className="text-sm text-gray-300 hover:text-white transition-colors">
+            <Link href="/#features" className="text-sm text-gray-300 hover:text-white transition-colors">
               Features
             </Link>
-            <Link href="#team" className="text-sm text-gray-300 hover:text-white transition-colors">
+            <Link href="/#team" className="text-sm text-gray-300 hover:text-white transition-colors">
               Team
             </Link>
-            <Link href="#pricing" className="text-sm text-gray-300 hover:text-white transition-colors">
+            <Link href="/#pricing" className="text-sm text-gray-300 hover:text-white transition-colors">
               Pricing
             </Link>
-            <Link href="#docs" className="text-sm text-gray-300 hover:text-white transition-colors">
+            <Link href="/docs" className="text-sm text-gray-300 hover:text-white transition-colors">
               Docs
             </Link>
           </nav>
