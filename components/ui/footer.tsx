@@ -62,7 +62,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-indigo-200/65 transition hover:text-indigo-500"
-                  href="#0"
+                  href="/changelog"
                 >
                   Changelog
                 </Link>
@@ -77,7 +77,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-indigo-200/65 transition hover:text-indigo-500"
-                  href="#0"
+                  href="/about"
                 >
                   About
                 </Link>
@@ -85,7 +85,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-indigo-200/65 transition hover:text-indigo-500"
-                  href="#0"
+                  href="/blog"
                 >
                   Blog
                 </Link>
@@ -93,7 +93,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-indigo-200/65 transition hover:text-indigo-500"
-                  href="#0"
+                  href="/careers"
                 >
                   Careers
                 </Link>
@@ -101,7 +101,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-indigo-200/65 transition hover:text-indigo-500"
-                  href="#0"
+                  href="/contact"
                 >
                   Contact
                 </Link>
@@ -116,7 +116,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-indigo-200/65 transition hover:text-indigo-500"
-                  href="#0"
+                  href="/privacy"
                 >
                   Privacy
                 </Link>
@@ -124,7 +124,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-indigo-200/65 transition hover:text-indigo-500"
-                  href="#0"
+                  href="/terms"
                 >
                   Terms
                 </Link>
@@ -132,7 +132,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-indigo-200/65 transition hover:text-indigo-500"
-                  href="#0"
+                  href="/security"
                 >
                   Security
                 </Link>
@@ -140,7 +140,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-indigo-200/65 transition hover:text-indigo-500"
-                  href="#0"
+                  href="/status"
                 >
                   Status
                 </Link>
