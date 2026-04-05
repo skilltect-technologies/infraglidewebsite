@@ -822,6 +822,13 @@ export default function DocsContent() {
 
   const currentSection = docSections.find((s) => s.id === activeSection);
 
+  function scrollToSection(id: string) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6">
       <div className="py-12 md:py-20">
@@ -871,7 +878,7 @@ export default function DocsContent() {
                       {section.subsections.map((sub, idx) => (
                         <button
                           key={sub.id}
-                          onClick={() => setActiveSubsection(idx)}
+                          onClick={() => { setActiveSubsection(idx); scrollToSection(sub.id); }}
                           className={`block w-full rounded px-2 py-1.5 text-left text-xs transition-colors ${
                             activeSubsection === idx
                               ? "font-semibold text-indigo-300"
@@ -935,7 +942,7 @@ export default function DocsContent() {
                 {currentSection?.subsections.map((sub, idx) => (
                   <button
                     key={sub.id}
-                    onClick={() => setActiveSubsection(idx)}
+                    onClick={() => { setActiveSubsection(idx); scrollToSection(sub.id); }}
                     className={`block w-full text-left text-xs transition-colors py-1 ${
                       activeSubsection === idx
                         ? "font-semibold text-indigo-400"
