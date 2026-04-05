@@ -27,7 +27,7 @@ const channels = [
     title: "Support",
     description: "Report a bug or get technical help",
     action: "Open a ticket",
-    href: "mailto:support@infraglide.com",
+    href: "/support-ticket",
   },
 ];
 
