@@ -3,22 +3,23 @@ import BlurredShapeGray from "@/public/images/blurred-shape-gray.svg";
 import Avatar01 from "@/public/images/testimonial-01.jpg";
 import Avatar02 from "@/public/images/testimonial-02.jpg";
 import Avatar03 from "@/public/images/testimonial-03.jpg";
-import Avatar04 from "@/public/images/testimonial-04.jpg";
-import Avatar05 from "@/public/images/testimonial-05.jpg";
-import Avatar06 from "@/public/images/testimonial-06.jpg";
-import Avatar07 from "@/public/images/testimonial-07.jpg";
-import Avatar08 from "@/public/images/testimonial-08.jpg";
+import Ravindra from "@/public/images/Ravindra.png";
+import Nakshatra from "@/public/images/Nakshatra.jpeg";
+import Harsh from "@/public/images/Harsh.jpeg";
+import Kamal from "@/public/images/Kamal.jpeg";
+import Kartikey from "@/public/images/Kartikey.jpeg";
 import Avatar09 from "@/public/images/testimonial-09.jpg";
 
 const coreTeam = [
   { name: "Umesh Sharma", role: "Managing Director", avatar: Avatar01 },
   { name: "Manish Sharma", role: "Founder & CEO", avatar: Avatar02 },
+  { name: "Sunil Kumar", role: "Chief Sales Officer", avatar: Avatar03 },
   { name: "Monika Sharma", role: "Head of Engineering", avatar: Avatar03 },
-  { name: "Ravindra Sharma", role: "Head of Marketing", avatar: Avatar04 },
-  { name: "Nakshtra Singh Bhati", role: "Engineering Manager", avatar: Avatar05 },
-  { name: "Harsh Shrivastav", role: "Engineering Manager", avatar: Avatar06 },
-  { name: "Kamal Gaur", role: "Engineering Manager", avatar: Avatar07 },
-  { name: "Sunil Kumar", role: "Chief Sales Officer", avatar: Avatar08 },
+  { name: "Ravindra Sharma", role: "Head of Marketing", avatar: Ravindra },
+  { name: "Nakshtra Singh Bhati", role: "Engineering Manager", avatar: Nakshatra },
+  { name: "Harsh Shrivastav", role: "Engineering Manager", avatar: Harsh },
+  { name: "Kamal Gaur", role: "Senior Developer", avatar: Kamal },
+  { name: "Kartikey Purohit", role: "Senior Developer", avatar: Kartikey },
 ];
 
 const guidingTeam = [
