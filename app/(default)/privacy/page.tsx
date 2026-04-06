@@ -59,11 +59,11 @@ export default function Privacy() {
             </div>
             <div>
               <h2 className="mb-3 font-nacelle text-lg font-semibold text-gray-200">7. Your Rights</h2>
-              <p className="text-sm leading-relaxed">Depending on your jurisdiction, you may have the right to access, correct, delete, or port your personal data. To exercise these rights, contact us at privacy@infraglide.com. We will respond within 30 days.</p>
+              <p className="text-sm leading-relaxed">Depending on your jurisdiction, you may have the right to access, correct, delete, or port your personal data. To exercise these rights, contact us at support@infraglide.com. We will respond within 30 days.</p>
             </div>
             <div>
               <h2 className="mb-3 font-nacelle text-lg font-semibold text-gray-200">8. Contact</h2>
-              <p className="text-sm leading-relaxed">For privacy-related enquiries, contact our Data Protection Officer at privacy@infraglide.com.</p>
+              <p className="text-sm leading-relaxed">For privacy-related enquiries, contact our Data Protection Officer at support@infraglide.com.</p>
             </div>
           </div>
         </div>

@@ -87,9 +87,6 @@ export default function Pricing() {
             <h2 className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,var(--color-gray-200),var(--color-indigo-200),var(--color-gray-50),var(--color-indigo-300),var(--color-gray-200))] bg-[length:200%_auto] bg-clip-text pb-4 font-nacelle text-3xl font-semibold text-transparent md:text-4xl">
               Plans for every team
             </h2>
-            <p className="text-lg text-indigo-200/65">
-              Start free and scale as you grow. No hidden fees, no surprises.
-            </p>
           </div>
 
           {/* Pricing cards */}
@@ -111,7 +108,7 @@ export default function Pricing() {
 
               <div className="mb-6 flex items-end gap-1">
                 <span className="font-nacelle text-5xl font-semibold text-gray-100">
-                  $99
+                  $299
                 </span>
                 <span className="mb-1 text-sm text-indigo-200/65">
                   / month per user
@@ -170,7 +167,7 @@ export default function Pricing() {
 
               <div className="mb-6 flex items-end gap-1">
                 <span className="font-nacelle text-5xl font-semibold text-white">
-                  $199
+                  $499
                 </span>
                 <span className="mb-1 text-sm text-indigo-200/65">
                   / month per user

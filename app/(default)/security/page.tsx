@@ -108,7 +108,7 @@ export default function Security() {
               We operate a responsible disclosure programme. If you discover a vulnerability, please report it privately and we will acknowledge within 24 hours.
             </p>
             <Link
-              href="mailto:security@infraglide.com"
+              href="mailto:support@infraglide.com"
               className="btn bg-indigo-500 text-white shadow-[inset_0px_1px_0px_0px_--theme(--color-white/.16)] hover:bg-indigo-400"
             >
               Report a Vulnerability

@@ -67,7 +67,7 @@ export default function Terms() {
             </div>
             <div>
               <h2 className="mb-3 font-nacelle text-lg font-semibold text-gray-200">9. Contact</h2>
-              <p className="text-sm leading-relaxed">For questions about these terms, contact us at legal@infraglide.com.</p>
+              <p className="text-sm leading-relaxed">For questions about these terms, contact us at support@infraglide.com.</p>
             </div>
           </div>
         </div>

@@ -12,8 +12,8 @@ const channels = [
     emoji: "📧",
     title: "Email Us",
     description: "For general inquiries and support",
-    action: "hello@infraglide.com",
-    href: "mailto:hello@infraglide.com",
+    action: "support@infraglide.com",
+    href: "mailto:support@infraglide.com",
   },
   {
     emoji: "💼",

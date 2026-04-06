@@ -3,9 +3,11 @@
 import { useState } from "react";
 
 interface ContentBlock {
-  type: "paragraph" | "heading" | "subheading" | "list" | "note" | "step-list";
+  type: "paragraph" | "heading" | "subheading" | "list" | "note" | "step-list" | "image";
   text?: string;
   items?: string[];
+  src?: string;
+  alt?: string;
 }
 
 interface Subsection {
@@ -33,6 +35,11 @@ const docSections: DocSection[] = [
             type: "paragraph",
             text: "Use the My Pipelines dashboard to discover, filter, and act on infrastructure pipelines across cloud providers. It's designed for platform engineers, DevOps practitioners, and developers who manage lifecycle actions (create, export, diff, open, rename, delete) and monitor deployment status.",
           },
+          {
+            type: "image",
+            src: "https://prasant38-skilltect.github.io/infraglidewebsite/mypipelines.png",
+            alt: "My Pipelines dashboard",
+          },
         ],
       },
       {
@@ -59,6 +66,11 @@ const docSections: DocSection[] = [
         id: "key-ui-elements",
         title: "Key UI Elements",
         content: [
+          {
+            type: "image",
+            src: "https://prasant38-skilltect.github.io/infraglidewebsite/main-canvas.JPG",
+            alt: "Pipeline Canvas",
+          },
           {
             type: "heading",
             text: "Pipeline List and Columns",
@@ -150,6 +162,11 @@ const docSections: DocSection[] = [
         id: "user-management-overview",
         title: "User Management Overview",
         content: [
+          {
+            type: "image",
+            src: "https://prasant38-skilltect.github.io/infraglidewebsite/manageusers.png",
+            alt: "Manage Users",
+          },
           {
             type: "paragraph",
             text: "The Manage Users page allows organization admins to view, filter, and control access for all users in the workspace. From here, admins can track invitation status, manage pending invites, and review basic user details and send invitations.",
@@ -285,6 +302,11 @@ const docSections: DocSection[] = [
         title: "Hub Overview",
         content: [
           {
+            type: "image",
+            src: "https://prasant38-skilltect.github.io/infraglidewebsite/hubone.png",
+            alt: "Pipeline Hub overview",
+          },
+          {
             type: "paragraph",
             text: "The Pipeline Hub is the central catalog where users can browse, discover, and manage reusable cloud infrastructure pipelines across providers such as AWS, Azure, and GCP. It provides a single view of all validated pipelines in an organization, ensuring teams can quickly find and reuse approved infrastructure definitions instead of creating them from scratch.",
           },
@@ -373,6 +395,11 @@ const docSections: DocSection[] = [
         title: "Architecture Diagrams",
         content: [
           {
+            type: "image",
+            src: "https://prasant38-skilltect.github.io/infraglidewebsite/architecture-diagrams.png",
+            alt: "Architecture Diagrams",
+          },
+          {
             type: "paragraph",
             text: "The Architecture Diagrams page provides a visual view of pipeline architectures along with key metadata and technical details. It is designed for both quick inspection and deeper analysis of how a pipeline is structured and deployed.",
           },
@@ -460,6 +487,11 @@ const docSections: DocSection[] = [
         id: "rbac-overview",
         title: "Role-Based Access Control",
         content: [
+          {
+            type: "image",
+            src: "https://prasant38-skilltect.github.io/infraglidewebsite/rbac-one.JPG",
+            alt: "RBAC Management",
+          },
           {
             type: "paragraph",
             text: "Manage access with ease using the RBAC system, designed to give you precise control over users, groups, and permissions.",
@@ -623,6 +655,11 @@ const docSections: DocSection[] = [
         title: "HLD Overview",
         content: [
           {
+            type: "image",
+            src: "https://prasant38-skilltect.github.io/infraglidewebsite/hld-one.JPG",
+            alt: "High Level Design",
+          },
+          {
             type: "paragraph",
             text: "The High Level Design (HLD) view provides an executive summary and business overview for managers. It shows a high-level architectural view of your infrastructure pipelines across cloud providers.",
           },
@@ -650,6 +687,11 @@ const docSections: DocSection[] = [
         id: "lld-overview",
         title: "LLD Overview",
         content: [
+          {
+            type: "image",
+            src: "https://prasant38-skilltect.github.io/infraglidewebsite/lld-one.JPG",
+            alt: "Low Level Design",
+          },
           {
             type: "paragraph",
             text: "The Low Level Design (LLD) view provides technical specifications and detailed implementation information for developers. It displays granular infrastructure details and component-level configurations.",
@@ -679,6 +721,11 @@ const docSections: DocSection[] = [
         title: "Credentials Overview",
         content: [
           {
+            type: "image",
+            src: "https://prasant38-skilltect.github.io/infraglidewebsite/creds-one.JPG",
+            alt: "Credentials dashboard",
+          },
+          {
             type: "paragraph",
             text: "Manage your cloud provider credentials from a central location. The Credentials section allows you to securely store and manage authentication details for AWS, Azure, and GCP.",
           },
@@ -707,6 +754,11 @@ const docSections: DocSection[] = [
         title: "Deployed Resources Overview",
         content: [
           {
+            type: "image",
+            src: "https://prasant38-skilltect.github.io/infraglidewebsite/deployed-one.JPG",
+            alt: "Deployed Resources",
+          },
+          {
             type: "paragraph",
             text: "Monitor and manage your cloud infrastructure inventory for Google Cloud and other providers. The Deployed Resources view gives you a real-time inventory of all resources deployed through InfraGlide pipelines.",
           },
@@ -734,6 +786,11 @@ const docSections: DocSection[] = [
         id: "cost-optimization-overview",
         title: "Cost Optimization Overview",
         content: [
+          {
+            type: "image",
+            src: "https://prasant38-skilltect.github.io/infraglidewebsite/cost-one.JPG",
+            alt: "Cost Optimization",
+          },
           {
             type: "paragraph",
             text: "One-click recommendations to optimize your cloud infrastructure costs. InfraGlide analyzes your deployed resources and provides actionable cost-saving recommendations.",
@@ -809,6 +866,16 @@ function renderContent(blocks: ContentBlock[]) {
           >
             <p className="text-sm text-indigo-200/80">{block.text}</p>
           </div>
+        );
+      case "image":
+        return (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            key={idx}
+            src={block.src}
+            alt={block.alt ?? ""}
+            className="mb-6 mt-2 w-full rounded-xl border border-gray-700/50 shadow-lg"
+          />
         );
       default:
         return null;

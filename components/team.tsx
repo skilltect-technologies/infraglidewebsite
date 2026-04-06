@@ -24,7 +24,7 @@ const coreTeam = [
 const guidingTeam = [
   {
     name: "Mukesh Purohit",
-    role: "CTO",
+    role: "Mentor",
     avatar: Avatar09,
     bio: "Leading the technical vision and strategic guidance for our platform development.",
   },
@@ -102,7 +102,7 @@ export default function Team() {
           <div className="mx-auto max-w-3xl pb-8 text-center">
             <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-linear-to-r before:from-transparent before:to-indigo-200/50 after:h-px after:w-8 after:bg-linear-to-l after:from-transparent after:to-indigo-200/50">
               <span className="inline-flex bg-linear-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent">
-                Guiding Build Team
+                Guiding Lights
               </span>
             </div>
           </div>
