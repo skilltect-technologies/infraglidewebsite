@@ -61,14 +61,11 @@ export function InteractiveGrid({
     let animationFrameId: number;
     let isVisible = true;
 
-    const observer = new IntersectionObserver((entries) => {
-      isVisible = entries[0].isIntersecting;
-    }, { threshold: 0 });
-    observer.observe(canvas);
-
     const render = () => {
-      animationFrameId = requestAnimationFrame(render);
-      if (!isVisible) return;
+      if (!isVisible) {
+        animationFrameId = 0;
+        return; // exit loop, observer will restart it
+      }
       
       ctx.clearRect(0, 0, width, height);
       ctx.fillStyle = color;
@@ -100,7 +97,17 @@ export function InteractiveGrid({
         }
       }
 
+      animationFrameId = requestAnimationFrame(render);
     };
+
+    const observer = new IntersectionObserver((entries) => {
+      isVisible = entries[0].isIntersecting;
+      if (isVisible && !animationFrameId) {
+        render(); // restart loop only when visible
+      }
+    }, { threshold: 0 });
+    observer.observe(canvas);
+
     render();
 
     return () => {

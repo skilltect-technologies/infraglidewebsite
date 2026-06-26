@@ -188,7 +188,7 @@ html, body {
   overflow-x: hidden;
   background-color: var(--ig-bg);
   color: var(--ig-text);
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
@@ -231,9 +231,10 @@ html, body {
 .ig-card {
   background: var(--ig-card);
   border: 1px solid var(--ig-border);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 8px 24px rgba(16, 24, 40, 0.06);
+  contain: layout style;
 }
 
 .ig-docs-page {

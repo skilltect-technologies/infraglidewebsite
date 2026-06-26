@@ -120,14 +120,17 @@ function CursorGlow() {
     let x = window.innerWidth / 2, y = window.innerHeight / 2;
     let tx = x, ty = y;
     const move = (e: MouseEvent) => { tx = e.clientX; ty = e.clientY; };
+    let rafId = 0;
+    let running = true;
     const tick = () => {
+      if (!running) return;
       x += (tx - x) * 0.12; y += (ty - y) * 0.12;
       el.style.transform = `translate3d(${x - 300}px, ${y - 300}px, 0)`;
-      requestAnimationFrame(tick);
+      rafId = requestAnimationFrame(tick);
     };
-    window.addEventListener("mousemove", move);
-    const raf = requestAnimationFrame(tick);
-    return () => { window.removeEventListener("mousemove", move); cancelAnimationFrame(raf); };
+    window.addEventListener("mousemove", move, { passive: true });
+    rafId = requestAnimationFrame(tick);
+    return () => { running = false; window.removeEventListener("mousemove", move); cancelAnimationFrame(rafId); };
   }, []);
   return (
     <div
@@ -714,9 +717,12 @@ function InteractiveCanvas() {
 
   // 4-Layer 3D Scroll Parallax Explosion
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      const card = cardRef.current;
-      if (!card) return;
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const card = cardRef.current;
+          if (!card) { ticking = false; return; }
       
       const rect = card.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
@@ -768,6 +774,10 @@ function InteractiveCanvas() {
           const htmlEl = el as HTMLElement;
           htmlEl.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
         });
+      }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
@@ -2028,6 +2038,25 @@ function AboutTeaser() {
 /* ===================== Page ===================== */
 function InfraGlideLanding() {
   const { hash } = useLocation();
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    return () => {
+      lenis.destroy();
+      gsap.ticker.remove((time) => lenis.raf(time * 1000));
+    };
+  }, []);
 
   useEffect(() => {
     if (hash === "get-started") {
