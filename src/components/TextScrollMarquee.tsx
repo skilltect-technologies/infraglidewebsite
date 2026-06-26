@@ -82,9 +82,8 @@ export default function TextScrollMarquee() {
   return (
     <div
       ref={triggerRef}
-      className="relative w-full overflow-hidden z-30 flex items-center justify-center"
+      className="relative w-full overflow-hidden z-30 flex items-center justify-center py-24 md:py-32"
       style={{
-        height: "100vh",
         backgroundColor: "#8A53D6",
       }}
     >
@@ -99,7 +98,7 @@ export default function TextScrollMarquee() {
 
       {/* 2. Full-screen Blur Layer to soften the grid under the text */}
       <div
-        className="absolute inset-0 pointer-events-none backdrop-blur-[6px] z-10"
+        className="absolute inset-0 pointer-events-none -[6px] z-10"
         style={{
           background: "radial-gradient(circle at center, transparent 35%, rgba(138, 83, 214, 0.2) 100%)",
         }}

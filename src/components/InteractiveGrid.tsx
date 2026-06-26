@@ -59,8 +59,17 @@ export function InteractiveGrid({
     window.addEventListener('resize', resize);
 
     let animationFrameId: number;
+    let isVisible = true;
+
+    const observer = new IntersectionObserver((entries) => {
+      isVisible = entries[0].isIntersecting;
+    }, { threshold: 0 });
+    observer.observe(canvas);
 
     const render = () => {
+      animationFrameId = requestAnimationFrame(render);
+      if (!isVisible) return;
+      
       ctx.clearRect(0, 0, width, height);
       ctx.fillStyle = color;
 
@@ -91,11 +100,11 @@ export function InteractiveGrid({
         }
       }
 
-      animationFrameId = requestAnimationFrame(render);
     };
     render();
 
     return () => {
+      observer.disconnect();
       window.removeEventListener('mousemove', onMouseMove);
       canvas.removeEventListener('mouseleave', onMouseLeave);
       window.removeEventListener('resize', resize);

@@ -129,7 +129,7 @@ function ContactPage() {
           <div className="lg:col-span-5 space-y-6">
             
             {/* Email Card */}
-            <div className="backdrop-blur-md bg-white/70 dark:bg-[rgba(22,15,36,0.55)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-2xl p-6 shadow-sm">
+            <div className=" bg-white/70 dark:bg-[rgba(22,15,36,0.55)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-2xl p-6 shadow-sm">
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-xl bg-[rgba(138,83,214,0.06)] dark:bg-[rgba(138,83,214,0.10)] border border-[rgba(138,83,214,0.12)] dark:border-[rgba(138,83,214,0.2)] flex items-center justify-center text-[#8A53D6] dark:text-[#b07eff]">
                   <Mail className="w-5 h-5" />
@@ -144,7 +144,7 @@ function ContactPage() {
             </div>
 
             {/* Offices Container */}
-            <div className="backdrop-blur-md bg-white/70 dark:bg-[rgba(22,15,36,0.55)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-2xl p-8 shadow-sm space-y-8">
+            <div className=" bg-white/70 dark:bg-[rgba(22,15,36,0.55)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-2xl p-8 shadow-sm space-y-8">
               <div className="flex items-center gap-2 border-b border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] pb-3">
                 <MapPin className="w-5 h-5 text-[#8A53D6]" />
                 <h3 className="text-lg font-bold text-[var(--ig-text)]">Our Offices</h3>
@@ -192,7 +192,7 @@ function ContactPage() {
 
           {/* Right Side: Message Form (Matching stepper fields but distinct UI) */}
           <div className="lg:col-span-7">
-            <div className="backdrop-blur-md bg-white/70 dark:bg-[rgba(22,15,36,0.55)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-[2rem] p-8 md:p-10 shadow-sm relative overflow-hidden">
+            <div className=" bg-white/70 dark:bg-[rgba(22,15,36,0.55)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-[2rem] p-8 md:p-10 shadow-sm relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#8A53D6] to-[#b07eff]" />
               <h2 className="text-2xl font-bold text-[var(--ig-text)] mb-8">Send a message</h2>
               

@@ -268,7 +268,7 @@ function ChangelogPage() {
         
         {/* Header Section */}
         <div className="mb-20 text-center animate-fade-in-up">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[rgba(138,83,214,0.06)] dark:bg-[rgba(138,83,214,0.08)] border border-[rgba(138,83,214,0.12)] dark:border-[rgba(138,83,214,0.18)] text-[#8A53D6] dark:text-[#b07eff] text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[rgba(138,83,214,0.06)] dark:bg-[rgba(138,83,214,0.08)] border border-[rgba(138,83,214,0.12)] dark:border-[rgba(138,83,214,0.18)] text-[#8A53D6] dark:text-[#b07eff] text-xs font-bold tracking-widest uppercase mb-6 ">
             <Sparkles className="w-3.5 h-3.5" /> Product Timeline
           </div>
           <h1 className="font-display-family text-5xl md:text-7xl font-extrabold mb-6 tracking-tight text-[var(--ig-text)]">
@@ -285,7 +285,7 @@ function ChangelogPage() {
                 key={tag}
                 onClick={() => setFilter(tag)}
                 className={cn(
-                  "px-4 py-1.5 rounded-full text-xs font-bold border transition-all duration-300 backdrop-blur-sm cursor-pointer select-none",
+                  "px-4 py-1.5 rounded-full text-xs font-bold border transition-all duration-300  cursor-pointer select-none",
                   filter === tag
                     ? "bg-[#8A53D6] text-white border-[#8A53D6] shadow-[0_4px_12px_rgba(138,83,214,0.3)] scale-105"
                     : "bg-white/40 dark:bg-[rgba(22,15,36,0.3)] text-[var(--ig-muted)] border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] hover:border-[#8A53D6]/50 hover:text-[var(--ig-text)]"
@@ -329,7 +329,7 @@ function ChangelogPage() {
                         className="w-full"
                       >
                         {/* Card */}
-                        <div className="ig-card rounded-[2rem] p-6 md:p-8 backdrop-blur-md border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] hover:border-[#8A53D6]/50 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 relative overflow-hidden group text-left">
+                        <div className="ig-card rounded-[2rem] p-6 md:p-8  border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] hover:border-[#8A53D6]/50 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 relative overflow-hidden group text-left">
                           <Icon className="absolute -right-4 -top-4 w-24 h-24 text-[var(--ig-border-soft)]/20 pointer-events-none group-hover:scale-110 group-hover:text-[var(--ig-accent)]/10 transition-all duration-500" />
                           <div className="flex items-center justify-between mb-4 relative z-10">
                             <span className="font-mono text-sm font-bold text-[#8A53D6] dark:text-[#b07eff] tracking-widest">{update.version}</span>
@@ -385,7 +385,7 @@ function ChangelogPage() {
                         className="w-full"
                       >
                         {/* Card */}
-                        <div className="ig-card rounded-[2rem] p-6 md:p-8 backdrop-blur-md border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] hover:border-[#8A53D6]/50 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 relative overflow-hidden group text-left">
+                        <div className="ig-card rounded-[2rem] p-6 md:p-8  border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] hover:border-[#8A53D6]/50 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 relative overflow-hidden group text-left">
                           <Icon className="absolute -right-4 -top-4 w-24 h-24 text-[var(--ig-border-soft)]/20 pointer-events-none group-hover:scale-110 group-hover:text-[var(--ig-accent)]/10 transition-all duration-500" />
                           <div className="flex items-center justify-between mb-4 relative z-10">
                             <span className="font-mono text-sm font-bold text-[#8A53D6] dark:text-[#b07eff] tracking-widest">{update.version}</span>
@@ -430,7 +430,7 @@ function ChangelogPage() {
           transition={{ duration: 0.6 }}
           className="mt-32 max-w-lg mx-auto text-center"
         >
-          <div className="relative rounded-[2.5rem] border border-[rgba(138,83,214,0.18)] bg-[rgba(22,15,36,0.35)] backdrop-blur-xl p-10 overflow-hidden">
+          <div className="relative rounded-[2.5rem] border border-[rgba(138,83,214,0.18)] bg-[rgba(22,15,36,0.35)]  p-10 overflow-hidden">
             <InteractiveGrid color="#8A53D6" className="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-20" />
             <div className="relative z-10 space-y-6">
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#8A53D6] to-[#00A888] flex items-center justify-center text-white mx-auto shadow-[0_8px_20px_rgba(138,83,214,0.3)]">

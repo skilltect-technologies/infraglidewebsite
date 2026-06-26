@@ -54,7 +54,7 @@ function TermsPage() {
         {/* Content Layout */}
         <div className="grid lg:grid-cols-[280px_1fr] gap-12 items-start">
           {/* Sticky Sidebar Navigation */}
-          <aside className="hidden lg:flex flex-col self-start bg-white/70 dark:bg-[rgba(22,15,36,0.6)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-2xl p-5 backdrop-blur-md shadow-sm sticky top-24 max-h-[calc(100vh-8rem)] min-h-0 overflow-y-auto">
+          <aside className="hidden lg:flex flex-col self-start bg-white/70 dark:bg-[rgba(22,15,36,0.6)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-2xl p-5  shadow-sm sticky top-24 max-h-[calc(100vh-8rem)] min-h-0 overflow-y-auto">
             <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--ig-muted)] mb-4 flex items-center gap-2 shrink-0">
               <FileText className="w-4 h-4 text-[#8A53D6] dark:text-[#b07eff]" /> Table of Contents
             </h4>
@@ -76,7 +76,7 @@ function TermsPage() {
           <div className="space-y-12">
             {/* Header */}
             <div className="text-left animate-fade-in-up">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[rgba(138,83,214,0.06)] dark:bg-[rgba(138,83,214,0.08)] border border-[rgba(138,83,214,0.12)] dark:border-[rgba(138,83,214,0.18)] text-[#8A53D6] dark:text-[#b07eff] text-xs font-bold tracking-widest uppercase mb-3 backdrop-blur-md">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[rgba(138,83,214,0.06)] dark:bg-[rgba(138,83,214,0.08)] border border-[rgba(138,83,214,0.12)] dark:border-[rgba(138,83,214,0.18)] text-[#8A53D6] dark:text-[#b07eff] text-xs font-bold tracking-widest uppercase mb-3 ">
                 Legal Terms
               </div>
               <h1 className="font-display-family text-4xl md:text-5xl font-extrabold mb-3 tracking-tight text-[var(--ig-text)]">

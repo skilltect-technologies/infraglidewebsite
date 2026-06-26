@@ -47,7 +47,7 @@ function PrivacyPage() {
       <div className="relative z-10 pt-32 px-6 max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-16 text-center animate-fade-in-up">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[rgba(138,83,214,0.06)] dark:bg-[rgba(138,83,214,0.08)] border border-[rgba(138,83,214,0.12)] dark:border-[rgba(138,83,214,0.18)] text-[#8A53D6] dark:text-[#b07eff] text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[rgba(138,83,214,0.06)] dark:bg-[rgba(138,83,214,0.08)] border border-[rgba(138,83,214,0.12)] dark:border-[rgba(138,83,214,0.18)] text-[#8A53D6] dark:text-[#b07eff] text-xs font-bold tracking-widest uppercase mb-6 ">
             Trust & Security
           </div>
           <h1 className="font-display-family text-5xl md:text-6xl font-extrabold mb-6 tracking-tight text-[var(--ig-text)]">
@@ -59,7 +59,7 @@ function PrivacyPage() {
         {/* Content Layout */}
         <div className="grid lg:grid-cols-[280px_1fr] gap-12 items-start">
           {/* Sticky Sidebar Navigation */}
-          <aside className="hidden lg:block self-start sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto bg-white/70 dark:bg-[rgba(22,15,36,0.6)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-2xl p-6 backdrop-blur-md shadow-sm">
+          <aside className="hidden lg:block self-start sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto bg-white/70 dark:bg-[rgba(22,15,36,0.6)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-2xl p-6  shadow-sm">
             <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--ig-muted)] mb-4 flex items-center gap-2">
               <FileText className="w-4 h-4 text-[#8A53D6] dark:text-[#b07eff]" /> Table of Contents
             </h4>
@@ -78,7 +78,7 @@ function PrivacyPage() {
           </aside>
 
           {/* Main Document Content */}
-          <div className="backdrop-blur-md bg-white/70 dark:bg-[rgba(22,15,36,0.55)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-[2rem] p-8 md:p-12 shadow-sm relative overflow-hidden space-y-12">
+          <div className=" bg-white/70 dark:bg-[rgba(22,15,36,0.55)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-[2rem] p-8 md:p-12 shadow-sm relative overflow-hidden space-y-12">
             <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#8A53D6] to-[#b07eff]" />
             
             <p className="text-[var(--ig-text)] text-lg leading-relaxed border-b border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] pb-8">

@@ -50,7 +50,7 @@ function SecurityPage() {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-20">
           {features.map((feature, i) => (
-            <div key={i} className="backdrop-blur-md bg-white/70 dark:bg-[rgba(22,15,36,0.55)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-[1.5rem] p-8 flex items-start gap-6 hover:border-[#8A53D6]/40 dark:hover:border-[#8A53D6]/50 transition-all duration-300 shadow-sm hover:shadow-md">
+            <div key={i} className=" bg-white/70 dark:bg-[rgba(22,15,36,0.55)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-[1.5rem] p-8 flex items-start gap-6 hover:border-[#8A53D6]/40 dark:hover:border-[#8A53D6]/50 transition-all duration-300 shadow-sm hover:shadow-md">
               <div className="w-12 h-12 rounded-xl bg-[rgba(138,83,214,0.06)] dark:bg-[rgba(138,83,214,0.1)] border border-[rgba(138,83,214,0.12)] dark:border-[rgba(138,83,214,0.2)] flex items-center justify-center text-[#8A53D6] dark:text-[#b07eff] shrink-0" aria-hidden="true">
                 <feature.icon className="w-6 h-6" />
               </div>
@@ -62,7 +62,7 @@ function SecurityPage() {
           ))}
         </div>
 
-        <div className="backdrop-blur-md bg-white/70 dark:bg-[rgba(22,15,36,0.55)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-[2rem] p-8 md:p-12 text-center max-w-4xl mx-auto shadow-sm relative overflow-hidden">
+        <div className=" bg-white/70 dark:bg-[rgba(22,15,36,0.55)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-[2rem] p-8 md:p-12 text-center max-w-4xl mx-auto shadow-sm relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#8A53D6] to-[#b07eff]" />
           <h2 className="text-3xl font-bold text-[var(--ig-text)] mb-6">Report a Vulnerability</h2>
           <p className="text-[var(--ig-muted)] text-lg mb-8 max-w-2xl mx-auto leading-relaxed">

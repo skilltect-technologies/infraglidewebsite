@@ -133,7 +133,7 @@ function CodeBlock({ lines }: { lines: string[] }) {
     setTimeout(() => setCopied(false), 2000)
   }
   return (
-    <div className="rounded-xl overflow-hidden border border-slate-200/80 dark:border-[rgba(138,83,214,0.2)] bg-slate-50/50 dark:bg-[rgba(15,9,26,0.4)] backdrop-blur-md my-6 shadow-md group">
+    <div className="rounded-xl overflow-hidden border border-slate-200/80 dark:border-[rgba(138,83,214,0.2)] bg-slate-50/50 dark:bg-[rgba(15,9,26,0.4)]  my-6 shadow-md group">
       <div className="bg-slate-100/80 dark:bg-[#0f091a] px-4 py-2.5 text-xs font-mono text-[#8A53D6] flex justify-between items-center border-b border-slate-200 dark:border-[rgba(138,83,214,0.12)]">
         <div className="flex items-center gap-1.5">
           <span className="text-[10px] text-slate-500 dark:text-white/30 font-mono flex items-center gap-1">
@@ -173,7 +173,7 @@ function CodeBlock({ lines }: { lines: string[] }) {
 
 function Note({ text }: { text: string }) {
   return (
-    <div className="flex items-start gap-3.5 p-4 rounded-xl bg-[rgba(138,83,214,0.03)] dark:bg-[rgba(138,83,214,0.04)] border-l-4 border-l-[#8A53D6] border-y border-r border-slate-200/80 dark:border-[rgba(138,83,214,0.12)] my-6 backdrop-blur-sm shadow-sm">
+    <div className="flex items-start gap-3.5 p-4 rounded-xl bg-[rgba(138,83,214,0.03)] dark:bg-[rgba(138,83,214,0.04)] border-l-4 border-l-[#8A53D6] border-y border-r border-slate-200/80 dark:border-[rgba(138,83,214,0.12)] my-6  shadow-sm">
       <div className="p-1 rounded-lg bg-[rgba(138,83,214,0.08)] text-[#8A53D6] shrink-0">
         <Info className="w-4 h-4" />
       </div>
@@ -216,7 +216,7 @@ function renderBlock(block: DocBlock, i: number) {
       return <Note key={i} text={block.text} />
     case 'warning':
       return (
-        <div key={i} className="flex items-start gap-3.5 p-4 rounded-xl bg-[rgba(234,179,8,0.03)] border-l-4 border-l-yellow-500 border-y border-r border-slate-200/80 dark:border-[rgba(234,179,8,0.12)] my-6 backdrop-blur-sm shadow-sm">
+        <div key={i} className="flex items-start gap-3.5 p-4 rounded-xl bg-[rgba(234,179,8,0.03)] border-l-4 border-l-yellow-500 border-y border-r border-slate-200/80 dark:border-[rgba(234,179,8,0.12)] my-6  shadow-sm">
           <div className="p-1 rounded-lg bg-[rgba(234,179,8,0.08)] text-yellow-600 dark:text-yellow-500 shrink-0">
             <AlertTriangle className="w-4 h-4" />
           </div>
@@ -225,7 +225,7 @@ function renderBlock(block: DocBlock, i: number) {
       )
     case 'success':
       return (
-        <div key={i} className="flex items-start gap-3.5 p-4 rounded-xl bg-[rgba(34,197,94,0.03)] border-l-4 border-l-emerald-500 border-y border-r border-slate-200/80 dark:border-[rgba(34,197,94,0.12)] my-6 backdrop-blur-sm shadow-sm">
+        <div key={i} className="flex items-start gap-3.5 p-4 rounded-xl bg-[rgba(34,197,94,0.03)] border-l-4 border-l-emerald-500 border-y border-r border-slate-200/80 dark:border-[rgba(34,197,94,0.12)] my-6  shadow-sm">
           <div className="p-1 rounded-lg bg-[rgba(34,197,94,0.08)] text-emerald-600 dark:text-emerald-500 shrink-0">
             <CheckCircle className="w-4 h-4" />
           </div>
@@ -410,7 +410,7 @@ function DocsPage() {
       {/* Background Interactive grid with a soft blurry overlay */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.45]">
         <InteractiveGrid color="#8A53D6" />
-        <div className="absolute inset-0 bg-[var(--ig-bg)]/80 backdrop-blur-[14px]" />
+        <div className="absolute inset-0 bg-[var(--ig-bg)]/80 -[14px]" />
       </div>
 
       {/* Ultra-smooth Blurry Mesh Glow Orbs in the background */}
@@ -429,7 +429,7 @@ function DocsPage() {
       {/* Mobile sidebar overlay */}
       {mobileOpen && (
         <div className="fixed inset-0 z-50 md:hidden">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
+          <div className="absolute inset-0 bg-black/60 " onClick={() => setMobileOpen(false)} />
           <div className="absolute left-0 top-0 h-full w-72 ig-card border-r border-slate-200 dark:border-[var(--ig-border)] p-5 overflow-y-auto z-10 bg-white dark:bg-[rgba(10,5,20,0.95)]">
             <div className="flex items-center justify-between mb-5">
               <span className="text-sm font-bold text-slate-900 dark:text-[var(--ig-text)]">Documentation</span>
@@ -459,13 +459,13 @@ function DocsPage() {
         <div className="flex flex-col md:flex-row items-stretch gap-6 flex-1 min-h-0">
 
           {/* Sidebar — desktop */}
-          <aside className="hidden md:flex flex-col w-60 shrink-0 ig-card rounded-[1.5rem] p-5 shadow-md overflow-hidden border-slate-200/60 dark:border-[rgba(138,83,214,0.18)] bg-white/75 dark:bg-[rgba(22,15,36,0.3)] backdrop-blur-xl">
+          <aside className="hidden md:flex flex-col w-60 shrink-0 ig-card rounded-[1.5rem] p-5 shadow-md overflow-hidden border-slate-200/60 dark:border-[rgba(138,83,214,0.18)] bg-white/75 dark:bg-[rgba(22,15,36,0.3)] ">
             <Sidebar activeId={activeId} onSelect={handleSelect} searchQ={searchQ} onSearch={setSearchQ} />
           </aside>
 
           {/* Main content */}
           <main ref={mainRef} className="flex-1 min-w-0 overflow-y-auto pr-1 scrollbar-thin">
-            <div className="ig-card rounded-[1.5rem] p-7 md:p-12 shadow-md border-slate-200/60 dark:border-[rgba(138,83,214,0.18)] bg-white/75 dark:bg-[rgba(22,15,36,0.3)] backdrop-blur-xl">
+            <div className="ig-card rounded-[1.5rem] p-7 md:p-12 shadow-md border-slate-200/60 dark:border-[rgba(138,83,214,0.18)] bg-white/75 dark:bg-[rgba(22,15,36,0.3)] ">
 
               {/* Badge Row */}
               <div className="flex items-center gap-3 mb-5 flex-wrap">
@@ -535,7 +535,7 @@ function DocsPage() {
             </div>
 
             {/* On this page (quick links for h2 headings) */}
-            <div className="mt-4 ig-card rounded-[1.5rem] p-6 shadow-md border-slate-200/60 dark:border-[rgba(138,83,214,0.18)] bg-white/75 dark:bg-[rgba(22,15,36,0.3)] backdrop-blur-xl">
+            <div className="mt-4 ig-card rounded-[1.5rem] p-6 shadow-md border-slate-200/60 dark:border-[rgba(138,83,214,0.18)] bg-white/75 dark:bg-[rgba(22,15,36,0.3)] ">
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-[var(--ig-muted)] mb-3 flex items-center gap-1.5">
                 <Menu className="w-3.5 h-3.5 text-[#8A53D6]" /> On this page
               </h4>
@@ -554,7 +554,7 @@ function DocsPage() {
 
           {/* Right sticky "on this page" — large screens */}
           <aside className="hidden xl:flex flex-col w-48 shrink-0 overflow-y-auto">
-            <div className="ig-card rounded-[1.5rem] p-4 shadow-md border-slate-200/60 dark:border-[rgba(138,83,214,0.18)] bg-white/75 dark:bg-[rgba(22,15,36,0.3)] backdrop-blur-xl">
+            <div className="ig-card rounded-[1.5rem] p-4 shadow-md border-slate-200/60 dark:border-[rgba(138,83,214,0.18)] bg-white/75 dark:bg-[rgba(22,15,36,0.3)] ">
               <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-[var(--ig-muted)] mb-3 flex items-center gap-1.5">
                 <Menu className="w-3 h-3 text-[#8A53D6]" /> In this guide
               </p>

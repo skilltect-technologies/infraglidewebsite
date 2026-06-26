@@ -22,7 +22,7 @@ import {
   ArrowUpRight
 } from 'lucide-react';
 import { Link, useRouterState } from '@tanstack/react-router';
-import logoUrl from "@/assets/infraglide-logo.png";
+import logoUrl from "@/assets/infraglide-logo.webp";
 
 export function Nav() {
   const [open, setOpen] = useState(false);

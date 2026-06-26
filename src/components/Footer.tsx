@@ -1,7 +1,7 @@
 import React from 'react';
 import { Instagram, Globe, Linkedin } from 'lucide-react';
 import { Link } from '@tanstack/react-router';
-import logoUrl from "@/assets/infraglide-logo.png";
+import logoUrl from "@/assets/infraglide-logo.webp";
 
 const NAV_COLS = [
   {

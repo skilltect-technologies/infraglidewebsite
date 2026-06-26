@@ -315,8 +315,7 @@ html, body {
 }
 
 .ig-noise::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence baseFrequency='0.9'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0;
 }
 
 /* Letter stagger */

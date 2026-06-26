@@ -26,25 +26,17 @@ import {
 } from 'lucide-react'
 
 // Import assets
-import awsCanvasBgUrl from "@/assets/aws_canvas_bg.png"
-import driftDetectionBgUrl from "@/assets/drift_detection_bg.png"
-import deployedResourcesUrl from "@/assets/deployed_resources.png"
-import syncUrl from "@/assets/sync.png"
-import architectureUrl from "@/assets/architecture.png"
-import templatesUrl from "@/assets/templates.png"
-import rbacUiUrl from "@/assets/RBAC.png"
 import iconAwsUrl from "@/assets/icon/icons8-aws-100.png"
 import iconAzureUrl from "@/assets/icon/icons8-azure-100.png"
 import iconGcpUrl from "@/assets/icon/icons8-google-cloud-100.png"
 import iconTerraformUrl from "@/assets/icon/icons8-terraform-100.png"
-import janeUiUrl from "@/assets/accelerate_ai_ui.png"
 
 // High-fidelity workflow PNGs for About Page
-import architectureAboutUrl from "@/assets/assets/about-page/architecture-about.png"
-import cloudIntegrationUrl from "@/assets/assets/about-page/cloud-integration.png"
-import complainceAboutUrl from "@/assets/assets/about-page/complaince-about.png"
-import rbacAboutUrl from "@/assets/assets/about-page/rbac-about.png"
-import janeAboutUrl from "@/assets/assets/about-page/jane-about.png"
+import architectureAboutUrl from "@/assets/about-page/architecture-about.webp"
+import cloudIntegrationUrl from "@/assets/about-page/cloud-integration.webp"
+import complainceAboutUrl from "@/assets/about-page/complaince-about.webp"
+import rbacAboutUrl from "@/assets/about-page/rbac-about.webp"
+import janeAboutUrl from "@/assets/about-page/jane-about.webp"
 
 const aboutSchema = {
   "@context": "https://schema.org",
@@ -99,7 +91,7 @@ function AboutPage() {
     <div className="relative min-h-screen ig-noise bg-[var(--ig-bg)] overflow-hidden pb-32">
       <div className="absolute inset-0 z-0 pointer-events-none">
         <InteractiveGrid color="#8A53D6" />
-        <div className="absolute inset-0 bg-[var(--ig-bg)]/70 backdrop-blur-[8px]" />
+        <div className="absolute inset-0 bg-[var(--ig-bg)]/70 -[8px]" />
       </div>
 
       {/* Mesh Glow Backgrounds */}
@@ -601,7 +593,7 @@ function AboutPage() {
         </section>
 
         {/* ==================== 6. JOIN US ON THE PATH (CTA) ==================== */}
-        <section className="relative rounded-[2.5rem] border border-[rgba(138,83,214,0.18)] bg-[rgba(22,15,36,0.35)] backdrop-blur-xl p-8 md:p-16 overflow-hidden text-center z-10">
+        <section className="relative rounded-[2.5rem] border border-[rgba(138,83,214,0.18)] bg-[rgba(22,15,36,0.35)]  p-8 md:p-16 overflow-hidden text-center z-10">
           <InteractiveGrid color="#8A53D6" className="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-br from-[#8A53D6]/10 to-[#00a888]/10 pointer-events-none z-0" />
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[radial-gradient(circle,rgba(138,83,214,0.2),transparent_70%)] pointer-events-none" />

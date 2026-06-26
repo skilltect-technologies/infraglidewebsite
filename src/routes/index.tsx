@@ -9,28 +9,19 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 import Lenis from "lenis";
-import logoUrl from "@/assets/infraglide-logo.png";
-import awsCanvasBgUrl from "@/assets/aws_canvas_bg.png";
-import driftDetectionBgUrl from "@/assets/drift_detection_bg.png";
-import deployedResourcesUrl from "@/assets/deployed_resources.png";
-import syncUrl from "@/assets/sync.png";
-import architectureUrl from "@/assets/architecture.png";
-import handCursorUrl from "@/assets/hand_cursor.png";
-import pipelinesVideoUrl from "@/assets/pipelines.mp4";
-import templatedVideoUrl from "@/assets/templated.mp4";
-import janeVideoUrl from "@/assets/jane (2).mp4";
-import architectVisuallyUiUrl from "@/assets/architect_visually_ui.png";
-import accelerateAiUiUrl from "@/assets/accelerate_ai_ui.png";
-import deployConfidenceUiUrl from "@/assets/deploy_confidence_ui.png";
-import deployVideoUrl from "@/assets/deploy-3.mp4";
-import secureCompliantUiUrl from "@/assets/secure_compliant_ui.png";
-import secureVideoUrl from "@/assets/secure.mp4";
-import operateScaleUiUrl from "@/assets/operate_scale_ui.png";
-import scaleVideoUrl from "@/assets/scale-5.mp4";
-import driftDetectionUiUrl from "@/assets/drift-detection.png";
-import driftUiUrl from "@/assets/drift.png";
-import templatesUrl from "@/assets/templates.png";
-import rbacUiUrl from "@/assets/RBAC.png";
+import logoUrl from "@/assets/infraglide-logo.webp";
+
+import deployedResourcesUrl from "@/assets/deployed_resources.webp";
+import syncUrl from "@/assets/sync.webp";
+import architectureUrl from "@/assets/architecture.webp";
+import templatedVideoUrl from "@/assets/VIDEOS/templated.webm";
+import janeVideoUrl from "@/assets/VIDEOS/jane (2).webm";
+import deployVideoUrl from "@/assets/VIDEOS/deploy-3.webm";
+import secureVideoUrl from "@/assets/VIDEOS/secure.webm";
+import driftDetectionUiUrl from "@/assets/drift-detection.webp";
+import driftUiUrl from "@/assets/drift.webp";
+import templatesUrl from "@/assets/templates.webp";
+import rbacUiUrl from "@/assets/RBAC.webp";
 import iconAwsUrl from "@/assets/icon/icons8-aws-100.png";
 import iconAzureUrl from "@/assets/icon/icons8-azure-100.png";
 import iconGcpUrl from "@/assets/icon/icons8-google-cloud-100.png";
@@ -145,7 +136,6 @@ function CursorGlow() {
       className="pointer-events-none fixed top-0 left-0 z-0 h-[600px] w-[600px] rounded-full"
       style={{
         background: "radial-gradient(circle, rgba(138,83,214,.22) 0%, rgba(138,83,214,.08) 30%, transparent 70%)",
-        filter: "blur(20px)",
         willChange: "transform",
       }}
     />
@@ -720,55 +710,7 @@ function InteractiveCanvas() {
   const [connectingFromId, setConnectingFromId] = useState<string | null>(null);
   const [tempLineEnd, setTempLineEnd] = useState<{ x: number; y: number } | null>(null);
 
-  // Recolor custom hand cursor to match theme color #8A53D6
-  useEffect(() => {
-    const img = new Image();
-    img.src = handCursorUrl;
-    img.onload = () => {
-      const canvas = document.createElement("canvas");
-      canvas.width = 32;
-      canvas.height = 32;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return;
-      
-      ctx.drawImage(img, 0, 0, 225, 225, 0, 0, 32, 32);
-      
-      const imgData = ctx.getImageData(0, 0, 32, 32);
-      const data = imgData.data;
-      
-      const rTheme = 138;
-      const gTheme = 83;
-      const bTheme = 214;
-      
-      for (let i = 0; i < data.length; i += 4) {
-        const r = data[i];
-        const g = data[i + 1];
-        const b = data[i + 2];
-        const a = data[i + 3];
-        
-        if (a < 5) continue;
-        
-        const brightness = (r + g + b) / 3;
-        
-        if (brightness > 200) {
-          // Soft translucent fill inside the glove
-          data[i] = rTheme;
-          data[i + 1] = gTheme;
-          data[i + 2] = bTheme;
-          data[i + 3] = 40;
-        } else {
-          // Solid theme outline
-          data[i] = rTheme;
-          data[i + 1] = gTheme;
-          data[i + 2] = bTheme;
-          data[i + 3] = 255;
-        }
-      }
-      
-      ctx.putImageData(imgData, 0, 0);
-      setCursorUrl(canvas.toDataURL("image/png"));
-    };
-  }, []);
+
 
   // 4-Layer 3D Scroll Parallax Explosion
   useEffect(() => {
@@ -1836,13 +1778,13 @@ const STEPS = [
     desc: "Protect credentials, enforce RBAC policies, validate compliance requirements, and continuously scan infrastructure before issues reach production.",
     mediaUrl: secureVideoUrl,
   },
-  {
-    index: "05",
-    title: "Operate at Scale",
-    subtitle: "Know exactly what's running across every cloud.",
-    desc: "Discover deployed resources, detect configuration drift, monitor infrastructure health, and track every change through logs, audits, and observability insights.",
-    mediaUrl: scaleVideoUrl,
-  }
+  // {
+  //   index: "05",
+  //   title: "Operate at Scale",
+  //   subtitle: "Know exactly what's running across every cloud.",
+  //   desc: "Discover deployed resources, detect configuration drift, monitor infrastructure health, and track every change through logs, audits, and observability insights.",
+  //   mediaUrl: scaleVideoUrl,
+  // }
 ];
 
 function ProcessShowcase() {
@@ -1863,9 +1805,9 @@ function ProcessShowcase() {
         st = ScrollTrigger.create({
           trigger: section,
           start: "top top",
-          end: () => `+=${window.innerHeight * 3.5}`, // Pinned for 3.5 viewport heights
+          end: () => `+=${window.innerHeight * 1.5}`, // Pinned for 1.5 viewport heights to reduce scroll distance
           pin: true,
-          scrub: 0.5,
+          scrub: 1, // Smoother scrub
           anticipatePin: 1,
           onUpdate: (self) => {
             setScrollProgress(self.progress);
@@ -1905,8 +1847,7 @@ function ProcessShowcase() {
       className="relative w-full min-h-screen flex items-center justify-center overflow-hidden z-20 transition-colors duration-500" 
       style={{ background: 'radial-gradient(circle at 50% 50%, #9d5cef 0%, #8A53D6 50%, #5b2ea3 100%)' }}
     >
-      {/* Dotted Canvas Background */}
-      <InteractiveGrid color="rgba(255, 255, 255, 0.35)" className="absolute inset-0 w-full h-full pointer-events-none z-0" />
+      {/* Dotted Canvas Background Removed for performance */}
 
       {/* Main container with Card on the left and Heading on the right */}
       <div className="relative w-full max-w-7xl mx-auto px-6 z-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
@@ -1978,7 +1919,7 @@ function ProcessShowcase() {
           <div className="absolute inset-0">
             {STEPS.map((step, idx) => {
               const isActive = idx === activeIndex;
-              const isVideo = typeof step.mediaUrl === "string" && step.mediaUrl.toLowerCase().includes(".mp4");
+              const isVideo = typeof step.mediaUrl === "string" && (step.mediaUrl.toLowerCase().includes(".mp4") || step.mediaUrl.toLowerCase().includes(".webm"));
               return (
                 <div 
                   key={step.index}
@@ -2503,7 +2444,7 @@ function ScrollGallery() {
         })}
 
         <article className="w-[85vw] md:w-[680px] h-[480px] shrink-0 flex items-center justify-center relative select-none">
-          <div className="text-center p-8 bg-[rgba(138,83,214,0.06)] border border-[rgba(138,83,214,0.2)] rounded-3xl backdrop-blur-md">
+          <div className="text-center p-8 bg-[rgba(138,83,214,0.06)] border border-[rgba(138,83,214,0.2)] rounded-3xl ">
             <h3 className="font-display text-4xl md:text-5xl text-[var(--ig-text)] leading-[0.95]">Experience <span className="ig-metallic">the canvas.</span></h3>
             <a href="#jane" className="ig-cta px-8 py-4 inline-flex items-center gap-2 mt-8 text-sm uppercase tracking-wider">Start Designing <Arrow /></a>
           </div>

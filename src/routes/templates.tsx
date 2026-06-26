@@ -151,7 +151,7 @@ function TemplatesPage() {
       {/* Interactive Grid behind the text so we can blur it underneath */}
       <InteractiveGrid color="#8A53D6" className="absolute inset-0 w-full h-full pointer-events-none z-0" />
       {/* Backdrop blur to soften the interactive grid */}
-      <div className="absolute inset-0 bg-[var(--ig-bg)]/50 backdrop-blur-[6px] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[var(--ig-bg)]/50 -[6px] pointer-events-none z-0" />
 
       <div className="relative z-10 pt-32 px-6 max-w-6xl mx-auto">
         
