@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
+import "./DemoStepper.css";
 import { Mail, Briefcase, Server, CalendarCheck, Check } from 'lucide-react';
 import { submitDemoRequest } from '../services/api';
 
@@ -23,13 +24,34 @@ export function DemoStepper() {
 
   const nameRegex = /^[A-Za-z\s]{2,50}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const mobileRegex = /^\+?[0-9\s\-]{7,15}$/;
+  const mobileRegex = /^[0-9]{10}$/;
 
   const pct = Math.round(((curStep + 1) / TOTAL_STEPS) * 100);
 
-  const isStep0Valid = formData.name && formData.email && formData.mobile && nameRegex.test(formData.name) && emailRegex.test(formData.email) && mobileRegex.test(formData.mobile);
-  const isStep1Valid = !!formData.company;
-  const isNextDisabled = submitting || (curStep === 0 && !isStep0Valid) || (curStep === 1 && !isStep1Valid);
+  const isStep0Valid = useMemo(() => {
+    return !!(
+      formData.name &&
+      formData.email &&
+      formData.mobile &&
+      nameRegex.test(formData.name) &&
+      emailRegex.test(formData.email) &&
+      mobileRegex.test(formData.mobile)
+    );
+  }, [formData.name, formData.email, formData.mobile, nameRegex, emailRegex, mobileRegex]);
+
+  const isStep1Valid = useMemo(() => {
+    return !!formData.company;
+  }, [formData.company]);
+
+  const isCurrentStepValid = useMemo(() => {
+    if (curStep === 0) return isStep0Valid;
+    if (curStep === 1) return isStep1Valid;
+    return true;
+  }, [curStep, isStep0Valid, isStep1Valid]);
+
+  const isNextDisabled = useMemo(() => {
+    return curStep < 2 ? !isCurrentStepValid : false;
+  }, [curStep, isCurrentStepValid]);
 
   const goStep = (n: number) => {
     if (n < 0 || n >= TOTAL_STEPS) return;
@@ -98,219 +120,6 @@ export function DemoStepper() {
 
   return (
     <div className="demo-stepper-wrapper w-full max-w-[600px] text-left">
-      <style>{`
-        .demo-stepper-wrapper {
-          --p: rgb(143,101,194);
-          --p-dark: rgb(110, 74,158);
-          --p-darker: rgb( 80, 48,120);
-          --p-light: rgba(143,101,194, 0.1);
-          --p-mid: rgba(143,101,194, 0.2);
-          --p-glow: rgba(143,101,194,.18);
-          --p-border: var(--ig-border);
-          --red: var(--ig-danger);
-          --red-light: rgba(239,68,68, 0.1);
-          --red-border: rgba(239,68,68,.25);
-          --surface: var(--ig-card);
-          --surface2: var(--ig-bg-2);
-          --border: var(--ig-border);
-          --border-hover: rgba(143,101,194, 0.5);
-          --t1: var(--ig-text);
-          --t2: var(--ig-text);
-          --t3: var(--ig-muted);
-          --t4: var(--ig-dim);
-          --r: 12px;
-          --rs: 6px;
-          --t: .18s cubic-bezier(.4,0,.2,1);
-        }
-
-        .ds-stepper-card {
-          background: var(--surface);
-          border: 1px solid var(--border);
-          border-radius: var(--r);
-          margin-bottom: 16px;
-          overflow: hidden;
-          backdrop-filter: blur(12px);
-          box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
-        .ds-stepper-header {
-          background: linear-gradient(90deg, var(--p-darker) 0%, var(--p-dark) 100%);
-          padding: 12px 20px;
-          display: flex; align-items: center; justify-content: space-between;
-        }
-        .ds-stepper-header-title {
-          font-family: 'Inter', 'Google Sans', sans-serif;
-          font-size: 14px; font-weight: 600; color: #fff;
-        }
-        .ds-stepper-header-sub { font-size: 11.5px; color: rgba(255,255,255,.7); }
-
-        .ds-stepper {
-          display: flex; align-items: flex-start;
-          padding: 16px 20px 12px; overflow-x: auto;
-        }
-        .ds-step { display: flex; align-items: center; flex: 1; }
-        .ds-step:last-child { flex: none; }
-        .ds-step-inner {
-          display: flex; flex-direction: column; align-items: center;
-          cursor: pointer; gap: 6px; flex-shrink: 0;
-          transition: opacity var(--t);
-        }
-        .ds-step-inner:hover .ds-step-circle { border-color: var(--p); }
-        .ds-step-circle {
-          width: 32px; height: 32px; border-radius: 50%;
-          display: flex; align-items: center; justify-content: center;
-          font-size: 12.5px; font-weight: 600;
-          border: 2px solid var(--border);
-          background: var(--ig-bg-2); color: var(--t4);
-          transition: all var(--t); flex-shrink: 0;
-        }
-        .ds-step.done .ds-step-circle {
-          background: var(--p); border-color: var(--p); color: #fff;
-        }
-        .ds-step.active .ds-step-circle {
-          background: var(--p); border-color: var(--p); color: #fff;
-          box-shadow: 0 0 0 4px var(--p-glow);
-        }
-        .ds-step-label {
-          font-size: 10.5px; color: var(--t4);
-          white-space: nowrap; font-weight: 500;
-        }
-        .ds-step.active .ds-step-label { color: var(--t1); font-weight: 600; }
-        .ds-step.done .ds-step-label { color: var(--t3); }
-        
-        .ds-step-line {
-          flex: 1; height: 2px;
-          background: var(--border);
-          margin: 0 6px; margin-bottom: 22px;
-          border-radius: 2px; transition: background var(--t);
-        }
-        .ds-step.done .ds-step-line { background: var(--p); }
-
-        .ds-prog-row {
-          display: flex; align-items: center; gap: 12px;
-          padding: 0 20px 14px;
-        }
-        .ds-prog-bar { flex: 1; height: 4px; background: var(--ig-border-soft); border-radius: 4px; overflow: hidden; }
-        .ds-prog-fill {
-          height: 100%;
-          background: linear-gradient(90deg, var(--p-dark), var(--p));
-          border-radius: 4px;
-          transition: width .4s cubic-bezier(.4,0,.2,1);
-          box-shadow: 0 0 8px var(--p-glow);
-        }
-        .ds-prog-label {
-          font-size: 12px; color: var(--p); font-weight: 600;
-          min-width: 32px; text-align: right;
-        }
-
-        .ds-card {
-          background: var(--surface);
-          border: 1px solid var(--border);
-          border-radius: var(--r);
-          margin-bottom: 12px;
-          overflow: hidden;
-          backdrop-filter: blur(12px);
-          box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
-        .ds-card-title-bar {
-          display: flex; align-items: center; gap: 10px;
-          padding: 12px 18px;
-          border-bottom: 1px solid var(--border);
-          background: var(--surface2);
-        }
-        .ds-card-icon {
-          width: 26px; height: 26px; border-radius: 6px;
-          display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-        }
-        .ds-card-title-text {
-          font-size: 14px; font-weight: 600; color: var(--t1); flex: 1;
-        }
-        .ds-card-body { padding: 18px; }
-
-        .ds-field { margin-bottom: 18px; position: relative; }
-        .ds-field:last-child { margin-bottom: 0; }
-        .ds-field-label {
-          font-size: 12.5px; color: var(--t2);
-          margin-bottom: 6px; font-weight: 500;
-          display: flex; align-items: center; gap: 6px;
-        }
-        .ds-req-star { color: var(--red); font-weight: 700; font-size: 15px; line-height: 1; }
-        
-        .ds-field input, .ds-field select, .ds-field textarea {
-          width: 100%; padding: 10px 14px;
-          font-size: 13.5px; border-radius: var(--rs);
-          border: 1.5px solid var(--border);
-          background: var(--surface2); color: var(--t1);
-          outline: none; transition: all var(--t);
-        }
-        .ds-field input:hover, .ds-field select:hover, .ds-field textarea:hover { border-color: var(--border-hover); }
-        .ds-field input:focus, .ds-field select:focus, .ds-field textarea:focus {
-          border-color: var(--p);
-          background: var(--surface);
-          box-shadow: 0 0 0 3px var(--p-glow);
-        }
-        .ds-hint { font-size: 11px; color: var(--t4); margin-top: 5px; line-height: 1.45; }
-
-        .ds-toggle-row {
-          display: flex; align-items: flex-start; gap: 12px;
-          padding: 12px 14px; border-radius: var(--rs);
-          border: 1.5px solid var(--border);
-          margin-bottom: 12px; cursor: pointer;
-          transition: all var(--t); background: var(--surface2);
-        }
-        .ds-toggle-row:hover { border-color: var(--p-border); background: rgba(143,101,194,0.05); }
-        .ds-toggle-row.checked { border-color: var(--p); background: var(--p-light); }
-        .ds-toggle-row:last-child { margin-bottom: 0; }
-
-        .ds-chk-box {
-          width: 18px; height: 18px; border-radius: 4px;
-          border: 2px solid var(--t4); flex-shrink: 0; margin-top: 2px;
-          display: flex; align-items: center; justify-content: center;
-          transition: all var(--t); background: transparent;
-        }
-        .ds-toggle-row.checked .ds-chk-box { background: var(--p); border-color: var(--p); }
-        .ds-chk-label { flex: 1; }
-        .ds-chk-name { font-size: 13.5px; font-weight: 600; color: var(--t1); }
-        .ds-chk-desc { font-size: 12px; color: var(--t3); margin-top: 3px; line-height: 1.45; }
-
-        .ds-btn {
-          padding: 10px 22px; border-radius: var(--rs);
-          font-size: 13.5px; font-weight: 600; cursor: pointer;
-          border: 1.5px solid var(--border);
-          background: var(--surface2); color: var(--t2);
-          transition: all var(--t);
-        }
-        .ds-btn:hover { background: var(--surface); border-color: var(--border-hover); color: var(--t1); }
-        .ds-btn.primary {
-          background: var(--p); border-color: var(--p); color: #fff;
-          box-shadow: 0 1px 4px rgba(143,101,194,.35);
-        }
-        .ds-btn.primary:hover {
-          background: var(--p-dark); border-color: var(--p-dark);
-          box-shadow: 0 3px 12px rgba(143,101,194,.5);
-          transform: translateY(-1px);
-        }
-        .ds-btn.primary:active { transform: translateY(0); }
-        .ds-btn.ghost { border-color: transparent; background: transparent; color: var(--t3); }
-        .ds-btn.ghost:hover { background: var(--ig-border-soft); color: var(--t1); }
-
-        .ds-nav-btns {
-          display: flex; align-items: center; justify-content: space-between;
-          margin-top: 16px; padding: 14px 20px;
-          background: var(--surface); border: 1px solid var(--border);
-          border-radius: var(--r); backdrop-filter: blur(12px);
-        }
-        .ds-err-bar {
-          display: flex; align-items: center; gap: 8px;
-          padding: 12px 16px; border-radius: var(--rs);
-          background: var(--red-light); border: 1px solid var(--red-border);
-          margin-bottom: 14px; font-size: 13px; color: var(--red);
-          font-weight: 500; animation: errIn .25s ease;
-        }
-        @keyframes errIn { from { opacity: 0; transform: translateY(-4px) } to { opacity: 1; transform: translateY(0) } }
-        .ds-step-panel { animation: panelIn .2s ease; }
-        @keyframes panelIn { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: translateY(0) } }
-      `}</style>
-
       {/* STEPPER HEADER */}
       <div className="ds-stepper-card">
         <div className="ds-stepper-header">
@@ -325,7 +134,9 @@ export function DemoStepper() {
             return (
               <React.Fragment key={i}>
                 <div className={`ds-step ${isDone ? 'done' : ''} ${isActive ? 'active' : ''}`}>
-                  <div className="ds-step-inner" onClick={() => goStep(i)}>
+                  <div 
+                    className="ds-step-inner" 
+                    onClick={isNextDisabled ? undefined : () => goStep(i)}>
                     <div className="ds-step-circle">
                       {isDone ? <Check className="w-3.5 h-3.5" /> : i + 1}
                     </div>
@@ -387,12 +198,17 @@ export function DemoStepper() {
                 <div className="ds-field-label">Mobile No <span className="ds-req-star">*</span></div>
                 <input 
                   type="tel" 
-                  placeholder="e.g. +91 98765 43210" 
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  placeholder="e.g. 9876543210" 
                   value={formData.mobile} 
-                  onChange={e => setFormData({...formData, mobile: e.target.value})} 
+                  onChange={e => {
+                    const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                    setFormData({ ...formData, mobile: value });
+                  }}
                   style={formData.mobile && !mobileRegex.test(formData.mobile) ? { borderColor: '#ef4444' } : {}}
                 />
-                <div className="ds-hint">Include country code. We may contact you to confirm your demo slot.</div>
+                <div className="ds-hint">Enter exactly 10 digits. We may contact you to confirm your demo slot.</div>
               </div>
             </div>
           </div>
