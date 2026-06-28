@@ -1863,7 +1863,7 @@ function ProcessShowcase() {
       <div className="relative w-full max-w-7xl mx-auto px-6 z-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
         
         {/* Left: The White Card Container */}
-        <div className="w-full md:w-[62%] shrink-0">
+        <div className="w-full md:w-[62%] shrink-0 mb-8 md:mb-0">
           <div className="relative w-full bg-white border border-slate-200/80 rounded-[32px] shadow-[0_24px_70px_rgba(0,0,0,0.05)] grid grid-cols-1 md:grid-cols-2 items-stretch min-h-[500px] overflow-hidden">
         {/* Left Column: Text Content Card */}
         <div className="flex flex-col justify-center space-y-6 md:space-y-7 p-8 md:p-12 md:pr-4 select-none">
@@ -2085,7 +2085,7 @@ function InfraGlideLanding() {
               Architecture, deployments, drift detection, compliance, RBAC, observability, and more—built into a single cloud workspace.
             </p>
           </div>
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start px-4 sm:px-6">
             <MarqueeCards />
             <div className="flex flex-col gap-8">
               <SyncInfraCard />
@@ -2487,7 +2487,7 @@ function ScrollGallery() {
 /* ===================== Architecture & Design Card ===================== */
 function ArchitectureCard() {
   return (
-    <div className="bg-white flex flex-col justify-between relative overflow-hidden select-none working-cursor min-h-[380px] md:min-h-[440px]">
+    <div className="bg-white flex flex-col justify-between relative overflow-hidden select-none working-cursor min-h-[320px] md:min-h-[380px]">
       {/* Purple Header with Dotted Grid */}
       <div className="p-8 bg-[#8a53d6] rounded-b-[2rem] relative overflow-hidden flex flex-col justify-center text-white min-h-[130px] md:min-h-[160px]">
         {/* Dotted Grid Overlay */}
@@ -2508,7 +2508,7 @@ function ArchitectureCard() {
       {/* Card Body */}
       <div className="p-6 md:p-8 flex items-center justify-center md:items-end md:justify-end relative z-10 gap-6">
         {/* Right: Buttons */}
-        <div className="flex flex-col gap-2.5 items-stretch w-full max-w-xs md:max-w-[210px] relative z-10">
+        <div className="flex flex-col gap-2.5 items-stretch w-full max-w-full sm:max-w-xs md:max-w-[210px] relative z-10">
           <div className="grid grid-cols-2 gap-2.5">
             <button className="py-2.5 bg-slate-100 hover:bg-slate-200/80 border border-slate-200/50 rounded-xl text-[10px] font-bold text-slate-500 uppercase tracking-widest transition-colors cursor-pointer text-center">HLD</button>
             <button className="py-2.5 bg-slate-100 hover:bg-slate-200/80 border border-slate-200/50 rounded-xl text-[10px] font-bold text-slate-500 uppercase tracking-widest transition-colors cursor-pointer text-center">LLD</button>
@@ -2529,7 +2529,7 @@ function ArchitectureCard() {
 /* ===================== Pipeline Scheduler Card ===================== */
 function PipelineSchedulerCard() {
   return (
-    <div className="bg-[#8a53d6] border-t border-slate-200/60 flex flex-col md:flex-row justify-between relative overflow-hidden select-none working-cursor min-h-[320px] md:h-[420px]">
+    <div className="bg-[#8a53d6] border-t border-slate-200/60 flex flex-col md:flex-row justify-between relative overflow-hidden select-none working-cursor md:h-[420px] pb-8 md:pb-0">
       {/* Dotted Grid Overlay */}
       <div className="absolute inset-0 opacity-35 mix-blend-screen" style={{ backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.45) 1.5px, transparent 1.5px)', backgroundSize: '24px 24px', backgroundPosition: 'center' }} />
       
@@ -2733,7 +2733,7 @@ function MarqueeCards() {
   const items = [...providers, ...providers, ...providers];
 
   return (
-    <div className="relative flex flex-col h-full min-w-0 w-full overflow-hidden">
+    <div className="relative flex flex-col h-auto min-w-0 w-full overflow-hidden">
       {/* Provider Logo Strip heading */}
       <div className="mb-10">
         <h2 className="font-display text-4xl md:text-5xl text-[var(--ig-text)]">Connect <span className="ig-metallic">everything.</span></h2>
@@ -2831,7 +2831,7 @@ function FleetMarqueeStrip() {
 function DriftDetectionCard() {
   return (
     <div 
-      className="border border-slate-200/80 rounded-[2rem] shadow-2xl overflow-hidden select-none working-cursor flex flex-col md:flex-row md:min-h-[380px] relative bg-white"
+      className="border border-slate-200/80 rounded-[2rem] shadow-2xl overflow-hidden select-none working-cursor flex flex-col md:flex-row min-h-0 md:min-h-[380px] relative bg-white"
       style={{ containerType: 'inline-size' }}
     >
 
@@ -2845,7 +2845,7 @@ function DriftDetectionCard() {
       </div>
 
       {/* Right — purple dotted grid + text */}
-      <div className="flex-1 bg-[#8a53d6] relative overflow-hidden flex flex-col p-8 md:p-10">
+      <div className="flex-1 bg-[#8a53d6] relative overflow-hidden flex flex-col p-6 md:p-10">
         {/* Dotted grid */}
         <div
           className="absolute inset-0 opacity-40"
@@ -2858,7 +2858,7 @@ function DriftDetectionCard() {
         {/* Text */}
         <div className="relative z-10">
           <h3
-            className="text-4xl md:text-[42px] font-black leading-[1.0] text-white mb-5"
+            className="text-3xl md:text-[42px] font-black leading-[1.0] text-white mb-5"
             style={{ fontFamily: '"Sora", "Inter", sans-serif' }}
           >
             Drift{" "}
@@ -2869,7 +2869,7 @@ function DriftDetectionCard() {
               detection.
             </span>
           </h3>
-          <p className="text-white/85 text-[15px] font-medium leading-relaxed max-w-[240px]">
+          <p className="text-white/85 text-[15px] font-medium leading-relaxed max-w-full md:max-w-[240px]">
             Gain real-time visibility into infrastructure changes, configuration anomalies, and compliance deviations across every cloud.
           </p>
         </div>
@@ -2914,11 +2914,11 @@ function DriftDetectionCard() {
 function RbacCard() {
   return (
     <div 
-      className="border border-slate-200/80 rounded-[2rem] shadow-2xl overflow-hidden select-none working-cursor flex flex-col md:flex-row md:min-h-[380px] relative bg-white"
+      className="border border-slate-200/80 rounded-[2rem] shadow-2xl overflow-hidden select-none working-cursor flex flex-col md:flex-row min-h-0 md:min-h-[380px] relative bg-white"
       style={{ containerType: 'inline-size' }}
     >
       {/* Left — white dotted bg + text */}
-      <div className="w-full md:w-[43%] shrink-0 bg-white relative overflow-hidden flex flex-col justify-between p-6 md:p-8 text-slate-800 md:border-r border-b md:border-b-0 border-slate-200/60">
+      <div className="w-full md:w-[43%] shrink-0 bg-white relative overflow-hidden flex flex-col justify-between p-6 md:p-8 text-slate-800 md:border-r border-b md:border-b-0 border-slate-200/60 min-h-[280px] md:min-h-0">
         {/* Dotted grid background */}
         <div
           className="absolute inset-0 opacity-80"
@@ -3181,7 +3181,7 @@ function SyncInfraCard() {
           {!isSyncing && showResults && syncedProvider && (
             <div className="space-y-3 w-full">
               {/* Table Headers */}
-              <div className="grid grid-cols-[2.2fr_1.5fr_1.1fr_1.1fr] gap-3 pb-3 border-b border-slate-100 text-[10px] font-bold text-slate-400 uppercase tracking-wider text-left">
+              <div className="grid grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,0.9fr)] gap-3 pb-3 border-b border-slate-100 text-[10px] font-bold text-slate-400 uppercase tracking-wider text-left">
                 <div>Name</div>
                 <div>Type</div>
                 <div>Location</div>
@@ -3196,7 +3196,7 @@ function SyncInfraCard() {
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: i * 0.1 }}
-                    className="grid grid-cols-[2.2fr_1.5fr_1.1fr_1.1fr] gap-3 py-3 items-center text-left text-xs"
+                    className="grid grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,0.9fr)] gap-3 py-3 items-center text-left text-[10px] sm:text-xs"
                   >
                     {/* Name */}
                     <div className="font-bold text-slate-800 truncate pr-2" title={res.name}>
