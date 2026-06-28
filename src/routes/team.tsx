@@ -108,9 +108,11 @@ function TeamPage() {
               <h2 className="text-xl font-bold text-[var(--ig-text)] mb-1">{member.name}</h2>
               <div className="text-sm font-semibold text-[#8A53D6] dark:text-[#b07eff] mb-4 flex items-center justify-center gap-1.5">
                 {member.role}
-                <a href={member.linkedin || "#"} className="text-[var(--ig-dim)] hover:text-[#8A53D6] dark:hover:text-[#b07eff] transition-colors" title="LinkedIn" aria-label={`${member.name} on LinkedIn`}>
-                  <Linkedin className="w-3.5 h-3.5" />
-                </a>
+                {member.linkedin && (
+                  <a href={member.linkedin} className="text-[var(--ig-dim)] hover:text-[#8A53D6] dark:hover:text-[#b07eff] transition-colors" title="LinkedIn" aria-label={`${member.name} on LinkedIn`}>
+                    <Linkedin className="w-3.5 h-3.5" />
+                  </a>
+                )}
               </div>
               <p className="text-sm text-[var(--ig-muted)] leading-relaxed mb-6">
                 {member.desc}
@@ -143,9 +145,11 @@ function TeamPage() {
               <h3 className="text-xl font-bold text-[var(--ig-text)] mb-1">{member.name}</h3>
               <div className="text-sm font-semibold text-[#8A53D6] dark:text-[#b07eff] mb-4 flex items-center justify-center gap-1.5">
                 {member.role}
-                <a href={member.linkedin || "#"} className="text-[var(--ig-dim)] hover:text-[#8A53D6] dark:hover:text-[#b07eff] transition-colors" title="LinkedIn" aria-label={`${member.name} on LinkedIn`}>
-                  <Linkedin className="w-3.5 h-3.5" />
-                </a>
+                {member.linkedin && (
+                  <a href={member.linkedin} className="text-[var(--ig-dim)] hover:text-[#8A53D6] dark:hover:text-[#b07eff] transition-colors" title="LinkedIn" aria-label={`${member.name} on LinkedIn`}>
+                    <Linkedin className="w-3.5 h-3.5" />
+                  </a>
+                )}
               </div>
               <p className="text-sm text-[var(--ig-muted)] leading-relaxed mb-6">
                 {member.desc}
