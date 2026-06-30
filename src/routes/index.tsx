@@ -338,8 +338,12 @@ function Hero() {
         {/* Heading */}
         <h1 
           ref={headingRef} 
-          className="font-display text-5xl sm:text-6xl md:text-7xl tracking-tight leading-[1.05] text-[var(--ig-text)] font-bold mb-6 max-w-2xl"
+          className="font-display text-5xl sm:text-6xl md:text-7xl tracking-tight leading-[1.05] text-[var(--ig-text)] font-bold mb-6 max-w-2xl hidden md:block"
         >
+          One canvas,<br/>
+          <span className="ig-metallic">every cloud.</span>
+        </h1>
+        <h1 className="md:hidden font-display text-4xl tracking-tight leading-[1.05] text-[var(--ig-text)] font-bold mb-6 w-full text-center px-2">
           One canvas,<br/>
           <span className="ig-metallic">every cloud.</span>
         </h1>
@@ -474,7 +478,7 @@ function TrendChart() {
 function Metrics() {
   const ref = useReveal<HTMLDivElement>();
   return (
-    <section className="relative py-24 working-cursor z-40" id="workspace" style={{ background: "radial-gradient(ellipse at top, var(--ig-bg-3) 0%, var(--ig-bg-2) 50%, var(--ig-bg) 90%)" }}>
+    <section className="relative py-24 working-cursor z-40 hidden md:block" id="workspace" style={{ background: "radial-gradient(ellipse at top, var(--ig-bg-3) 0%, var(--ig-bg-2) 50%, var(--ig-bg) 90%)" }}>
       <div ref={ref} className="mx-auto max-w-6xl px-6 relative z-40 -mt-[150px] md:-mt-[200px]">
         <InteractiveCanvas />
       </div>
@@ -515,14 +519,14 @@ function Jane() {
   return (
     <section className="relative py-24 working-cursor" id="jane">
       <div ref={ref} className="mx-auto max-w-6xl px-6">
-        <TiltCard strength={4} className="ig-card rounded-3xl p-8 md:p-12 ig-glow-lg overflow-hidden relative" >
+        <TiltCard strength={4} className="ig-card rounded-3xl p-5 sm:p-8 md:p-12 ig-glow-lg overflow-hidden relative" >
           <div className="absolute -top-32 -right-32 h-96 w-96 rounded-full" style={{ background: "radial-gradient(circle, rgba(138,83,214,.35), transparent 70%)", filter: "blur(40px)" }} />
-          <div className="grid md:grid-cols-2 gap-10 relative">
-            <div>
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 relative">
+            <div className="min-w-0">
               <div className="inline-flex items-center gap-2 ig-pill px-3 py-1 text-xs text-[var(--ig-accent-2)] mb-6">
                 <Sparkles className="w-3 h-3" /> Jane AI · v3
               </div>
-              <h2 className="font-display text-4xl md:text-6xl text-[var(--ig-text)] leading-[0.95]">Meet Jane,<br/>your AI <span className="ig-metallic">infrastructure architect.</span></h2>
+              <h2 className="font-display text-3xl sm:text-4xl md:text-6xl text-[var(--ig-text)] leading-[0.95] break-words">Meet Jane,<br/>your AI <span className="ig-metallic">infrastructure architect.</span></h2>
               <p className="mt-5 text-[var(--ig-muted)] text-sm md:text-base font-medium leading-relaxed max-w-md">She speaks Terraform, reads your topology, and ships production changes — with the receipts.</p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {suggestions.map((s) => (
@@ -530,7 +534,7 @@ function Jane() {
                 ))}
               </div>
             </div>
-            <div className="ig-card rounded-2xl p-4 flex flex-col h-[420px]" style={{ background: "var(--ig-card)" }}>
+            <div className="ig-card rounded-2xl p-4 flex flex-col h-[420px] min-w-0" style={{ background: "var(--ig-card)" }}>
               <div ref={scrollRef} className="flex-1 overflow-y-auto space-y-3 pr-2">
                 {msgs.map((m, i) => (
                   <div key={i} className={`flex ${m.from === "user" ? "justify-end" : "justify-start"}`}>
@@ -557,18 +561,18 @@ function Jane() {
                   </div>
                 )}
               </div>
-              <form onSubmit={(e) => { e.preventDefault(); send(input); }} className="mt-3 flex gap-2">
+              <form onSubmit={(e) => { e.preventDefault(); send(input); }} className="mt-3 flex flex-col sm:flex-row gap-2 w-full">
                 <input value={input} onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask AI to design a VPC or debug a pipeline..."
-                  className="flex-1 bg-[var(--ig-bg)] border border-[rgba(138,83,214,0.3)] rounded-full px-4 py-2.5 text-sm text-[var(--ig-text)] placeholder:text-[var(--ig-dim)] focus:outline-none focus:border-[var(--ig-accent)] focus:ig-glow" />
+                  placeholder="Ask AI to design a VPC or debug..."
+                  className="flex-1 min-w-0 w-full bg-[var(--ig-bg)] border border-[rgba(138,83,214,0.3)] rounded-full px-4 py-2.5 text-sm text-[var(--ig-text)] placeholder:text-[var(--ig-dim)] focus:outline-none focus:border-[var(--ig-accent)] focus:ig-glow" />
                 <motion.button
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
                   type="submit"
-                  className="group relative isolate overflow-hidden rounded-full bg-[var(--ig-border-soft)] px-5 py-2 text-[14px] font-medium text-[var(--ig-text)] transition-all hover:bg-[var(--ig-border)] shrink-0 shadow-[0_0_20px_-5px_rgba(138,83,214,0.3)] hover:shadow-[0_0_25px_-5px_rgba(138,83,214,0.5)]"
+                  className="group relative isolate overflow-hidden rounded-full bg-[var(--ig-border-soft)] px-5 py-2 w-full sm:w-auto text-[14px] font-medium text-[var(--ig-text)] transition-all hover:bg-[var(--ig-border)] shrink-0 shadow-[0_0_20px_-5px_rgba(138,83,214,0.3)] hover:shadow-[0_0_25px_-5px_rgba(138,83,214,0.5)]"
                   aria-label="send"
                 >
-                  <span className="relative z-10 flex items-center gap-1.5">
+                  <span className="relative z-10 flex items-center justify-center gap-1.5">
                     ask AI <Sparkles className="w-4 h-4 text-[var(--ig-accent)]" />
                   </span>
                   
@@ -2072,7 +2076,9 @@ function InfraGlideLanding() {
       <CursorGlow />
       <main className="relative z-10">
         <Hero />
-        <TextScrollMarquee />
+        <div className="hidden md:block">
+          <TextScrollMarquee />
+        </div>
         <Metrics />
         <AboutTeaser />
         <ProcessShowcase />
