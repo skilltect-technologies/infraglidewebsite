@@ -2535,7 +2535,7 @@ function ArchitectureCard() {
 /* ===================== Pipeline Scheduler Card ===================== */
 function PipelineSchedulerCard() {
   return (
-    <div className="bg-[#8a53d6] border-t border-slate-200/60 flex flex-col md:flex-row justify-between relative overflow-hidden select-none working-cursor md:h-[420px] pb-8 md:pb-0">
+    <div className="bg-[#8a53d6] border-t border-slate-200/60 flex flex-col md:flex-row justify-between relative overflow-hidden select-none working-cursor md:h-[420px] pb-8 md:pb-0 rounded-b-[2rem] w-full">
       {/* Dotted Grid Overlay */}
       <div className="absolute inset-0 opacity-35 mix-blend-screen" style={{ backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.45) 1.5px, transparent 1.5px)', backgroundSize: '24px 24px', backgroundPosition: 'center' }} />
       
@@ -2757,8 +2757,7 @@ function MarqueeCards() {
           ))}
         </div>
       </div>
-      <div className="mt-10 rounded-[2rem] isolate">
-        <div className="rounded-[2rem] border border-slate-200/80 bg-white overflow-hidden flex flex-col relative z-0 w-full">
+      <div className="mt-10 rounded-[2rem] border border-slate-200/80 bg-white overflow-hidden flex flex-col isolate transform-gpu relative z-0 w-full">
         {/* Top Card: Templating Engine */}
         <div className="bg-[#8a53d6] relative overflow-hidden min-h-[320px] flex flex-col justify-center p-8 md:p-12 border-b border-white/10">
           <div className="absolute inset-0 opacity-50 mix-blend-screen" style={{ backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.5) 2px, transparent 2px)', backgroundSize: '32px 32px', backgroundPosition: 'center' }} />
@@ -2788,7 +2787,6 @@ function MarqueeCards() {
 
         {/* Pipeline Scheduler Card */}
         <PipelineSchedulerCard />
-        </div>
       </div>
     </div>
   );
@@ -2839,7 +2837,7 @@ function FleetMarqueeStrip() {
 function DriftDetectionCard() {
   return (
     <div 
-      className="border border-slate-200/80 rounded-[2rem] overflow-hidden select-none working-cursor flex flex-col md:flex-row min-h-0 md:min-h-[380px] relative bg-white"
+      className="border border-slate-200/80 rounded-[2rem] shadow-2xl overflow-hidden select-none working-cursor flex flex-col md:flex-row min-h-0 md:min-h-[380px] relative bg-white"
       style={{ containerType: 'inline-size' }}
     >
 
@@ -2922,7 +2920,7 @@ function DriftDetectionCard() {
 function RbacCard() {
   return (
     <div 
-      className="border border-slate-200/80 rounded-[2rem] overflow-hidden select-none working-cursor flex flex-col md:flex-row min-h-0 md:min-h-[380px] relative bg-white"
+      className="border border-slate-200/80 rounded-[2rem] shadow-2xl overflow-hidden select-none working-cursor flex flex-col md:flex-row min-h-0 md:min-h-[380px] relative bg-white"
       style={{ containerType: 'inline-size' }}
     >
       {/* Left — white dotted bg + text */}
@@ -3047,7 +3045,7 @@ function SyncInfraCard() {
 
   return (
     <div 
-      className="bg-white border border-slate-200/80 rounded-[2rem] p-6 md:p-8 flex flex-col justify-between relative overflow-hidden min-h-[420px] h-full text-slate-800 transition-all select-none working-cursor"
+      className="bg-white border border-slate-200/80 rounded-[2rem] p-6 md:p-8 shadow-2xl flex flex-col justify-between relative overflow-hidden min-h-[420px] h-full text-slate-800 transition-all select-none working-cursor"
     >
       <div>
         {/* Heading & Baseline */}
