@@ -121,6 +121,7 @@ function TeamPage() {
           ))}
         </div>
 
+        {/* 
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[rgba(138,83,214,0.06)] dark:bg-[rgba(138,83,214,0.08)] border border-[rgba(138,83,214,0.12)] dark:border-[rgba(138,83,214,0.18)] text-[#8A53D6] dark:text-[#b07eff] text-xs font-bold tracking-widest uppercase mb-6 ">
             MENTORS
@@ -157,6 +158,7 @@ function TeamPage() {
             </article>
           ))}
         </div>
+        */}
       </div>
     </div>
   )

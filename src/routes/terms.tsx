@@ -300,7 +300,7 @@ function TermsPage() {
             {/* SECTION 12 */}
             <section id="warranty-disclaimer" className="scroll-mt-24 space-y-4">
               <h2 className="text-2xl font-bold text-[var(--ig-text)] font-display-family">12. Warranty disclaimer</h2>
-              <div className="p-4 bg-red-500/5 border border-red-500/20 rounded-xl text-red-200/80 text-xs font-mono uppercase space-y-2">
+              <div className="p-4 bg-red-500/5 border border-red-500/20 rounded-xl text-red-700 dark:text-red-300/90 text-xs font-mono uppercase space-y-2">
                 <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE SERVICE IS PROVIDED &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.</p>
                 <p>WE DO NOT WARRANT THAT THE SERVICE WILL BE ERROR-FREE, THAT TERRAFORM RUNS WILL SUCCEED IN ALL ENVIRONMENTS, OR THAT DRIFT DETECTION WILL IDENTIFY EVERY CHANGE IN YOUR CLOUD ACCOUNTS.</p>
               </div>
@@ -309,7 +309,7 @@ function TermsPage() {
             {/* SECTION 13 */}
             <section id="limitation-liability" className="scroll-mt-24 space-y-4">
               <h2 className="text-2xl font-bold text-[var(--ig-text)] font-display-family">13. Limitation of liability</h2>
-              <div className="p-4 bg-red-500/5 border border-red-500/20 rounded-xl text-red-200/80 text-xs font-mono uppercase space-y-2">
+              <div className="p-4 bg-red-500/5 border border-red-500/20 rounded-xl text-red-700 dark:text-red-300/90 text-xs font-mono uppercase space-y-2">
                 <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW:</p>
                 <ul className="list-disc pl-4 space-y-1">
                   <li>INFRAGLIDE WILL NOT BE LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR FOR LOSS OF PROFITS, DATA, GOODWILL, OR BUSINESS INTERRUPTION.</li>
