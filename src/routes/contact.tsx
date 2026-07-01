@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { InteractiveGrid } from '../components/InteractiveGrid'
-import { Mail, MapPin, Check, AlertCircle } from 'lucide-react'
+import { Mail, MapPin, Check, AlertCircle, Building2 } from 'lucide-react'
 import { submitDemoRequest } from '../services/api'
 
 const contactPageSchema = {
@@ -153,7 +153,7 @@ function ContactPage() {
               {/* Delhi Office */}
               <div className="space-y-2">
                 <h4 className="font-bold text-[var(--ig-text)] text-sm flex items-center gap-2">
-                  <span>🏢</span> Delhi Office
+                  <Building2 className="w-4 h-4 text-[#8A53D6]" /> Delhi Office
                 </h4>
                 <p className="text-sm text-[var(--ig-muted)] leading-relaxed pl-6">
                   First Floor,<br />
@@ -165,7 +165,7 @@ function ContactPage() {
               {/* Jodhpur Office */}
               <div className="space-y-2">
                 <h4 className="font-bold text-[var(--ig-text)] text-sm flex items-center gap-2">
-                  <span>🏢</span> Jodhpur Office
+                  <Building2 className="w-4 h-4 text-[#8A53D6]" /> Jodhpur Office
                 </h4>
                 <p className="text-sm text-[var(--ig-muted)] leading-relaxed pl-6">
                   First Floor,<br />
@@ -177,7 +177,7 @@ function ContactPage() {
               {/* Bangalore Office */}
               <div className="space-y-2">
                 <h4 className="font-bold text-[var(--ig-text)] text-sm flex items-center gap-2">
-                  <span>🏢</span> Bangalore Office
+                  <Building2 className="w-4 h-4 text-[#8A53D6]" /> Bangalore Office
                 </h4>
                 <p className="text-sm text-[var(--ig-muted)] leading-relaxed pl-6">
                   BLOCK-L,<br />
