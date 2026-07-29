@@ -20,6 +20,7 @@ import {
   Cloud,
   ArrowRight,
   Activity,
+  
   GitPullRequest,
   Sliders,
   CheckSquare
@@ -112,7 +113,8 @@ function AboutPage() {
             <span className="ig-metallic">cloud architecture.</span>
           </h1>
           <p className="text-[var(--ig-muted)] text-base md:text-lg lg:text-xl font-medium leading-relaxed max-w-2xl mx-auto text-center">
-            We remove the unnecessary distance between designing cloud infrastructure and operating it safely at scale. InfraGlide offers engineering teams a single visual, collaborative, and fully governed workspace.
+            We eliminate the gap between designing cloud infrastructure and operating it safely at scale.
+
           </p>
 
           {/* Native Multi-Cloud Badges */}
@@ -244,7 +246,7 @@ function AboutPage() {
                   <Activity className="w-5 h-5" />
                 </div>
                 <p className="text-xs text-[var(--ig-muted)] leading-relaxed">
-                  <strong>The missing layer:</strong> Nobody has a single, accurate picture of what the organization intended to build versus what actually runs today. That gap is where outages, security exposures, and surprise bills arise.
+                  <strong>The missing layer:</strong> No one has a single, accurate picture of what the organization intended to build versus what actually runs today. That gap is where outages, security exposures, and surprise bills arise.
                 </p>
               </div>
             </div>
@@ -260,7 +262,8 @@ function AboutPage() {
               <span className="ig-metallic">understandable, deployable, & governable.</span>
             </h2>
             <p className="text-[var(--ig-muted)] text-base md:text-lg">
-              We remove the unnecessary distance between designing cloud infrastructure and operating it safely. InfraGlide combines a visual canvas, production-grade Terraform, and AI-assisted reviews so platform teams and developers share the same picture.
+              We simplify the journey from infrastructure design to safe and scalable operations.
+
             </p>
           </div>
 
@@ -392,7 +395,7 @@ function AboutPage() {
                   02
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-[var(--ig-text)] font-display-family">
-                  One operating model across every cloud
+                   Single operating model across every cloud
                 </h3>
                 <p className="text-sm text-[var(--ig-muted)] leading-relaxed">
                   Organizations will run workloads on heterogeneous environments. InfraGlide unifies multi-cloud complexities without wiping out provider-specific benefits, providing a consistent execution plane.
@@ -501,7 +504,7 @@ function AboutPage() {
                   {[
                     "Jane translates raw deploy logs and plan differences into clear plain text.",
                     "Jane reviews architectures against cost, performance, security, and well-architected policies.",
-                    "Jane suggests copy-pasteable configuration fixes rather than making silent changes.",
+                    " Jane Suggests configuration fixes you can copy and paste instead of making silent changes.",
                     "Jane operates with context from your active sandboxes, deployment history, and pipelines."
                   ].map((bullet, idx) => (
                     <li key={idx} className="flex items-start gap-2.5">
@@ -526,7 +529,7 @@ function AboutPage() {
           <div className="text-center max-w-2xl mx-auto space-y-4">
             <h2 className="font-display text-3xl md:text-4xl text-[var(--ig-text)] leading-[1.15]">
               The future we are <br/>
-              <span className="ig-metallic">building toward.</span>
+              <span className="ig-metallic">building towards.</span>
             </h2>
             <p className="text-xs text-[var(--ig-muted)] font-bold tracking-wide uppercase">
               How cloud infrastructure shifts when design and execution align.
@@ -569,7 +572,7 @@ function AboutPage() {
                 <h3 className="text-2xl font-bold font-display-family text-[#8A53D6] mb-6">InfraGlide Workspace</h3>
                 <div className="space-y-6">
                   {[
-                    { title: "IaC for everyone", desc: "The visual canvas lets any team member participate, creating compliant HCL under the hood." },
+                    { title: "IaC for everyone", desc: "The visual canvas enables every team member to participate while generating compliant HCL under the hood." },
                     { title: "Continuous drift tracking", desc: "Changes outside the editor are flagged immediately, providing direct mitigation choices." },
                     { title: "Unified operating plane", desc: "One product library, workspace layout, and pipeline model spans AWS, Azure, and GCP." },
                     { title: "Governance in-the-path", desc: "Compliance verification, security checks, and cost reviews run before apply." },

@@ -170,7 +170,7 @@ export function PipelineStages() {
           <GitBranch className="w-4 h-4 text-[#b07eff]" />
           <h3 className="font-display text-xl">Pipeline #3414</h3>
         </div>
-        <button onClick={() => setRunning((r) => !r)} className="text-[11px] rounded-full bg-white/5 hover:bg-white/10 text-white/80 px-3 py-1.5 inline-flex items-center gap-1.5 transition border border-white/10">
+        <button onClick={() => setRunning((r) => !r)} className="text-[11px] rounded-full bg-white/ dark:bg-slate-900/ hover:bg-white/ dark:bg-slate-900/ text-white/80 px-3 py-1.5 inline-flex items-center gap-1.5 transition border border-white/10">
           {running ? <><Pause className="w-3 h-3" /> Pause</> : <><Play className="w-3 h-3" /> Resume</>}
         </button>
       </div>
@@ -234,7 +234,7 @@ export function DriftReport() {
           <span className="text-3xl font-display ig-metallic">{drift}/{total}</span>
           <span className="text-[11px] text-white/50">resources drifted</span>
         </div>
-        <div className="h-1.5 w-full rounded-full bg-white/5 overflow-hidden">
+        <div className="h-1.5 w-full rounded-full bg-white/ dark:bg-slate-900/ overflow-hidden">
           <div className="h-full bg-gradient-to-r from-[#8A53D6] to-[#f87171] transition-all duration-1000" style={{ width: `${reveal}%` }} />
         </div>
       </div>
@@ -294,10 +294,10 @@ export function RBACMatrix() {
                     <td key={p} className="px-2 py-1.5 text-center">
                       <button
                         onClick={() => setGrid((g) => ({ ...g, [k]: !g[k] }))}
-                        className={`w-7 h-5 rounded-full relative transition-all ${on ? "bg-[#8A53D6]" : "bg-white/10"}`}
+                        className={`w-7 h-5 rounded-full relative transition-all ${on ? "bg-[#8A53D6]" : "bg-white/ dark:bg-slate-900/"}`}
                         aria-label={`${role} ${p}`}
                       >
-                        <span className={`absolute top-0.5 w-4 h-4 rounded-full bg-white transition-all ${on ? "left-2.5" : "left-0.5"}`} />
+                        <span className={`absolute top-0.5 w-4 h-4 rounded-full bg-white dark:bg-slate-900 transition-all ${on ? "left-2.5" : "left-0.5"}`} />
                       </button>
                     </td>
                   );

@@ -59,7 +59,7 @@ function PrivacyPage() {
         {/* Content Layout */}
         <div className="grid lg:grid-cols-[280px_1fr] gap-12 items-start">
           {/* Sticky Sidebar Navigation */}
-          <aside className="hidden lg:block self-start sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto bg-white/70 dark:bg-[rgba(22,15,36,0.6)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-2xl p-6  shadow-sm">
+          <aside className="hidden lg:block self-start sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto bg-white/ dark:bg-slate-900/0 dark:bg-[rgba(22,15,36,0.6)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-2xl p-6  shadow-sm">
             <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--ig-muted)] mb-4 flex items-center gap-2">
               <FileText className="w-4 h-4 text-[#8A53D6] dark:text-[#b07eff]" /> Table of Contents
             </h4>
@@ -78,7 +78,7 @@ function PrivacyPage() {
           </aside>
 
           {/* Main Document Content */}
-          <div className=" bg-white/70 dark:bg-[rgba(22,15,36,0.55)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-[2rem] p-8 md:p-12 shadow-sm relative overflow-hidden space-y-12">
+          <div className=" bg-white/ dark:bg-slate-900/0 dark:bg-[rgba(22,15,36,0.55)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-[2rem] p-8 md:p-12 shadow-sm relative overflow-hidden space-y-12">
             <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#8A53D6] to-[#b07eff]" />
             
             <p className="text-[var(--ig-text)] text-lg leading-relaxed border-b border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] pb-8">

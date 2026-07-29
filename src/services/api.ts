@@ -2,8 +2,8 @@
 // CLIENT-SIDE EXTERNAL API CALLS
 // ==========================================
 
-const domain = "https://demo.infraglide.com";
-// const domain = "http://localhost:5000"; // Uncomment for local development
+//const domain = "https://demo.infraglide.com";
+const domain = "http://localhost:5000"; // Uncomment for local development
 
 const apiBaseUrl = "/api/v1/public/";
 
@@ -42,6 +42,7 @@ const apiClient = async (apiName: keyof typeof URLS, method: string = 'GET', dat
 };
 
 // Specific API Services
+/*
 export const submitDemoRequest = async (formData: any, useCasesText: string) => {
   try {
     const payload = {
@@ -54,6 +55,45 @@ export const submitDemoRequest = async (formData: any, useCasesText: string) => 
     return data;
   } catch (error) {
     console.error("Error submitting demo request to backend API:", error);
+    throw error;
+  }
+};
+*/
+
+// ==========================================
+// WEB3FORMS INTEGRATION
+// ==========================================
+
+// Ensure you add VITE_WEB3FORMS_ACCESS_KEY to your .env file
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+export const submitDemoRequest = async (formData: any, useCasesText: string) => {
+  try {
+    const payload = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: "New Demo Request from InfraGlide",
+      ...formData,
+      use_cases: useCasesText
+    };
+    
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await response.json();
+    
+    if (!response.ok || !data.success) {
+      throw new Error(data.message || "Something went wrong submitting the form.");
+    }
+    
+    return data;
+  } catch (error) {
+    console.error("Error submitting demo request to Web3Forms:", error);
     throw error;
   }
 };

@@ -165,15 +165,15 @@
 }
 
 .dark {
-  --ig-bg: #0A0510;
-  --ig-bg-2: #120A1E;
-  --ig-bg-3: #160F24;
+  --ig-bg: #090D16;
+  --ig-bg-2: #0F172A;
+  --ig-bg-3: #1E293B;
   --ig-text: #FFFFFF;
-  --ig-muted: #9E98A6;
-  --ig-dim: #5A3A8A;
-  --ig-border: rgba(138, 83, 214, 0.2);
-  --ig-border-soft: rgba(138, 83, 214, 0.1);
-  --ig-card: rgba(22, 15, 36, 0.8);
+  --ig-muted: #CBD5E1;
+  --ig-dim: #94A3B8;
+  --ig-border: #1E293B;
+  --ig-border-soft: rgba(30, 41, 59, 0.5);
+  --ig-card: rgba(15, 23, 42, 0.8);
   --ig-accent: #8A53D6;
   --ig-accent-2: #b07eff;
   --ig-success: #22C55E;
@@ -530,4 +530,9 @@ html, body {
 }
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
   background: #30363d;
+}
+
+/* Hide Google reCAPTCHA badge globally */
+.grecaptcha-badge {
+  visibility: hidden !important;
 }

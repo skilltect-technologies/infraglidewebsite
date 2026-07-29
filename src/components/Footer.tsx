@@ -47,7 +47,7 @@ export function Footer() {
             <img
               src={logoUrl}
               alt="InfraGlide logo"
-              className="h-9 w-auto mb-4"
+              className="h-9 w-auto mb-4 dark:invert dark:hue-rotate-180 dark:brightness-125"
               width={120}
               height={36}
               loading="lazy"
@@ -101,6 +101,9 @@ export function Footer() {
       >
         <p className="text-xs font-medium text-[var(--ig-dim)]">
           © {new Date().getFullYear()} InfraGlide Labs Pvt. Ltd. All rights reserved.
+          <span className="block mt-1">
+            This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline hover:text-[var(--ig-text)] transition-colors">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="underline hover:text-[var(--ig-text)] transition-colors">Terms of Service</a> apply.
+          </span>
         </p>
 
         {/* Social links */}

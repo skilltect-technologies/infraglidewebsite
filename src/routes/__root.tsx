@@ -11,6 +11,7 @@ import {
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import appCss from "../styles.css?url";
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 
 function NotFoundComponent() {
   return (
@@ -250,14 +251,17 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const reCaptchaKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY || '';
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Nav />
-      <div className="min-h-screen">
-        <Outlet />
-      </div>
-      <Footer />
-    </QueryClientProvider>
+    <GoogleReCaptchaProvider reCaptchaKey={reCaptchaKey}>
+      <QueryClientProvider client={queryClient}>
+        <Nav />
+        <div className="min-h-screen">
+          <Outlet />
+        </div>
+        <Footer />
+      </QueryClientProvider>
+    </GoogleReCaptchaProvider>
   );
 }

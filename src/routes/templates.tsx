@@ -166,7 +166,7 @@ function TemplatesPage() {
               Start with <span className="ig-metallic">Templates.</span>
             </h1>
             <p className="text-[var(--ig-muted)] text-lg md:text-xl max-w-2xl mx-auto font-medium">
-              Deploy production-ready infrastructure in seconds. Drag, drop, and customize to your needs.
+              Deploy production-ready infrastructure in seconds. Drag, drop, and customize to fit your needs.
             </p>
           </div>
 
@@ -206,18 +206,18 @@ function TemplatesPage() {
               </h3>
 
               {/* Description */}
-              <p className="text-[13px] md:text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-5 flex-1">
+              <p className="text-[13px] md:text-sm text-slate-500 dark:text-slate-400 dark:text-slate-500 leading-relaxed mb-5 flex-1">
                 {tpl.desc}
               </p>
 
               {/* Resource Count */}
-              <div className="flex items-center gap-2 text-xs md:text-sm text-slate-400 dark:text-slate-500 font-medium mb-3.5">
-                <Layers className="w-4 h-4 text-slate-400 dark:text-slate-500" />
+              <div className="flex items-center gap-2 text-xs md:text-sm text-slate-400 dark:text-slate-500 dark:text-slate-400 dark:text-slate-500 font-medium mb-3.5">
+                <Layers className="w-4 h-4 text-slate-400 dark:text-slate-500 dark:text-slate-400 dark:text-slate-500" />
                 <span>{tpl.resourcesCount} resources</span>
               </div>
 
               {/* Monospace Tags */}
-              <div className="flex flex-wrap gap-x-4 gap-y-1 font-mono text-[11px] text-slate-400 dark:text-slate-500 mb-6">
+              <div className="flex flex-wrap gap-x-4 gap-y-1 font-mono text-[11px] text-slate-400 dark:text-slate-500 dark:text-slate-400 dark:text-slate-500 mb-6">
                 {tpl.tags.map((tag) => (
                   <span key={tag}>{tag}</span>
                 ))}

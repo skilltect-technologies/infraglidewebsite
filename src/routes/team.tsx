@@ -95,9 +95,9 @@ function TeamPage() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24" role="list" aria-label="InfraGlide team members">
           {team.map((member, i) => (
-            <article key={i} className=" bg-white/70 dark:bg-[rgba(22,15,36,0.55)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-[2rem] p-8 text-center group hover:-translate-y-2 hover:border-[#8A53D6]/40 dark:hover:border-[#8A53D6]/50 hover:shadow-md transition-all duration-300" role="listitem">
+            <article key={i} className=" bg-white/ dark:bg-slate-900/0 dark:bg-[rgba(22,15,36,0.55)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-[2rem] p-8 text-center group hover:-translate-y-2 hover:border-[#8A53D6]/40 dark:hover:border-[#8A53D6]/50 hover:shadow-md transition-all duration-300" role="listitem">
               {member.photo ? (
-                <div className="w-24 h-24 mx-auto rounded-full mb-6 flex items-center justify-center shadow-[0_12px_24px_rgba(138,83,214,0.25)] dark:shadow-[0_12px_24px_rgba(138,83,214,0.4)] group-hover:scale-105 transition-transform border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.2)] overflow-hidden bg-white/10 " aria-hidden="true">
+                <div className="w-24 h-24 mx-auto rounded-full mb-6 flex items-center justify-center shadow-[0_12px_24px_rgba(138,83,214,0.25)] dark:shadow-[0_12px_24px_rgba(138,83,214,0.4)] group-hover:scale-105 transition-transform border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.2)] overflow-hidden bg-white/ dark:bg-slate-900/ " aria-hidden="true">
                   <img src={member.photo} alt={member.name} className="w-full h-full object-cover" />
                 </div>
               ) : (
@@ -133,9 +133,9 @@ function TeamPage() {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto" role="list" aria-label="InfraGlide mentors">
           {mentors.map((member, i) => (
-            <article key={i} className=" bg-white/70 dark:bg-[rgba(22,15,36,0.55)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-[2rem] p-8 text-center group hover:-translate-y-2 hover:border-[#8A53D6]/40 dark:hover:border-[#8A53D6]/50 hover:shadow-md transition-all duration-300" role="listitem">
+            <article key={i} className=" bg-white/ dark:bg-slate-900/0 dark:bg-[rgba(22,15,36,0.55)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-[2rem] p-8 text-center group hover:-translate-y-2 hover:border-[#8A53D6]/40 dark:hover:border-[#8A53D6]/50 hover:shadow-md transition-all duration-300" role="listitem">
               {member.photo ? (
-                <div className="w-24 h-24 mx-auto rounded-full mb-6 flex items-center justify-center shadow-[0_12px_24px_rgba(91,47,178,0.25)] dark:shadow-[0_12px_24px_rgba(91,47,178,0.4)] group-hover:scale-105 transition-transform border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.2)] overflow-hidden bg-white/10 " aria-hidden="true">
+                <div className="w-24 h-24 mx-auto rounded-full mb-6 flex items-center justify-center shadow-[0_12px_24px_rgba(91,47,178,0.25)] dark:shadow-[0_12px_24px_rgba(91,47,178,0.4)] group-hover:scale-105 transition-transform border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.2)] overflow-hidden bg-white/ dark:bg-slate-900/ " aria-hidden="true">
                   <img src={member.photo} alt={member.name} className="w-full h-full object-cover" />
                 </div>
               ) : (

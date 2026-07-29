@@ -1,7 +1,8 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import "./DemoStepper.css";
 import { Mail, Briefcase, Server, CalendarCheck, Check } from 'lucide-react';
 import { submitDemoRequest } from '../services/api';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 const TOTAL_STEPS = 4;
 const STEP_NAMES = ['Contact Info', 'Company Info', 'Use Case', 'Book Demo'];
@@ -12,6 +13,7 @@ export function DemoStepper() {
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -87,10 +89,19 @@ export function DemoStepper() {
     if (curStep < TOTAL_STEPS - 1) {
       goStep(curStep + 1);
     } else {
+      if (!executeRecaptcha) {
+        setError('reCAPTCHA has not loaded yet. Please try again in a moment.');
+        return;
+      }
       setSubmitting(true);
       setError(null);
       
       try {
+        const token = await executeRecaptcha('submit_demo');
+        if (import.meta.env.DEV) {
+          console.log('reCAPTCHA token:', token);
+        }
+
         const useCasesText = Object.keys(checks)
           .filter(k => checks[k])
           .map(k => {
@@ -102,7 +113,8 @@ export function DemoStepper() {
           .join(', ') || 'No specific goals specified';
 
         // Pure abstraction: just hand the form data to our backend and let it do everything securely
-        await submitDemoRequest(formData, useCasesText);
+        const submitData = { ...formData, 'g-recaptcha-response': token };
+        await submitDemoRequest(submitData, useCasesText);
 
         setSubmitted(true);
       } catch (err: any) {
@@ -327,6 +339,9 @@ export function DemoStepper() {
                   <p className="text-sm text-[var(--ig-muted)] mb-6 max-w-sm mx-auto">
                     Submit your request and our team will prepare a personalized live demo environment for {formData.company || 'your organization'}.
                   </p>
+                  {error && (
+                    <div className="text-red-400 text-sm mb-4 font-medium">{error}</div>
+                  )}
                 </>
               )}
             </div>

@@ -54,7 +54,7 @@ function TermsPage() {
         {/* Content Layout */}
         <div className="grid lg:grid-cols-[280px_1fr] gap-12 items-start">
           {/* Sticky Sidebar Navigation */}
-          <aside className="hidden lg:flex flex-col self-start bg-white/70 dark:bg-[rgba(22,15,36,0.6)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-2xl p-5  shadow-sm sticky top-24 max-h-[calc(100vh-8rem)] min-h-0 overflow-y-auto">
+          <aside className="hidden lg:flex flex-col self-start bg-white/ dark:bg-slate-900/0 dark:bg-[rgba(22,15,36,0.6)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-2xl p-5  shadow-sm sticky top-24 max-h-[calc(100vh-8rem)] min-h-0 overflow-y-auto">
             <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--ig-muted)] mb-4 flex items-center gap-2 shrink-0">
               <FileText className="w-4 h-4 text-[#8A53D6] dark:text-[#b07eff]" /> Table of Contents
             </h4>

@@ -288,7 +288,7 @@ function ChangelogPage() {
                   "px-4 py-1.5 rounded-full text-xs font-bold border transition-all duration-300  cursor-pointer select-none",
                   filter === tag
                     ? "bg-[#8A53D6] text-white border-[#8A53D6] shadow-[0_4px_12px_rgba(138,83,214,0.3)] scale-105"
-                    : "bg-white/40 dark:bg-[rgba(22,15,36,0.3)] text-[var(--ig-muted)] border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] hover:border-[#8A53D6]/50 hover:text-[var(--ig-text)]"
+                    : "bg-white/ dark:bg-slate-900/0 dark:bg-[rgba(22,15,36,0.3)] text-[var(--ig-muted)] border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] hover:border-[#8A53D6]/50 hover:text-[var(--ig-text)]"
                 )}
               >
                 {tag}
