@@ -8,7 +8,7 @@ const NAV_COLS = [
     h: "Product",
     l: [
       { name: "Features", path: "/#features" },
-      // { name: "Documentation", path: "/docs" },
+      { name: "Documentation", path: "https://docs.infraglide.com" },
       { name: "Templates", path: "/templates" },
       // { name: "Changelog", path: "/changelog" },
 
@@ -81,12 +81,21 @@ export function Footer() {
             <ul className="space-y-3" role="list">
               {col.l.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.path}
-                    className="text-sm font-medium text-[var(--ig-muted)] hover:text-[var(--ig-text)] transition-colors"
-                  >
-                    {link.name}
-                  </Link>
+                  {link.path.startsWith('http') ? (
+                    <a
+                      href={link.path}
+                      className="text-sm font-medium text-[var(--ig-muted)] hover:text-[var(--ig-text)] transition-colors"
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.path}
+                      className="text-sm font-medium text-[var(--ig-muted)] hover:text-[var(--ig-text)] transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

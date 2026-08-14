@@ -118,11 +118,11 @@ export function Nav() {
               About
             </Link>
           </li>
-          {/* <li>
-            <Link to="/docs" className="px-3.5 py-2 rounded-lg text-[var(--ig-muted)] hover:text-[var(--ig-text)] hover:bg-[var(--ig-border-soft)] transition-colors">
+          <li>
+            <a href="https://docs.infraglide.com" className="px-3.5 py-2 rounded-lg text-[var(--ig-muted)] hover:text-[var(--ig-text)] hover:bg-[var(--ig-border-soft)] transition-colors">
               Documentation
-            </Link>
-          </li> */}
+            </a>
+          </li>
         </ul>
 
         <div className="flex items-center gap-2">
@@ -153,7 +153,7 @@ export function Nav() {
           <Link to="/" onClick={() => setOpen(false)} className="px-3 py-2 rounded-lg text-sm text-[var(--ig-muted)] hover:bg-[var(--ig-border-soft)] hover:text-[var(--ig-text)]">Home</Link>
           <Link to="/" hash="features" onClick={() => setOpen(false)} className="px-3 py-2 rounded-lg text-sm text-[var(--ig-muted)] hover:bg-[var(--ig-border-soft)] hover:text-[var(--ig-text)]">Features</Link>
           <Link to="/about" onClick={() => setOpen(false)} className="px-3 py-2 rounded-lg text-sm text-[var(--ig-muted)] hover:bg-[var(--ig-border-soft)] hover:text-[var(--ig-text)]">About</Link>
-          {/* <Link to="/docs" onClick={() => setOpen(false)} className="px-3 py-2 rounded-lg text-sm text-[var(--ig-muted)] hover:bg-[var(--ig-border-soft)] hover:text-[var(--ig-text)]">Documentation</Link> */}
+          <a href="https://docs.infraglide.com" onClick={() => setOpen(false)} className="px-3 py-2 rounded-lg text-sm text-[var(--ig-muted)] hover:bg-[var(--ig-border-soft)] hover:text-[var(--ig-text)]">Documentation</a>
         </div>
       )}
     </header>
