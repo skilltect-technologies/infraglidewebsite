@@ -7,11 +7,11 @@ export const Route = createFileRoute('/security')({
   head: () => ({
     meta: [
       { title: "Enterprise Security — SOC 2, Encryption & Zero Trust | InfraGlide" },
-      { name: "description", content: "InfraGlide is SOC 2 Type II certified with AES-256 encryption at rest, TLS 1.3 in transit, least-privilege cross-account roles, and automated penetration testing. Your cloud infrastructure data is protected." },
+      { name: "description", content: "InfraGlide is engineered to SOC 2 Type II standards (audit in progress) with AES-256 encryption at rest, TLS 1.3 in transit, least-privilege cross-account roles, and continuous monitoring." },
       { name: "keywords", content: "InfraGlide security, SOC 2 Type II cloud platform, cloud infrastructure security, AES-256 encryption, zero trust infrastructure, cloud RBAC security" },
       { property: "og:url", content: "https://infraglide.com/security" },
       { property: "og:title", content: "Enterprise Security — SOC 2, Encryption & Zero Trust | InfraGlide" },
-      { property: "og:description", content: "InfraGlide is SOC 2 Type II certified. AES-256 at rest, TLS 1.3 in transit, least-privilege access, and automated pen testing." },
+      { property: "og:description", content: "InfraGlide is built to SOC 2 Type II standards. AES-256 at rest, TLS 1.3 in transit, least-privilege access, and continuous monitoring." },
     ],
     links: [
       { rel: "canonical", href: "https://infraglide.com/security" },
@@ -21,10 +21,27 @@ export const Route = createFileRoute('/security')({
 
 function SecurityPage() {
   const features = [
-    { title: "SOC 2 Type II", icon: FileCheck, desc: "Independently audited for security, availability, and confidentiality." },
-    { title: "End-to-End Encryption", icon: Lock, desc: "AES-256 at rest, TLS 1.3 in transit. Your infrastructure state is fully encrypted." },
-    { title: "Least Privilege Access", icon: Shield, desc: "We use cross-account roles. We only need read access to visualize your cloud." },
-    { title: "Automated Pen Testing", icon: CheckCircle2, desc: "Continuous security scanning and regular third-party penetration testing." }
+    { 
+      title: "SOC 2 Type II", 
+      badge: "In Audit Period",
+      icon: FileCheck, 
+      desc: "Currently undergoing independent third-party evaluation against SOC 2 Trust Services Criteria for security and confidentiality." 
+    },
+    { 
+      title: "End-to-End Encryption", 
+      icon: Lock, 
+      desc: "AES-256 at rest, TLS 1.3 in transit. Your infrastructure state is fully encrypted." 
+    },
+    { 
+      title: "Least Privilege Access", 
+      icon: Shield, 
+      desc: "We use cross-account roles. We only need read access to visualize your cloud." 
+    },
+    { 
+      title: "Automated Pen Testing", 
+      icon: CheckCircle2, 
+      desc: "Continuous security scanning and regular third-party penetration testing." 
+    }
   ];
 
   return (
@@ -55,7 +72,14 @@ function SecurityPage() {
                 <feature.icon className="w-6 h-6" />
               </div>
               <div>
-                <h2 className="text-xl font-bold text-[var(--ig-text)] mb-2">{feature.title}</h2>
+                <div className="flex items-center gap-3 mb-2 flex-wrap">
+                  <h2 className="text-xl font-bold text-[var(--ig-text)]">{feature.title}</h2>
+                  {feature.badge && (
+                    <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[rgba(138,83,214,0.12)] text-[#8A53D6] dark:text-[#b07eff] border border-[rgba(138,83,214,0.25)] tracking-wide">
+                      {feature.badge}
+                    </span>
+                  )}
+                </div>
                 <p className="text-sm text-[var(--ig-muted)] leading-relaxed">{feature.desc}</p>
               </div>
             </div>

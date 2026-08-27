@@ -1370,7 +1370,7 @@ function Providers() {
     <section id="topology" className="pb-24">
       <div className="mx-auto max-w-[1400px] px-6">
         <div className="flex flex-col items-center text-center mb-12 gap-3">
-          <h2 className="font-display text-4xl md:text-5xl text-[var(--ig-text)]">One canvas, <span className="ig-metallic">every cloud.</span></h2>
+          <h2 className="font-display text-4xl md:text-5xl text-[var(--ig-text)]">Built for the clouds <span className="ig-metallic">you already use.</span></h2>
           <p className="text-[var(--ig-muted)] text-sm md:text-base font-medium leading-relaxed max-w-2xl mx-auto">
             Connect, design, and manage infrastructure across AWS, GCP, Azure and more—all from a single workspace.
           </p>
@@ -1446,13 +1446,13 @@ function FAQ() {
                 Whether you're designing architectures, generating Terraform, detecting drift, or governing access across multiple clouds, InfraGlide helps you move faster with confidence.
               </p>
               <div className="mt-8 flex justify-center md:justify-end">
-                <Link
-                  to="/docs"
+                <a
+                  href="https://docs.infraglide.com"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--ig-border-soft)] hover:bg-[#8A53D6] hover:text-white border border-[var(--ig-border)] transition-all font-semibold group text-xs md:text-sm"
                 >
                   Explore Documentation
                   <Arrow className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </Link>
+                </a>
               </div>
             </div>
           </div>

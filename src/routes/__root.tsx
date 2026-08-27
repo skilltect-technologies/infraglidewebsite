@@ -79,11 +79,6 @@ const organizationSchema = {
   "logo": "https://infraglide.com/favicon.png",
   "description": "InfraGlide is a multi-cloud infrastructure design and deployment platform powered by AI. Visualize, design, and deploy AWS, Azure, and GCP infrastructure on one collaborative canvas with Terraform-native output.",
   "email": "connect@infraglide.com",
-  "sameAs": [
-    "https://twitter.com/infraglide",
-    "https://linkedin.com/company/infraglide",
-    "https://github.com/infraglide"
-  ],
   "address": [
     {
       "@type": "PostalAddress",
@@ -135,10 +130,11 @@ const softwareSchema = {
     "Pipeline automation and CI/CD",
     "RBAC and governance",
     "Cost optimization insights",
-    "SOC 2 Type II compliant"
+    "SOC 2 Type II ready"
   ]
 };
 
+/*
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -148,11 +144,12 @@ const websiteSchema = {
     "@type": "SearchAction",
     "target": {
       "@type": "EntryPoint",
-      "urlTemplate": "https://infraglide.com/docs?q={search_term_string}"
+      "urlTemplate": "https://docs.infraglide.com/?q={search_term_string}"
     },
     "query-input": "required name=search_term_string"
   }
 };
+*/
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
@@ -223,10 +220,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         type: "application/ld+json",
         children: JSON.stringify(softwareSchema),
       },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify(websiteSchema),
-      },
+      // {
+      //   type: "application/ld+json",
+      //   children: JSON.stringify(websiteSchema),
+      // },
     ],
   }),
   shellComponent: RootShell,

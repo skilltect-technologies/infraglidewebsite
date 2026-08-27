@@ -29,5 +29,22 @@
         { "key": "Cache-Control", "value": "public, max-age=3600" }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/docs",
+      "destination": "https://docs.infraglide.com",
+      "permanent": true
+    },
+    {
+      "source": "/docs/(.*)",
+      "destination": "https://docs.infraglide.com/$1",
+      "permanent": true
+    },
+    {
+      "source": "/changelog",
+      "destination": "https://infraglide.com/",
+      "permanent": true
+    }
   ]
 }

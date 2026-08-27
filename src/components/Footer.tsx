@@ -10,7 +10,6 @@ const NAV_COLS = [
       { name: "Features", path: "/#features" },
       { name: "Documentation", path: "https://docs.infraglide.com" },
       { name: "Templates", path: "/templates" },
-      // { name: "Changelog", path: "/changelog" },
 
     ],
   },

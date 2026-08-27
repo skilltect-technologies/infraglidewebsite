@@ -9,8 +9,6 @@ Allow: /contact
 Allow: /team
 Allow: /templates
 Allow: /security
-Allow: /demo
-Allow: /changelog
 Allow: /privacy
 Allow: /terms
 
