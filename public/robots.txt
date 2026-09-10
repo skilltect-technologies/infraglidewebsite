@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Priority crawl paths
+Allow: /
+Allow: /about
+Allow: /docs
+Allow: /contact
+Allow: /team
+Allow: /templates
+Allow: /security
+Allow: /privacy
+Allow: /terms
+
+# Block internal/dev paths
+Disallow: /api/
+Disallow: /_build/
+Disallow: /.netlify/
+Disallow: /.vercel/
+
+Sitemap: https://infraglide.com/sitemap.xml
