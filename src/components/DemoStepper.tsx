@@ -26,7 +26,7 @@ export function DemoStepper() {
 
   const nameRegex = /^[A-Za-z\s]{2,50}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const mobileRegex = /^[0-9]{10}$/;
+  const isMobileValid = (m: string) => /^\+?[1-9]\d{6,14}$/.test(m.replace(/[\s\-()]/g, ''));
 
   const pct = Math.round(((curStep + 1) / TOTAL_STEPS) * 100);
 
@@ -37,9 +37,9 @@ export function DemoStepper() {
       formData.mobile &&
       nameRegex.test(formData.name) &&
       emailRegex.test(formData.email) &&
-      mobileRegex.test(formData.mobile)
+      isMobileValid(formData.mobile)
     );
-  }, [formData.name, formData.email, formData.mobile, nameRegex, emailRegex, mobileRegex]);
+  }, [formData.name, formData.email, formData.mobile, nameRegex, emailRegex]);
 
   const isStep1Valid = useMemo(() => {
     return !!formData.company;
@@ -75,7 +75,7 @@ export function DemoStepper() {
         setError('Please enter a valid email address.');
         return;
       }
-      if (!mobileRegex.test(formData.mobile)) {
+      if (!isMobileValid(formData.mobile)) {
         setError('Please enter a valid mobile number (7-15 digits, optional + prefix).');
         return;
       }
@@ -112,9 +112,27 @@ export function DemoStepper() {
           })
           .join(', ') || 'No specific goals specified';
 
-        // Pure abstraction: just hand the form data to our backend and let it do everything securely
-        const submitData = { ...formData, 'g-recaptcha-response': token };
-        await submitDemoRequest(submitData, useCasesText);
+        // Extract UTM parameters from URL
+        const utmParams: Record<string, string> = {};
+        if (typeof window !== 'undefined') {
+          const searchParams = new URLSearchParams(window.location.search);
+          ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(param => {
+            const val = searchParams.get(param);
+            if (val) utmParams[param] = val;
+          });
+        }
+
+        const submitData = { ...formData, ...utmParams, 'g-recaptcha-response': token };
+        await submitDemoRequest(
+          submitData, 
+          useCasesText,
+          `[Homepage Demo Request] ${formData.name} (${formData.company})`
+        );
+
+        // LinkedIn Conversion Event Tracking
+        if (typeof window !== 'undefined' && (window as any).lintrk) {
+          (window as any).lintrk('track', { conversion_id: 19714810 });
+        }
 
         setSubmitted(true);
       } catch (err: any) {
@@ -190,7 +208,7 @@ export function DemoStepper() {
                 <div className="ds-field-label">Full Name <span className="ds-req-star">*</span></div>
                 <input 
                   type="text" 
-                  placeholder="e.g. Jane Doe" 
+                  placeholder="Your full name" 
                   value={formData.name} 
                   onChange={e => setFormData({...formData, name: e.target.value})} 
                   style={formData.name && !nameRegex.test(formData.name) ? { borderColor: '#ef4444' } : {}}
@@ -200,7 +218,7 @@ export function DemoStepper() {
                 <div className="ds-field-label">Work Email <span className="ds-req-star">*</span></div>
                 <input 
                   type="email" 
-                  placeholder="e.g. jane@company.com" 
+                  placeholder="name@company.com" 
                   value={formData.email} 
                   onChange={e => setFormData({...formData, email: e.target.value})} 
                   style={formData.email && !emailRegex.test(formData.email) ? { borderColor: '#ef4444' } : {}}
@@ -210,17 +228,14 @@ export function DemoStepper() {
                 <div className="ds-field-label">Mobile No <span className="ds-req-star">*</span></div>
                 <input 
                   type="tel" 
-                  inputMode="numeric"
-                  pattern="[0-9]*"
-                  placeholder="e.g. 9876543210" 
+                  placeholder="+ [country code] phone number" 
                   value={formData.mobile} 
                   onChange={e => {
-                    const value = e.target.value.replace(/\D/g, '').slice(0, 10);
-                    setFormData({ ...formData, mobile: value });
+                    setFormData({ ...formData, mobile: e.target.value });
                   }}
-                  style={formData.mobile && !mobileRegex.test(formData.mobile) ? { borderColor: '#ef4444' } : {}}
+                  style={formData.mobile && !isMobileValid(formData.mobile) ? { borderColor: '#ef4444' } : {}}
                 />
-                <div className="ds-hint">Enter exactly 10 digits. We may contact you to confirm your demo slot.</div>
+                <div className="ds-hint">Include country code (7–15 digits).</div>
               </div>
             </div>
           </div>
@@ -242,7 +257,7 @@ export function DemoStepper() {
                 <div className="ds-field-label">Company Name <span className="ds-req-star">*</span></div>
                 <input 
                   type="text" 
-                  placeholder="e.g. Acme Corp" 
+                  placeholder="Your company name" 
                   value={formData.company} 
                   onChange={e => setFormData({...formData, company: e.target.value})} 
                 />
@@ -250,7 +265,7 @@ export function DemoStepper() {
               <div className="flex gap-4">
                 <div className="ds-field flex-1">
                   <div className="ds-field-label">Role / Title</div>
-                  <input type="text" placeholder="e.g. Cloud Architect" value={formData.role} onChange={e => setFormData({...formData, role: e.target.value})} />
+                  <input type="text" placeholder="e.g. DevOps / Cloud Architect" value={formData.role} onChange={e => setFormData({...formData, role: e.target.value})} />
                 </div>
                 <div className="ds-field flex-1">
                   <div className="ds-field-label">Primary Cloud</div>

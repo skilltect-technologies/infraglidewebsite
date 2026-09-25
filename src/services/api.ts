@@ -67,11 +67,12 @@ export const submitDemoRequest = async (formData: any, useCasesText: string) => 
 // Ensure you add VITE_WEB3FORMS_ACCESS_KEY to your .env file
 const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
-export const submitDemoRequest = async (formData: any, useCasesText: string) => {
+export const submitDemoRequest = async (formData: any, useCasesText: string, customSubject?: string) => {
   try {
     const payload = {
       access_key: WEB3FORMS_ACCESS_KEY,
-      subject: "New Demo Request from InfraGlide",
+      subject: customSubject || formData.subject || "New Demo Request from InfraGlide",
+      from_name: "InfraGlide Web Form",
       ...formData,
       use_cases: useCasesText
     };

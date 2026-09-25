@@ -17,14 +17,15 @@ interface SplitTextProps {
 const SplitText = ({ children, className = "", style }: SplitTextProps) => {
   const words = children.split(" ");
   return (
-    <span className={`inline-flex items-baseline ${className}`} style={style}>
+    <span className={`inline-flex items-baseline ${className}`} style={style} aria-label={children}>
       {words.map((word, i) => (
         <span
           key={i}
           className="split-word inline-flex items-baseline mr-[0.25em]"
+          aria-hidden="true"
         >
           {word.split("").map((char, j) => (
-            <span key={j} className="split-char inline-block select-none">
+            <span key={j} className="split-char inline-block select-none" aria-hidden="true">
               {char}
             </span>
           ))}
@@ -43,6 +44,9 @@ export default function TextScrollMarquee() {
     // Small timeout to guarantee measurements occur after DOM rendering settles
     const timer = setTimeout(() => {
       if (!triggerRef.current) return;
+      if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+      }
 
       ctx = gsap.context(() => {
         // Character-split stagger animation

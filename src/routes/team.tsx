@@ -55,14 +55,14 @@ export const Route = createFileRoute('/team')({
 
 function TeamPage() {
   const team = [
-    { name: "Umesh Sharma", role: "Managing Director", desc: "15+ years in enterprise cloud infrastructure. Drives InfraGlide's strategic vision and executive relationships.", initials: "US", photo: UmeshPhoto },
-    { name: "Manish Sharma", role: "Founder & CEO", desc: "Executive Director @ SkillTect Technologies | Leadership, Information Technology", initials: "MS", photo: ManishPhoto, linkedin: "https://www.linkedin.com/in/manidatzme/" },
-    { name: "Sunil Kumar", role: "Chief Sales Officer", desc: "Global Business head", initials: "SK", photo: SunilPhoto, linkedin: "https://www.linkedin.com/in/sunil-kumar-32800399/" },
-    { name: "Monika Sharma", role: "Head of Engineering", desc: "Full-stack architect leading the world-class team building the future of cloud automation and AI provisioning.", initials: "MoS", photo: MonikaPhoto },
-    { name: "Ravindra Sharma", role: "Head of Marketing", desc: "Technical product marketer and community builder. Specialises in developer-first GTM strategy and content.", initials: "RS", photo: RavindraPhoto },
-    { name: "Nakshtra Singh Bhati", role: "Engineering Manager", desc: "Full Stack Developer at SkillTect Technologies", initials: "NB", photo: NakshatraPhoto, linkedin: "https://www.linkedin.com/in/nakshtra-singh-bhati-85897b1a9/" },
-    { name: "Harsh Shrivastav", role: "Engineering Manager", desc: "Google Cloud Associate Cloud Engineer | Solutions Architect | GWS Migration Engineer | MCA In Machine Learning And AI", initials: "HS", photo: HarshPhoto, linkedin: "https://www.linkedin.com/in/harsh-shrivastav-a4a61b236/" },
-    { name: "Kamal Gaur", role: "Senior Developer", desc: "React.js Frontend Developer (3+ Years) | Redux · TypeScript · MUI", initials: "KG", photo: KamalPhoto, linkedin: "https://www.linkedin.com/in/kamal-kishore-gaur-8445b1153/?skipRedirect=true" },
+    { name: "Umesh Sharma", role: "Managing Director", desc: "15+ years in enterprise cloud infrastructure. Drives InfraGlide's strategic vision, governance, and executive relationships.", initials: "US", photo: UmeshPhoto },
+    { name: "Manish Sharma", role: "Founder & CEO", desc: "Visionary leader driving InfraGlide's platform mission, enterprise strategy, and cloud automation architecture.", initials: "MS", photo: ManishPhoto, linkedin: "https://www.linkedin.com/in/manidatzme/" },
+    { name: "Sunil Kumar", role: "Chief Sales Officer", desc: "Enterprise sales leader driving global business growth, strategic partnerships, and customer expansion.", initials: "SK", photo: SunilPhoto, linkedin: "https://www.linkedin.com/in/sunil-kumar-32800399/" },
+    { name: "Monika Sharma", role: "Head of Engineering", desc: "Full-stack architect leading the engineering team building the future of cloud automation, state synchronization, and AI provisioning.", initials: "MoS", photo: MonikaPhoto },
+    { name: "Ravindra Sharma", role: "Head of Marketing", desc: "Technical product marketer and community builder specializing in developer-first GTM strategy and content.", initials: "RS", photo: RavindraPhoto },
+    { name: "Nakshatra Singh Bhati", role: "Engineering Manager", desc: "Full-stack engineering lead architecting core canvas workflows, distributed state synchronization, and platform reliability.", initials: "NB", photo: NakshatraPhoto, linkedin: "https://www.linkedin.com/in/nakshtra-singh-bhati-85897b1a9/" },
+    { name: "Harsh Srivastav", role: "Engineering Manager", desc: "Cloud solutions architect and machine learning engineer leading cloud integrations, Terraform synthesis, and Jane AI.", initials: "HS", photo: HarshPhoto, linkedin: "https://www.linkedin.com/in/harsh-shrivastav-a4a61b236/" },
+    { name: "Kamal Gaur", role: "Senior Developer", desc: "Frontend systems engineer crafting responsive, high-performance UI components and visual canvas interactions.", initials: "KG", photo: KamalPhoto, linkedin: "https://www.linkedin.com/in/kamal-kishore-gaur-8445b1153/?skipRedirect=true" },
     { name: "Kartikey Purohit", role: "Senior Developer", desc: "Frontend architect who built the visual infrastructure designer — making InfraGlide instantly intuitive for any engineer.", initials: "KP", photo: KartikeyPhoto, linkedin: "https://www.linkedin.com/in/kartikeyjp4/" },
   ];
 

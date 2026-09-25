@@ -307,7 +307,7 @@ function AboutPage() {
               },
               {
                 title: "Honest operations",
-                desc: "Enjoy clear deployment status, continuous drift visibility, and full audit logs with absolutely no hidden changes.",
+                desc: "Enjoy clear deployment status, on-demand drift visibility, and full audit logs with absolutely no hidden changes.",
                 icon: Eye,
                 badge: "Transparency",
                 color: "border-[#00a888]/20 bg-[#00a888]/[0.01]"
@@ -369,7 +369,7 @@ function AboutPage() {
                 </p>
                 <ul className="space-y-3 pt-2 text-xs text-[var(--ig-muted)] font-medium">
                   {[
-                    "New engineers open a pipeline and see the visual topography — not folders of code.",
+                    "New engineers open a pipeline and see the visual topology — not folders of code.",
                     "Security reviewers validate exposure and encryption on the canvas before applying.",
                     "Finance partners view resource choices mapped directly to cost estimates.",
                     "Incident responders compare desired state to live state to isolate failures in minutes."
@@ -471,7 +471,7 @@ function AboutPage() {
                   {[
                     "Define granular roles and resource bindings directly on the canvas.",
                     "Verify IAM permissions and policies prior to deployment.",
-                    "Maintain absolute compliance with continuous audit trails.",
+                    "Maintain verifiable compliance posture with continuous audit trails.",
                     "Limit access to sensitive credentials using secure environment variables."
                   ].map((bullet, idx) => (
                     <li key={idx} className="flex items-start gap-2.5">
@@ -504,7 +504,7 @@ function AboutPage() {
                   {[
                     "Jane translates raw deploy logs and plan differences into clear plain text.",
                     "Jane reviews architectures against cost, performance, security, and well-architected policies.",
-                    " Jane Suggests configuration fixes you can copy and paste instead of making silent changes.",
+                    "Jane suggests configuration fixes you can copy and paste instead of making silent changes.",
                     "Jane operates with context from your active sandboxes, deployment history, and pipelines."
                   ].map((bullet, idx) => (
                     <li key={idx} className="flex items-start gap-2.5">
@@ -573,7 +573,7 @@ function AboutPage() {
                 <div className="space-y-6">
                   {[
                     { title: "IaC for everyone", desc: "The visual canvas enables every team member to participate while generating compliant HCL under the hood." },
-                    { title: "Continuous drift tracking", desc: "Changes outside the editor are flagged immediately, providing direct mitigation choices." },
+                    { title: "On-demand drift tracking", desc: "Changes outside the editor are detected on demand, providing direct mitigation choices." },
                     { title: "Unified operating plane", desc: "One product library, workspace layout, and pipeline model spans AWS, Azure, and GCP." },
                     { title: "Governance in-the-path", desc: "Compliance verification, security checks, and cost reviews run before apply." },
                     { title: "AI failure diagnostics", desc: "Jane outlines failing blocks, parses errors, and recommends copy-paste patches." }

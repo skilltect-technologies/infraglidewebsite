@@ -63,11 +63,11 @@ export function Footer() {
             <span aria-label="Office locations">Delhi · Bangalore · Jodhpur</span>
           </p>
           <a
-            href="mailto:connect@infraglide.com"
+            href="mailto:support@infraglide.com"
             className="text-xs text-[var(--ig-muted)] hover:text-[#8A53D6] transition-colors mt-2 inline-block"
             aria-label="Email InfraGlide"
           >
-            connect@infraglide.com
+            support@infraglide.com
           </a>
         </div>
 
@@ -108,17 +108,17 @@ export function Footer() {
         style={{ borderColor: "rgba(138,83,214,.12)" }}
       >
         <p className="text-xs font-medium text-[var(--ig-dim)]">
-          © {new Date().getFullYear()} InfraGlide Labs Pvt. Ltd. All rights reserved.
+          © {new Date().getFullYear()} Skilltect Technologies Pvt. Ltd. All rights reserved.
           <span className="block mt-1">
             This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline hover:text-[var(--ig-text)] transition-colors">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="underline hover:text-[var(--ig-text)] transition-colors">Terms of Service</a> apply.
           </span>
         </p>
 
         {/* Social links */}
-        <div className="flex items-center gap-5 text-[var(--ig-muted)]" aria-label="Skilltect social media">
+        <div className="flex items-center gap-5 text-[var(--ig-muted)]" aria-label="InfraGlide social media">
           <a
-            href="https://www.skilltect.com/"
-            aria-label="Skilltect Website"
+            href="https://infraglide.com/"
+            aria-label="InfraGlide Website"
             rel="noopener noreferrer"
             target="_blank"
             className="hover:text-[var(--ig-text)] transition-colors"
@@ -126,8 +126,8 @@ export function Footer() {
             <Globe className="w-4 h-4" />
           </a>
           <a
-            href="https://www.instagram.com/skilltect_technologies/"
-            aria-label="Skilltect on Instagram"
+            href="https://www.instagram.com/infraglide/"
+            aria-label="InfraGlide on Instagram"
             rel="noopener noreferrer"
             target="_blank"
             className="hover:text-[var(--ig-text)] transition-colors"
@@ -135,8 +135,8 @@ export function Footer() {
             <Instagram className="w-4 h-4" />
           </a>
           <a
-            href="https://in.linkedin.com/company/skilltect"
-            aria-label="Skilltect on LinkedIn"
+            href="https://www.linkedin.com/products/skilltect-infraglide/"
+            aria-label="InfraGlide on LinkedIn"
             rel="noopener noreferrer"
             target="_blank"
             className="hover:text-[var(--ig-text)] transition-colors"

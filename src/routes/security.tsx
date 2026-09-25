@@ -1,17 +1,17 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { InteractiveGrid } from '../components/InteractiveGrid'
-import { Shield, Lock, FileCheck, CheckCircle2 } from 'lucide-react'
+import { Shield, Lock, FileCheck, CheckCircle2, Users } from 'lucide-react'
 
 export const Route = createFileRoute('/security')({
   component: SecurityPage,
   head: () => ({
     meta: [
       { title: "Enterprise Security — SOC 2, Encryption & Zero Trust | InfraGlide" },
-      { name: "description", content: "InfraGlide is engineered to SOC 2 Type II standards (audit in progress) with AES-256 encryption at rest, TLS 1.3 in transit, least-privilege cross-account roles, and continuous monitoring." },
+      { name: "description", content: "InfraGlide is engineered to SOC 2 Type II standards (audit in progress) with AES-256 encryption at rest, TLS 1.3 in transit, granular enterprise RBAC, and continuous monitoring." },
       { name: "keywords", content: "InfraGlide security, SOC 2 Type II cloud platform, cloud infrastructure security, AES-256 encryption, zero trust infrastructure, cloud RBAC security" },
       { property: "og:url", content: "https://infraglide.com/security" },
       { property: "og:title", content: "Enterprise Security — SOC 2, Encryption & Zero Trust | InfraGlide" },
-      { property: "og:description", content: "InfraGlide is built to SOC 2 Type II standards. AES-256 at rest, TLS 1.3 in transit, least-privilege access, and continuous monitoring." },
+      { property: "og:description", content: "InfraGlide is built to SOC 2 Type II standards. AES-256 at rest, TLS 1.3 in transit, enterprise RBAC, and continuous monitoring." },
     ],
     links: [
       { rel: "canonical", href: "https://infraglide.com/security" },
@@ -33,9 +33,9 @@ function SecurityPage() {
       desc: "AES-256 at rest, TLS 1.3 in transit. Your infrastructure state is fully encrypted." 
     },
     { 
-      title: "Least Privilege Access", 
-      icon: Shield, 
-      desc: "We use cross-account roles. We only need read access to visualize your cloud." 
+      title: "Enterprise RBAC & Audit Logs", 
+      icon: Users, 
+      desc: "Enforce strict least-privilege within your team. Control who can edit architectures, review drift, or export Terraform, backed by immutable audit logs." 
     },
     { 
       title: "Automated Pen Testing", 
@@ -90,7 +90,7 @@ function SecurityPage() {
           <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#8A53D6] to-[#b07eff]" />
           <h2 className="text-3xl font-bold text-[var(--ig-text)] mb-6">Report a Vulnerability</h2>
           <p className="text-[var(--ig-muted)] text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
-            We operate a responsible disclosure program. If you believe you've found a security vulnerability in Infraglide, please let us know immediately. We will investigate all legitimate reports and do our best to quickly fix the problem.
+            We operate a responsible disclosure program. If you believe you've found a security vulnerability in InfraGlide, please let us know immediately. We will investigate all legitimate reports and do our best to quickly fix the problem.
           </p>
           <a
             href="mailto:security@infraglide.com"

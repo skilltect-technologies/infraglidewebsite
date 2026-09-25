@@ -31,6 +31,7 @@ export function Nav() {
 
   const router = useRouterState();
   const isHome = router.location.pathname === '/';
+  const isDemo = router.location.pathname === '/demo';
 
   useEffect(() => {
     setIsDark(document.documentElement.classList.contains("dark"));
@@ -102,43 +103,50 @@ export function Nav() {
           <img src={logoUrl} alt="InfraGlide — Visual Cloud Infrastructure Platform" className={`h-8 w-auto transition-all ${isDark ? 'invert hue-rotate-180 brightness-125 drop-shadow-[0_0_12px_rgba(138,83,214,0.5)]' : ''}`} />
         </Link>
 
-        <ul className="hidden md:flex items-center gap-1.5 text-sm font-medium">
-          <li>
-            <Link to="/" className="px-3.5 py-2 rounded-lg text-[var(--ig-muted)] hover:text-[var(--ig-text)] hover:bg-[var(--ig-border-soft)] transition-colors">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link to="/" hash="features" className="px-3.5 py-2 rounded-lg text-[var(--ig-muted)] hover:text-[var(--ig-text)] hover:bg-[var(--ig-border-soft)] transition-colors">
-              Features
-            </Link>
-          </li>
-          <li>
-            <Link to="/about" className="px-3.5 py-2 rounded-lg text-[var(--ig-muted)] hover:text-[var(--ig-text)] hover:bg-[var(--ig-border-soft)] transition-colors">
-              About
-            </Link>
-          </li>
-          <li>
-            <a href="https://docs.infraglide.com" className="px-3.5 py-2 rounded-lg text-[var(--ig-muted)] hover:text-[var(--ig-text)] hover:bg-[var(--ig-border-soft)] transition-colors">
-              Documentation
-            </a>
-          </li>
-        </ul>
+        {!isDemo && (
+          <ul className="hidden md:flex items-center gap-1.5 text-sm font-medium">
+            <li>
+              <Link to="/" className="px-3.5 py-2 rounded-lg text-[var(--ig-muted)] hover:text-[var(--ig-text)] hover:bg-[var(--ig-border-soft)] transition-colors">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/" hash="features" className="px-3.5 py-2 rounded-lg text-[var(--ig-muted)] hover:text-[var(--ig-text)] hover:bg-[var(--ig-border-soft)] transition-colors">
+                Features
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" className="px-3.5 py-2 rounded-lg text-[var(--ig-muted)] hover:text-[var(--ig-text)] hover:bg-[var(--ig-border-soft)] transition-colors">
+                About
+              </Link>
+            </li>
+            <li>
+              <a href="https://docs.infraglide.com" className="px-3.5 py-2 rounded-lg text-[var(--ig-muted)] hover:text-[var(--ig-text)] hover:bg-[var(--ig-border-soft)] transition-colors">
+                Documentation
+              </a>
+            </li>
+          </ul>
+        )}
 
         <div className="flex items-center gap-2">
-          <button onClick={toggleTheme} className="ig-ghost p-2 rounded-full text-[var(--ig-muted)] hover:text-[var(--ig-text)]" aria-label="Toggle Theme">
+          <button onClick={toggleTheme} className="inline-flex ig-ghost p-2 rounded-full text-[var(--ig-muted)] hover:text-[var(--ig-text)]" aria-label="Toggle Theme">
             {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
-          <Link to="/" hash="get-started" className="hidden sm:inline-flex ig-cta px-4 py-2 text-sm items-center gap-1 font-semibold transition-all">
-            Get Demo <Arrow className="w-3.5 h-3.5" />
-          </Link>
-          <button onClick={() => setOpen((o) => !o)} className="md:hidden ig-ghost p-2 text-[var(--ig-muted)]" aria-label="menu">
-            {open ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-          </button>
+          
+          {!isDemo && (
+            <>
+              <Link to="/demo" className="inline-flex ig-cta px-4 py-2 text-sm items-center gap-1 font-semibold transition-all">
+                Get Demo <Arrow className="w-3.5 h-3.5" />
+              </Link>
+              <button onClick={() => setOpen((o) => !o)} className="md:hidden ig-ghost p-2 text-[var(--ig-muted)]" aria-label="menu">
+                {open ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+              </button>
+            </>
+          )}
         </div>
       </nav>
 
-      {open && (
+      {open && !isDemo && (
         <div
           className="md:hidden mt-2 rounded-2xl p-4 flex flex-col gap-2 transition-all duration-500"
           style={{
@@ -154,6 +162,17 @@ export function Nav() {
           <Link to="/" hash="features" onClick={() => setOpen(false)} className="px-3 py-2 rounded-lg text-sm text-[var(--ig-muted)] hover:bg-[var(--ig-border-soft)] hover:text-[var(--ig-text)]">Features</Link>
           <Link to="/about" onClick={() => setOpen(false)} className="px-3 py-2 rounded-lg text-sm text-[var(--ig-muted)] hover:bg-[var(--ig-border-soft)] hover:text-[var(--ig-text)]">About</Link>
           <a href="https://docs.infraglide.com" onClick={() => setOpen(false)} className="px-3 py-2 rounded-lg text-sm text-[var(--ig-muted)] hover:bg-[var(--ig-border-soft)] hover:text-[var(--ig-text)]">Documentation</a>
+
+          <div className="pt-2 mt-1 border-t border-[var(--ig-border-soft)] flex items-center px-1">
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="ig-ghost p-2 rounded-full text-[var(--ig-muted)] hover:text-[var(--ig-text)] cursor-pointer"
+              aria-label="Toggle Theme"
+            >
+              {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </button>
+          </div>
         </div>
       )}
     </header>

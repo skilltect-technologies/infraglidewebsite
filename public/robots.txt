@@ -3,6 +3,7 @@ Allow: /
 
 # Priority crawl paths
 Allow: /
+Allow: /demo
 Allow: /about
 Allow: /docs
 Allow: /contact
@@ -13,6 +14,7 @@ Allow: /privacy
 Allow: /terms
 
 # Block internal/dev paths
+Disallow: /changelog
 Disallow: /api/
 Disallow: /_build/
 Disallow: /.netlify/

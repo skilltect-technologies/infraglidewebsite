@@ -48,7 +48,10 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "InfraGlide — Your Cloud, Visualized" },
-      { name: "description", content: "Visualize, design, and deploy cloud infrastructure with AI. Terraform-native, real-time drift detection, and cost optimization." },
+      { name: "description", content: "Visualize, design, and deploy cloud infrastructure with AI. Terraform-native, on-demand drift detection, and cost optimization." },
+    ],
+    links: [
+      { rel: "canonical", href: "https://infraglide.com/" },
     ],
   }),
 });
@@ -175,7 +178,7 @@ const TERMINAL_LOGS: TerminalLine[] = [
   { text: "Executing command...", type: "warn" },
   { text: "", type: "structural" },
   { text: "┌─────────────────────────────────────────┐", type: "structural" },
-  { text: "│   Welcome to  Infraglide  ☁            |", type: "welcome" },
+  { text: "│   Welcome to  InfraGlide  ☁            |", type: "welcome" },
   { text: "│   Terraform-driven multi-cloud platform │", type: "welcome" },
   { text: "└─────────────────────────────────────────┘", type: "structural" },
   { text: "", type: "structural" },
@@ -184,7 +187,7 @@ const TERMINAL_LOGS: TerminalLine[] = [
   { text: "  ✓ google  v5.28.0  (hashicorp/google)", type: "provider" },
   { text: "  ✓ azurerm v3.103   (hashicorp/azurerm)", type: "provider" },
   { text: "", type: "structural" },
-  { text: "[INFO] Infraglide manages your infra so you don't.", type: "info" },
+  { text: "[INFO] InfraGlide manages your infra so you don't.", type: "info" },
   { text: "[INFO] One config. Every cloud. Zero drift.", type: "info" },
   { text: "", type: "structural" },
   { text: "Plan:  12 to add,  0 to change,  0 to destroy.", type: "warn" },
@@ -196,7 +199,7 @@ const TERMINAL_LOGS: TerminalLine[] = [
   // { text: "", type: "structural" },
   { text: "Apply complete! Resources: 12 added, 0 changed.", type: "warn" },
   { text: "", type: "structural" },
-  { text: "[INFO] About Infraglide ─────────────────────", type: "info" },
+  { text: "[INFO] About InfraGlide ─────────────────────", type: "info" },
   { text: "  Ship infra changes in seconds, not sprints.", type: "welcome" },
   { text: "  Git-native. Policy-aware. Drift-free.", type: "welcome" },
   { text: "  Built for teams who ship fast and sleep well.", type: "welcome" },
@@ -338,12 +341,8 @@ function Hero() {
         {/* Heading */}
         <h1
           ref={headingRef}
-          className="font-display text-5xl sm:text-6xl md:text-7xl tracking-tight leading-[1.05] text-[var(--ig-text)] dark:text-white font-bold mb-6 max-w-2xl hidden md:block"
+          className="font-display text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.05] text-[var(--ig-text)] dark:text-white font-bold mb-6 w-full max-w-2xl text-center px-2 md:px-0"
         >
-          One canvas,<br />
-          <span className="ig-metallic">every cloud.</span>
-        </h1>
-        <h1 className="md:hidden font-display text-4xl tracking-tight leading-[1.05] text-[var(--ig-text)] dark:text-white font-bold mb-6 w-full text-center px-2">
           One canvas,<br />
           <span className="ig-metallic">every cloud.</span>
         </h1>
@@ -355,11 +354,8 @@ function Hero() {
 
         {/* Buttons */}
         <div className="flex flex-wrap items-center justify-center gap-4 mb-16">
-          <a href="#jane" className="ig-cta px-6 py-3.5 inline-flex items-center gap-2 text-base">
+          <a href="/demo" className="ig-cta px-6 py-3.5 inline-flex items-center gap-2 text-base">
             Start Designing <Arrow />
-          </a>
-          <a href="#features" className="ig-ghost px-6 py-3.5 inline-flex items-center gap-2 text-base">
-            <Play className="w-4 h-4" /> Watch Demo
           </a>
         </div>
 
@@ -382,23 +378,23 @@ function Hero() {
 
               <div className="flex flex-col text-left">
                 <div className="text-3xl font-black text-white leading-tight">
-                  <AnimatedStat target={3} suffix="+" />
+                  <AnimatedStat target={3} suffix="" />
                 </div>
-                <div className="text-[10px] text-purple-200 font-bold uppercase tracking-wider">Cloud Providers</div>
+                <div className="text-[10px] text-purple-200 font-bold uppercase tracking-wider">Major Clouds (AWS, Azure, GCP)</div>
               </div>
 
               <div className="flex flex-col text-left sm:border-l sm:border-white/20 sm:pl-8">
                 <div className="text-3xl font-black text-white leading-tight">
-                  <AnimatedStat target={10} suffix="x" />
+                  <AnimatedStat target={100} suffix="%" />
                 </div>
-                <div className="text-[10px] text-purple-200 font-bold uppercase tracking-wider">Faster Deployment</div>
+                <div className="text-[10px] text-purple-200 font-bold uppercase tracking-wider">Terraform Native (Zero Lock-In)</div>
               </div>
 
               <div className="flex flex-col text-left sm:border-l sm:border-white/20 sm:pl-8">
                 <div className="text-3xl font-black text-white leading-tight">
-                  <AnimatedStat target={99} suffix="%" />
+                  1-Click
                 </div>
-                <div className="text-[10px] text-purple-200 font-bold uppercase tracking-wider">Drift Detection Accuracy</div>
+                <div className="text-[10px] text-purple-200 font-bold uppercase tracking-wider">On-Demand Drift Check</div>
               </div>
 
             </div>
@@ -1385,12 +1381,12 @@ function Providers() {
                 </div>
                 <div className="font-display text-2xl text-[var(--ig-text)]">{p.name}</div>
                 <p className="text-sm text-[var(--ig-muted)] mt-3.5 leading-relaxed flex-1">{p.desc}</p>
-                <button
-                  onClick={() => document.getElementById('get-started')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="mt-6 ig-ghost px-8 py-3 text-sm font-semibold cursor-pointer transition-all hover:bg-[#8A53D6]/5 active:scale-95 duration-200"
+                <Link
+                  to="/demo"
+                  className="mt-6 ig-ghost px-8 py-3 text-sm font-semibold cursor-pointer transition-all hover:bg-[#8A53D6]/5 active:scale-95 duration-200 inline-block text-center"
                 >
                   Connect
-                </button>
+                </Link>
               </div>
             ))}
           </div>
@@ -1723,16 +1719,36 @@ function FinalCTA() {
               <h2 className="font-display text-5xl md:text-7xl text-[var(--ig-text)] leading-[0.95]">Ship the cloud<br /><span className="ig-metallic">you can see.</span></h2>
               <p className="mt-8 text-lg text-[var(--ig-muted)] max-w-md">Design, deploy, and scale your cloud visually. Start building on a single playful canvas.</p>
               <div className="mt-10 flex flex-wrap gap-4">
-                <a href="#jane" className="ig-cta px-8 py-4 inline-flex items-center gap-2">Start Designing <Arrow /></a>
+                <a href="/demo" className="ig-cta px-8 py-4 inline-flex items-center gap-2">Start Designing <Arrow /></a>
               </div>
 
-              <div className="mt-12 pt-8 border-t border-[var(--ig-border)] flex items-center gap-6 transition-colors duration-500">
-                <div className="flex -space-x-3">
-                  {[1, 2, 3, 4].map(i => (
-                    <img key={i} src={`https://i.pravatar.cc/100?img=${i + 10}`} className="w-10 h-10 rounded-full border-2 border-black" alt="" />
+              <div className="mt-12 pt-8 border-t border-[var(--ig-border)] flex items-center gap-5 transition-colors duration-500">
+                <div className="flex -space-x-2.5 items-center">
+                  {[
+                    { icon: iconAwsUrl, name: "AWS" },
+                    { icon: iconAzureUrl, name: "Azure" },
+                    { icon: iconGcpUrl, name: "Google Cloud" },
+                    { icon: iconTerraformUrl, name: "HashiCorp Terraform" },
+                  ].map((tech, idx) => (
+                    <div 
+                      key={idx} 
+                      className="w-10 h-10 rounded-full border-2 border-[var(--ig-bg)] dark:border-black bg-white/95 dark:bg-zinc-900 shadow-sm flex items-center justify-center p-2 transition-transform hover:scale-110 hover:z-10"
+                      title={tech.name}
+                    >
+                      <img 
+                        src={tech.icon} 
+                        alt={tech.name} 
+                        className="w-5 h-5 object-contain" 
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
                   ))}
                 </div>
-                <div className="text-xs text-slate-400 dark:text-slate-500">Join 10,000+ engineers<br />shipping faster.</div>
+                <div className="text-xs text-[var(--ig-muted)] leading-tight">
+                  <strong className="text-[var(--ig-text)] font-semibold block mb-0.5">Multi-Cloud & Terraform Native</strong>
+                  <span>Visual design for AWS, Azure & GCP with clean HCL export.</span>
+                </div>
               </div>
             </div>
 
@@ -1937,13 +1953,17 @@ function ProcessShowcase() {
                     >
                       {isVideo ? (
                         <video
-                          src={step.mediaUrl}
                           autoPlay
                           muted
                           loop
                           playsInline
                           className="w-full h-full object-cover select-none"
-                        />
+                        >
+                          <source src={step.mediaUrl} type={step.mediaUrl.endsWith('.webm') ? 'video/webm' : 'video/mp4'} />
+                          {step.mediaUrl.endsWith('.webm') && (
+                            <source src={step.mediaUrl.replace('.webm', '.mp4')} type="video/mp4" />
+                          )}
+                        </video>
                       ) : (
                         <img
                           src={step.mediaUrl}
@@ -2044,6 +2064,10 @@ function InfraGlideLanding() {
   const { hash } = useLocation();
 
   useEffect(() => {
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -2369,7 +2393,7 @@ function IOSRBACMatrix({ progress }: { progress: number }) {
 const SCROLL_CARDS = [
   { tag: "Issues", title: "Auto-resolve failures.", desc: "SRE-friendly sandbox, retry with auto-granted quotas in one click.", component: IOSIssuesPanel },
   { tag: "Pipelines", title: "Plan → Apply → Verify.", desc: "Live stage telemetry, validations and checks driven as code.", component: IOSPipelineStages },
-  { tag: "Drift Report", title: "Zero configuration drift.", desc: "Auto-scans Terraform state vs cloud resources in real time.", component: IOSDriftReport },
+  { tag: "Drift Report", title: "Zero configuration drift.", desc: "Scans Terraform state vs live cloud resources on demand.", component: IOSDriftReport },
   { tag: "RBAC Matrix", title: "Least-privilege policies.", desc: "Sync granular roles and resource bindings to your cloud provider.", component: IOSRBACMatrix },
 ];
 
@@ -2479,7 +2503,7 @@ function ScrollGallery() {
         <article className="w-[85vw] md:w-[680px] h-[480px] shrink-0 flex items-center justify-center relative select-none">
           <div className="text-center p-8 bg-[rgba(138,83,214,0.06)] border border-[rgba(138,83,214,0.2)] rounded-3xl ">
             <h3 className="font-display text-4xl md:text-5xl text-[var(--ig-text)] leading-[0.95]">Experience <span className="ig-metallic">the canvas.</span></h3>
-            <a href="#jane" className="ig-cta px-8 py-4 inline-flex items-center gap-2 mt-8 text-sm uppercase tracking-wider">Start Designing <Arrow /></a>
+            <a href="/demo" className="ig-cta px-8 py-4 inline-flex items-center gap-2 mt-8 text-sm uppercase tracking-wider">Start Designing <Arrow /></a>
           </div>
         </article>
       </div>
@@ -2501,10 +2525,10 @@ function ArchitectureCard() {
         <div className="relative z-10">
           <h3 className="text-3xl md:text-[34px] leading-[1.1] text-white mb-2 tracking-tight">
             <span className="font-black" style={{ fontFamily: '"Sora", "Inter", sans-serif' }}>Architecture</span>
-            <span className="font-serif italic font-medium text-white/95 ml-2" style={{ fontFamily: 'Georgia, serif' }}>& design</span>
+            <span className="font-serif italic font-medium text-white/95 ml-2" style={{ fontFamily: 'Georgia, serif' }}>& Design</span>
           </h3>
           <p className="text-white/95 text-xs md:text-sm font-semibold leading-relaxed max-w-sm">
-            Generate HLDs,LLDs,Architectures.Find <br />your Billing Estimations
+            Generate HLDs, LLDs, and architectures, and estimate your cloud costs
           </p>
         </div>
       </div>
@@ -2517,14 +2541,14 @@ function ArchitectureCard() {
             <button className="py-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200/80 border border-slate-200/ dark:border-slate-700/ rounded-xl text-[10px] font-bold text-slate-500 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest transition-colors cursor-pointer text-center">HLD</button>
             <button className="py-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200/80 border border-slate-200/ dark:border-slate-700/ rounded-xl text-[10px] font-bold text-slate-500 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest transition-colors cursor-pointer text-center">LLD</button>
           </div>
-          <button className="w-full py-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200/80 border border-slate-200/ dark:border-slate-700/ rounded-xl text-[10px] font-bold text-slate-500 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest transition-colors cursor-pointer text-center">$BILLING ESTIMATION</button>
+          <button className="w-full py-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200/80 border border-slate-200/ dark:border-slate-700/ rounded-xl text-[10px] font-bold text-slate-500 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest transition-colors cursor-pointer text-center">Billing Estimation</button>
           <button className="w-full mt-1.5 py-3.5 bg-[#8A53D6] hover:bg-[#9a63e6] text-white text-[10px] font-bold uppercase tracking-widest rounded-xl transition-all shadow-md active:scale-95 duration-200 flex items-center justify-center gap-2 cursor-pointer text-center">Architecture</button>
         </div>
       </div>
 
       {/* Screenshot Image coming from the left bottom corner */}
       <div className="absolute bottom-0 left-0 w-[52%] md:w-[48%] h-[60%] rounded-tr-3xl shadow-[15px_-10px_40px_rgba(0,0,0,0.08)] overflow-hidden hidden md:block border-t border-r border-slate-200/ dark:border-slate-700/ translate-y-4 hover:translate-y-0 transition-transform duration-500 bg-white dark:bg-slate-900 z-0">
-        <img src={architectureUrl} alt="Architecture UI Screenshot" className="w-full h-full object-cover object-left-top select-none pointer-events-none" />
+        <img src={architectureUrl} alt="Architecture UI Screenshot" loading="lazy" decoding="async" className="w-full h-full object-cover object-left-top select-none pointer-events-none" />
       </div>
     </div>
   );
@@ -2607,7 +2631,7 @@ function PipelineSchedulerCard() {
             <div className="flex flex-col items-center justify-center pl-1">
               <GitBranch className="w-4 h-4 text-[#8a53d6] mb-1" />
               <span className="text-[9px] font-bold text-slate-800 dark:text-slate-200 leading-tight truncate w-full px-0.5 text-center">Pipeline</span>
-              <span className="text-[7px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mt-0.5 truncate w-full px-0.5 text-center">Linkin Park</span>
+              <span className="text-[7px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mt-0.5 truncate w-full px-0.5 text-center">prod-infra-sync</span>
             </div>
           </div>
 
@@ -2699,7 +2723,7 @@ function PipelineSchedulerCard() {
           <div className="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-2.5 mt-0.5">
             <div className="flex items-center gap-1 text-[8px] font-bold text-slate-500 dark:text-slate-400 dark:text-slate-500">
               <Shield className="w-3 h-3 text-emerald-500 shrink-0" />
-              <span>Last run: <span className="text-emerald-600">Success</span> · May 19</span>
+              <span>Last run: <span className="text-emerald-600">Success</span> · 10m ago</span>
             </div>
 
             <div className="flex items-center gap-1.5">
@@ -2775,7 +2799,7 @@ function MarqueeCards() {
 
           {/* Screenshot Image */}
           <div className="absolute bottom-0 right-0 w-[45%] md:w-[35%] h-[80%] rounded-tl-3xl shadow-[-15px_-10px_40px_rgba(0,0,0,0.2)] overflow-hidden hidden md:block border-t border-l border-white/10 translate-y-4 hover:translate-y-0 transition-transform duration-500">
-            <img src={templatesUrl} alt="Templates UI" className="w-full h-full object-cover object-left-top" />
+            <img src={templatesUrl} alt="Templates UI" loading="lazy" decoding="async" className="w-full h-full object-cover object-left-top" />
           </div>
         </div>
 
@@ -2843,6 +2867,8 @@ function DriftDetectionCard() {
         <img
           src={driftDetectionUiUrl}
           alt="Drift Detection navigation tabs"
+          loading="lazy"
+          decoding="async"
           className="w-full h-auto select-none pointer-events-none block"
         />
       </div>
@@ -2898,6 +2924,8 @@ function DriftDetectionCard() {
         <img
           src={driftUiUrl}
           alt="Drift Active Option"
+          loading="lazy"
+          decoding="async"
           style={{
             position: 'absolute',
             left: 0,
@@ -2979,6 +3007,8 @@ function RbacCard() {
         <img
           src={rbacUiUrl}
           alt="RBAC Management Interface"
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover object-left-top select-none pointer-events-none block rounded-2xl"
         />
       </motion.div>
@@ -3237,6 +3267,8 @@ function SyncInfraCard() {
         <img
           src={syncUrl}
           alt="Cloud Infrastructure Sync Icon"
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-contain select-none"
         />
       </div>

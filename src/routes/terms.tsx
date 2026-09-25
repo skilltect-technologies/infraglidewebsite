@@ -89,7 +89,7 @@ function TermsPage() {
             <div className="space-y-12">
 
             <p className="text-[var(--ig-text)] text-lg leading-relaxed border-b border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] pb-8">
-              These Terms of Service (&quot;<strong>Terms</strong>&quot;) govern access to and use of the InfraGlide platform, website, and related services (collectively, the &quot;<strong>Service</strong>&quot;) provided by <strong>InfraGlide</strong> (&quot;<strong>InfraGlide</strong>,&quot; &quot;<strong>we</strong>,&quot; &quot;<strong>us</strong>,&quot; or &quot;<strong>our</strong>&quot;). By creating an account, accepting an invitation, or using the Service, you (&quot;<strong>you</strong>,&quot; &quot;<strong>User</strong>,&quot; or &quot;<strong>Customer</strong>&quot;) agree to these Terms. If you use the Service on behalf of an organization, you represent that you have authority to bind that organization, and &quot;you&quot; refers to that organization. If you do not agree, do not use the Service.
+              These Terms of Service (&quot;<strong>Terms</strong>&quot;) govern access to and use of the InfraGlide platform, website, and related services (collectively, the &quot;<strong>Service</strong>&quot;) provided by <strong>Skilltect Technologies Pvt. Ltd.</strong> (&quot;<strong>InfraGlide</strong>,&quot; &quot;<strong>we</strong>,&quot; &quot;<strong>us</strong>,&quot; or &quot;<strong>our</strong>&quot;). By creating an account, accepting an invitation, or using the Service, you (&quot;<strong>you</strong>,&quot; &quot;<strong>User</strong>,&quot; or &quot;<strong>Customer</strong>&quot;) agree to these Terms. If you use the Service on behalf of an organization, you represent that you have authority to bind that organization, and &quot;you&quot; refers to that organization. If you do not agree, do not use the Service.
             </p>
 
             {/* SECTION 1 */}
@@ -172,12 +172,12 @@ function TermsPage() {
 
               <div className="space-y-3">
                 <h3 className="text-lg font-semibold text-[var(--ig-text)]">3.3 Infrastructure operations disclaimer</h3>
-                <div className="flex gap-2 items-start p-4 bg-yellow-500/5 border border-yellow-500/20 rounded-xl text-yellow-300/80 text-xs">
-                  <AlertTriangle className="w-4 h-4 text-yellow-500 shrink-0 mt-0.5" />
+                <div className="flex gap-3 items-start p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-amber-900 dark:text-amber-200 text-xs">
+                  <AlertTriangle className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
                   <div className="space-y-1">
-                    <p className="font-bold text-sm text-[var(--ig-text)]">Warning on destructive actions</p>
-                    <p className="leading-relaxed">
-                      Deploy, destroy, drift remediation, and related actions <strong>modify real cloud resources</strong> and may cause downtime, data loss, or charges. You are solely responsible for reviewing plans before applying, testing in non-production environments, maintaining backups, and deciding to apply production changes. InfraGlide provides previews and tools; you remain accountable for production outcomes.
+                    <p className="font-bold text-sm text-amber-950 dark:text-amber-100">Warning on destructive actions</p>
+                    <p className="leading-relaxed text-amber-900/90 dark:text-amber-200/90">
+                      Deploy, destroy, drift remediation, and related actions <strong className="text-amber-950 dark:text-amber-100 font-semibold">modify real cloud resources</strong> and may cause downtime, data loss, or charges. You are solely responsible for reviewing plans before applying, testing in non-production environments, maintaining backups, and deciding to apply production changes. InfraGlide provides previews and tools; you remain accountable for production outcomes.
                     </p>
                   </div>
                 </div>
@@ -313,7 +313,7 @@ function TermsPage() {
                 <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW:</p>
                 <ul className="list-disc pl-4 space-y-1">
                   <li>INFRAGLIDE WILL NOT BE LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR FOR LOSS OF PROFITS, DATA, GOODWILL, OR BUSINESS INTERRUPTION.</li>
-                  <li>INFRAGLIDE&apos;S TOTAL LIABILITY ARISING FROM THESE TERMS OR THE SERVICE WILL NOT EXCEED THE GREATER OF (A) AMOUNTS YOU PAID TO INFRAGLIDE IN THE TWELVE (12) MONTHS BEFORE THE CLAIM OR (B) ONE HUNDRED U.S. DOLLARS ($100).</li>
+                  <li>INFRAGLIDE&apos;S TOTAL LIABILITY ARISING FROM THESE TERMS OR THE SERVICE WILL NOT EXCEED THE GREATER OF (A) AMOUNTS YOU PAID TO INFRAGLIDE IN THE TWELVE (12) MONTHS BEFORE THE CLAIM OR (B) ONE HUNDRED DOLLARS ($100 USD) OR EQUIVALENT IN LOCAL CURRENCY.</li>
                 </ul>
               </div>
             </section>
@@ -344,7 +344,7 @@ function TermsPage() {
             <section id="export-compliance" className="scroll-mt-24 space-y-4">
               <h2 className="text-2xl font-bold text-[var(--ig-text)] font-display-family">16. Export compliance</h2>
               <p className="text-[var(--ig-muted)] leading-relaxed text-sm">
-                You represent that you are not located in, under control of, or a national of any country subject to comprehensive U.S. embargo, and that you are not on denied-party lists. You will not use the Service in violation of export control laws.
+                InfraGlide is a global software platform. You represent and warrant that you are not located in, under control of, or a national or resident of any country or territory subject to applicable trade sanctions or embargoes under Indian law, international regulations, or other applicable jurisdictions, and that you are not on any applicable denied-party or sanctions lists. You will not access or use the Service in violation of applicable export control laws.
               </p>
             </section>
 
@@ -352,7 +352,7 @@ function TermsPage() {
             <section id="governing-law" className="scroll-mt-24 space-y-4">
               <h2 className="text-2xl font-bold text-[var(--ig-text)] font-display-family">17. Governing law and disputes</h2>
               <p className="text-[var(--ig-muted)] leading-relaxed text-sm">
-                These Terms are governed by the laws of the State of Delaware, United States, without regard to conflict-of-law principles. Disputes will be resolved in the state or federal courts located in Delaware. Each party waives jury trial to the extent permitted. Before formal proceedings, parties agree to attempt good-faith resolution.
+                These Terms are governed by the laws of India, without regard to conflict-of-law principles. Any disputes arising out of or relating to these Terms or the Service will be subject to the exclusive jurisdiction of the competent courts located in New Delhi, India. Before initiating formal legal proceedings, the parties agree to attempt good-faith informal resolution.
               </p>
             </section>
 
@@ -367,16 +367,24 @@ function TermsPage() {
             {/* SECTION 19 */}
             <section id="contact" className="scroll-mt-24 space-y-4">
               <h2 className="text-2xl font-bold text-[var(--ig-text)] font-display-family">19. Contact</h2>
-              <div className="p-6 bg-[rgba(138,83,214,0.03)] border border-[var(--ig-border-soft)] rounded-2xl space-y-3">
-                <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 text-[#8A53D6]" />
-                  <span className="text-sm font-semibold">Email:</span>
-                  <a href="mailto:support@infraglide.com" className="text-[#8A53D6] hover:underline text-sm">support@infraglide.com</a>
+              <div className="p-6 bg-[rgba(138,83,214,0.03)] border border-[var(--ig-border-soft)] rounded-2xl space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
+                  <div className="flex items-center gap-3">
+                    <Mail className="w-5 h-5 text-[#8A53D6]" />
+                    <span className="text-sm font-semibold">Email:</span>
+                    <a href="mailto:support@infraglide.com" className="text-[#8A53D6] hover:underline text-sm font-semibold">support@infraglide.com</a>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Eye className="w-5 h-5 text-[#8A53D6]" />
+                    <span className="text-sm font-semibold">Website:</span>
+                    <a href="https://infraglide.com" target="_blank" rel="noopener noreferrer" className="text-[#8A53D6] hover:underline text-sm font-semibold">https://infraglide.com</a>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <Eye className="w-5 h-5 text-[#8A53D6]" />
-                  <span className="text-sm font-semibold">Website:</span>
-                  <a href="https://infraglide.com" target="_blank" rel="noopener noreferrer" className="text-[#8A53D6] hover:underline text-sm">https://infraglide.com</a>
+
+                <div className="border-t border-[var(--ig-border)] pt-3 text-xs text-[var(--ig-muted)] space-y-2">
+                  <p className="font-semibold text-[var(--ig-text)]">Skilltect Technologies Pvt. Ltd.</p>
+                  <p><strong>Delhi Office:</strong> First Floor, E-49/5, Okhla Industrial Area, Delhi - 110020, India</p>
+                  <p><strong>Jodhpur Office:</strong> First Floor, CYB-5, Cyber Park, 102, H.I.A, Jodhpur, Rajasthan - 342003, India</p>
                 </div>
               </div>
             </section>

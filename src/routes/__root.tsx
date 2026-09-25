@@ -177,8 +177,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "InfraGlide — Visual Cloud Infrastructure Platform | AWS, Azure & GCP" },
       { property: "og:description", content: "Design, deploy, and observe cloud infrastructure on one cinematic visual canvas. Terraform-native, AI-powered drift detection, and Jane AI copilot — for AWS, Azure, and GCP." },
       { property: "og:image", content: "https://infraglide.com/og-image.png" },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
+      { property: "og:image:width", content: "1734" },
+      { property: "og:image:height", content: "907" },
       { property: "og:image:alt", content: "InfraGlide — Visual Cloud Infrastructure Platform" },
       { property: "og:locale", content: "en_US" },
 
@@ -205,7 +205,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "apple-touch-icon", href: "/favicon.png" },
       { rel: "manifest", href: "/manifest.json" },
-      { rel: "canonical", href: "https://infraglide.com" },
       { rel: "sitemap", type: "application/xml", href: "/sitemap.xml" },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -241,6 +240,19 @@ function RootShell({ children }: { children: React.ReactNode }) {
       <body>
         {children}
         <Scripts />
+        {/* Google Analytics (GA4) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-INFRAGLIDE" />
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-INFRAGLIDE');
+            `,
+          }}
+        />
         {/* LinkedIn Insight Tag */}
         <script
           type="text/javascript"

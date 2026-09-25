@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { InteractiveGrid } from '../components/InteractiveGrid'
 import { Layers } from 'lucide-react'
 
@@ -117,6 +117,13 @@ function TemplatesPage() {
     }
   ];
 
+  const [selectedProvider, setSelectedProvider] = useState<'ALL' | 'AWS' | 'AZURE' | 'GCP'>('ALL');
+
+  const filteredTemplates = templates.filter(t => {
+    if (selectedProvider === 'ALL') return true;
+    return t.provider.toUpperCase() === selectedProvider;
+  });
+
   const getProviderBadge = (provider: string) => {
     switch (provider.toUpperCase()) {
       case 'AWS':
@@ -183,9 +190,33 @@ function TemplatesPage() {
           />
         </div>
 
+        {/* Provider Filter Tabs (TP-02) */}
+        <div className="relative z-30 flex flex-wrap items-center justify-between gap-4 mb-8">
+          <div className="inline-flex items-center gap-1.5 p-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60">
+            {(['ALL', 'AWS', 'AZURE', 'GCP'] as const).map((prov) => (
+              <button
+                key={prov}
+                type="button"
+                onClick={() => setSelectedProvider(prov)}
+                className={`px-4 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                  selectedProvider === prov
+                    ? 'bg-[#8A53D6] text-white shadow-sm'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                {prov === 'ALL' ? 'All Providers' : prov}
+              </button>
+            ))}
+          </div>
+
+          <div className="text-xs font-medium text-[var(--ig-muted)]">
+            Showing <strong className="text-[var(--ig-text)]">{filteredTemplates.length}</strong> of {templates.length} blueprints
+          </div>
+        </div>
+
         {/* Cards Grid: positioned at z-30 to stay crisp above grid dots overlay */}
         <div className="relative z-30 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {templates.map((tpl, i) => (
+          {filteredTemplates.map((tpl, i) => (
             <div 
               key={i} 
               className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_30px_rgba(138,83,214,0.12)] transition-all duration-300 hover:-translate-y-1.5 flex flex-col p-7 group"
@@ -224,10 +255,10 @@ function TemplatesPage() {
               </div>
               
               {/* CTA Button */}
-              <button className="w-full py-3.5 rounded-xl bg-[#8A53D6] hover:bg-[#773fc1] text-white text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-2 shadow-[0_4px_12px_rgba(138,83,214,0.15)] hover:shadow-[0_8px_20px_rgba(138,83,214,0.3)]">
+              <Link to="/demo" className="w-full py-3.5 rounded-xl bg-[#8A53D6] hover:bg-[#773fc1] text-white text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-2 shadow-[0_4px_12px_rgba(138,83,214,0.15)] hover:shadow-[0_8px_20px_rgba(138,83,214,0.3)]">
                 <span>Use Template</span>
                 <span className="text-base leading-none">→</span>
-              </button>
+              </Link>
             </div>
           ))}
         </div>

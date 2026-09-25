@@ -82,7 +82,7 @@ function PrivacyPage() {
             <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#8A53D6] to-[#b07eff]" />
             
             <p className="text-[var(--ig-text)] text-lg leading-relaxed border-b border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] pb-8">
-              <strong>InfraGlide</strong> (&quot;InfraGlide,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) provides a multi-cloud infrastructure design and deployment platform available at <strong>infraglide.com</strong> and associated subdomains (such as <strong>app.infraglide.com</strong>). This Privacy Policy explains how we collect, use, disclose, and protect information when you visit our website, create an account, or use the InfraGlide platform (the &quot;Service&quot;). By using the Service, you agree to the practices described in this policy. If you do not agree, please do not use the Service.
+              <strong>Skilltect Technologies Pvt. Ltd.</strong> (&quot;InfraGlide,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) provides a multi-cloud infrastructure design and deployment platform available at <strong>infraglide.com</strong> and associated subdomains (such as <strong>app.infraglide.com</strong>). This Privacy Policy explains how we collect, use, disclose, and protect information when you visit our website, create an account, or use the InfraGlide platform (the &quot;Service&quot;). By using the Service, you agree to the practices described in this policy. If you do not agree, please do not use the Service.
             </p>
 
             {/* SECTION 1 */}
@@ -156,9 +156,9 @@ function PrivacyPage() {
                     </tbody>
                   </table>
                 </div>
-                <div className="flex gap-2 items-start p-3 bg-yellow-500/5 border border-yellow-500/20 rounded-xl text-yellow-300/80 text-xs">
-                  <Shield className="w-4 h-4 text-yellow-500 shrink-0 mt-0.5" />
-                  <span>We ask that you <strong>do not</strong> submit passwords, private keys, or other secrets in support tickets or Jane chat messages. Cloud credential secrets should only be entered through designated credential forms in the Service.</span>
+                <div className="flex gap-3 items-start p-3.5 bg-amber-500/10 border border-amber-500/30 rounded-xl text-amber-900 dark:text-amber-200/90 text-xs leading-relaxed">
+                  <Shield className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+                  <span>We ask that you <strong className="text-amber-950 dark:text-amber-100 font-semibold">do not</strong> submit passwords, private keys, or other secrets in support tickets or Jane chat messages. Cloud credential secrets should only be entered through designated credential forms in the Service.</span>
                 </div>
               </div>
 
@@ -191,9 +191,9 @@ function PrivacyPage() {
                         <td className="p-3">Reliability, audit, troubleshooting</td>
                       </tr>
                       <tr>
-                        <td className="p-3 font-medium text-[var(--ig-text)]">Cookies and session data</td>
-                        <td className="p-3">Session identifiers, preference cookies</td>
-                        <td className="p-3">Authentication and session management</td>
+                        <td className="p-3 font-medium text-[var(--ig-text)]">Cookies and tracking data</td>
+                        <td className="p-3">Session identifiers, preferences, and analytics/conversion pixels (Google Analytics 4, LinkedIn Insight Tag)</td>
+                        <td className="p-3">Authentication, service analytics, and advertising conversion measurement</td>
                       </tr>
                     </tbody>
                   </table>
@@ -363,7 +363,7 @@ function PrivacyPage() {
             <section id="intl-transfers" className="scroll-mt-24 space-y-4">
               <h2 className="text-2xl font-bold text-[var(--ig-text)] font-display-family">8. International transfers</h2>
               <p className="text-[var(--ig-muted)] leading-relaxed">
-                InfraGlide may process and store information in the United States and other countries where we or our service providers operate. By using the Service, you consent to transfer of information to countries that may have different data protection laws than your country. Where required, we use appropriate safeguards for cross-border transfers.
+                InfraGlide may process and store information in India, the United States, and other countries where we or our cloud service providers operate. By using the Service, you consent to the transfer of information to countries that may have different data protection laws than your country. Where required, we use appropriate safeguards for cross-border transfers.
               </p>
             </section>
 
@@ -406,10 +406,15 @@ function PrivacyPage() {
 
             {/* SECTION 11 */}
             <section id="third-party" className="scroll-mt-24 space-y-4">
-              <h2 className="text-2xl font-bold text-[var(--ig-text)] font-display-family">11. Third-party links and services</h2>
+              <h2 className="text-2xl font-bold text-[var(--ig-text)] font-display-family">11. Third-party links, analytics, and security services</h2>
               <p className="text-[var(--ig-muted)] leading-relaxed">
-                The Service may link to third-party websites or integrate with third-party identity and cloud providers. Their privacy practices are governed by their own policies. We encourage you to review Auth0, Google, AWS, GCP, Azure, and other providers&apos; policies as applicable.
+                The Service may link to third-party websites or integrate with third-party identity, analytics, security, and cloud providers:
               </p>
+              <ul className="list-disc pl-6 text-[var(--ig-muted)] space-y-2 text-sm leading-relaxed">
+                <li><strong>Cloud & Identity Providers:</strong> Auth0, Google Cloud, AWS, and Microsoft Azure practices are governed by their respective privacy policies.</li>
+                <li><strong>Google reCAPTCHA v3:</strong> We implement Google reCAPTCHA v3 on our forms to protect against automated spam and abuse without interrupting genuine users. Use of reCAPTCHA v3 is subject to the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#8A53D6] hover:underline">Google Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="text-[#8A53D6] hover:underline">Google Terms of Service</a>.</li>
+                <li><strong>Analytics & Conversion Tracking:</strong> We utilize Google Analytics 4 (GA4) and the LinkedIn Insight Tag to understand website usage and measure campaign conversion performance. LinkedIn members can control the use of their personal data for advertising purposes through their <a href="https://www.linkedin.com/psettings/guest-controls/retargeting-opt-out" target="_blank" rel="noopener noreferrer" className="text-[#8A53D6] hover:underline">LinkedIn Account Settings</a>.</li>
+              </ul>
             </section>
 
             {/* SECTION 12 */}
@@ -424,23 +429,23 @@ function PrivacyPage() {
             <section id="contact" className="scroll-mt-24 space-y-4">
               <h2 className="text-2xl font-bold text-[var(--ig-text)] font-display-family">13. Contact us</h2>
               <p className="text-[var(--ig-muted)] leading-relaxed">
-                Questions about this Privacy Policy or our data practices:
+                If you have questions or concerns regarding this Privacy Policy or our data practices, please reach out to us:
               </p>
-              <div className="p-6 bg-[rgba(0,168,136,0.03)] border border-[rgba(0,168,136,0.15)] rounded-2xl space-y-3">
-                <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 text-[#00a888]" />
-                  <span className="text-sm font-semibold">Email:</span>
-                  <a href="mailto:support@infraglide.com" className="text-[#00a888] hover:underline text-sm">support@infraglide.com</a>
+              <div className="p-6 bg-[rgba(138,83,214,0.03)] border border-[rgba(138,83,214,0.15)] rounded-2xl space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
+                  <div className="flex items-center gap-2.5">
+                    <Mail className="w-4 h-4 text-[#8A53D6]" />
+                    <span className="text-xs font-bold uppercase tracking-wider text-[var(--ig-dim)]">Email</span>
+                    <a href="mailto:support@infraglide.com" className="text-[#8A53D6] hover:underline text-sm font-semibold">support@infraglide.com</a>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <Eye className="w-5 h-5 text-[#00a888]" />
-                  <span className="text-sm font-semibold">Website:</span>
-                  <a href="https://infraglide.com" target="_blank" rel="noopener noreferrer" className="text-[#00a888] hover:underline text-sm">https://infraglide.com</a>
+
+                <div className="border-t border-[var(--ig-border)] pt-3 text-xs text-[var(--ig-muted)] space-y-2">
+                  <p className="font-semibold text-[var(--ig-text)]">Skilltect Technologies Pvt. Ltd.</p>
+                  <p><strong>Delhi Office:</strong> First Floor, E-49/5, Okhla Industrial Area, Delhi - 110020, India</p>
+                  <p><strong>Jodhpur Office:</strong> First Floor, CYB-5, Cyber Park, 102, H.I.A, Jodhpur, Rajasthan - 342003, India</p>
                 </div>
               </div>
-              <p className="text-[var(--ig-muted)] text-xs leading-relaxed italic pt-4 border-t border-[var(--ig-border-soft)]">
-                This document is a product-aligned draft. InfraGlide recommends review by qualified legal counsel before publication.
-              </p>
             </section>
           </div>
         </div>

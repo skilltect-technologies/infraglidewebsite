@@ -1,7 +1,7 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { InteractiveGrid } from '../components/InteractiveGrid'
-import { Mail, MapPin, Check, AlertCircle, Building2 } from 'lucide-react'
+import { Mail, MapPin, Check, AlertCircle, Building2, ChevronDown, Clock } from 'lucide-react'
 import { submitDemoRequest } from '../services/api'
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
 
@@ -58,7 +58,26 @@ function ContactPage() {
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [cloudOpen, setCloudOpen] = useState(false)
+  const cloudRef = useRef<HTMLDivElement>(null)
   const { executeRecaptcha } = useGoogleReCaptcha()
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (cloudRef.current && !cloudRef.current.contains(event.target as Node)) {
+        setCloudOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const isMobileValid = (m: string) => /^\+?[1-9]\d{6,14}$/.test(m.replace(/[\s\-()]/g, ''));
+  const isFormValid =
+    /^[A-Za-z\s]{2,50}$/.test(formData.name.trim()) &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim()) &&
+    isMobileValid(formData.mobile) &&
+    formData.company.trim().length > 0;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -69,7 +88,7 @@ function ContactPage() {
 
     const nameRegex = /^[A-Za-z\s]{2,50}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const mobileRegex = /^\+?[0-9\s\-]{7,15}$/;
+    const isMobileValid = (m: string) => /^\+?[1-9]\d{6,14}$/.test(m.replace(/[\s\-()]/g, ''));
 
     if (!nameRegex.test(formData.name)) {
       setError('Please enter a valid name (letters and spaces only, 2-50 characters).');
@@ -79,8 +98,8 @@ function ContactPage() {
       setError('Please enter a valid email address.');
       return;
     }
-    if (!mobileRegex.test(formData.mobile)) {
-      setError('Please enter a valid mobile number (7-15 digits, optional + prefix).');
+    if (!isMobileValid(formData.mobile)) {
+      setError('Please enter a valid mobile number (7-15 digits with country code, e.g. +447911123456).');
       return;
     }
     if (!executeRecaptcha) {
@@ -97,8 +116,27 @@ function ContactPage() {
         console.log('reCAPTCHA token:', token);
       }
       
-      const submitData = { ...formData, 'g-recaptcha-response': token }
-      await submitDemoRequest(submitData, `Contact Form Message:\n${formData.message || 'No message provided'}`)
+      // Extract UTM parameters from URL
+      const utmParams: Record<string, string> = {};
+      if (typeof window !== 'undefined') {
+        const searchParams = new URLSearchParams(window.location.search);
+        ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(param => {
+          const val = searchParams.get(param);
+          if (val) utmParams[param] = val;
+        });
+      }
+
+      const submitData = { ...formData, ...utmParams, 'g-recaptcha-response': token }
+      await submitDemoRequest(
+        submitData, 
+        `Contact Form Message:\n${formData.message || 'No message provided'}`,
+        `[Contact Inquiry] ${formData.name || 'Visitor'} (${formData.company || 'Website Lead'})`
+      )
+
+      // LinkedIn Conversion Event Tracking
+      if (typeof window !== 'undefined' && (window as any).lintrk) {
+        (window as any).lintrk('track', { conversion_id: 19714810 });
+      }
 
       setSubmitted(true)
       setFormData({
@@ -132,7 +170,7 @@ function ContactPage() {
             Get in <span className="ig-metallic">Touch.</span>
           </h1>
           <p className="text-[var(--ig-muted)] text-xl max-w-2xl mx-auto font-medium">
-            Have questions about Infraglide? We'd love to hear from you.
+            Have questions about InfraGlide? We'd love to hear from you.
           </p>
         </div>
 
@@ -146,10 +184,10 @@ function ContactPage() {
                 <div className="w-10 h-10 rounded-xl bg-[rgba(138,83,214,0.06)] dark:bg-[rgba(138,83,214,0.10)] border border-[rgba(138,83,214,0.12)] dark:border-[rgba(138,83,214,0.2)] flex items-center justify-center text-[#8A53D6] dark:text-[#b07eff]">
                   <Mail className="w-5 h-5" />
                 </div>
-                <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--ig-dim)]">Email</h4>
-                  <a href="mailto:connect@infraglide.com" className="text-sm font-semibold text-[#8A53D6] dark:text-[#b07eff] hover:underline">
-                    connect@infraglide.com
+                <div className="flex-1">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--ig-dim)] mb-1">Email</h4>
+                  <a href="mailto:support@infraglide.com" className="text-sm font-semibold text-[#8A53D6] dark:text-[#b07eff] hover:underline">
+                    support@infraglide.com
                   </a>
                 </div>
               </div>
@@ -206,7 +244,13 @@ function ContactPage() {
           <div className="lg:col-span-7">
             <div className=" bg-white/ dark:bg-slate-900/0 dark:bg-[rgba(22,15,36,0.55)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.15)] rounded-[2rem] p-8 md:p-10 shadow-sm relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#8A53D6] to-[#b07eff]" />
-              <h2 className="text-2xl font-bold text-[var(--ig-text)] mb-8">Send a message</h2>
+              <div className="mb-8">
+                <h2 className="text-2xl font-bold text-[var(--ig-text)] mb-1.5">Send a message</h2>
+                <p className="text-xs text-[var(--ig-muted)] flex items-center gap-1.5">
+                  <Clock className="w-3.5 h-3.5 text-[#8A53D6]" />
+                  <span>We typically respond within 2–4 business hours.</span>
+                </p>
+              </div>
               
               {submitted ? (
                 <div className="text-center py-12 space-y-4">
@@ -215,7 +259,7 @@ function ContactPage() {
                   </div>
                   <h3 className="text-xl font-bold text-[var(--ig-text)]">Message Sent!</h3>
                   <p className="text-sm text-[var(--ig-muted)] max-w-sm mx-auto">
-                    Thank you for reaching out. We have received your query and our team will get back to you shortly.
+                    Thank you for reaching out. We have received your query and our team will get back to you within 2–4 business hours.
                   </p>
                   <button 
                     onClick={() => setSubmitted(false)}
@@ -241,7 +285,7 @@ function ContactPage() {
                         required
                         value={formData.name}
                         onChange={e => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="e.g. Jane Doe"
+                        placeholder="Your full name"
                         className="w-full bg-white/ dark:bg-slate-900/0 dark:bg-[rgba(10,5,16,0.4)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.18)] rounded-xl px-4 py-3 text-[var(--ig-text)] focus:outline-none focus:border-[#8A53D6] focus:ring-2 focus:ring-[#8A53D6]/20 transition-all" 
                       />
                     </div>
@@ -252,7 +296,7 @@ function ContactPage() {
                         required
                         value={formData.email}
                         onChange={e => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="e.g. jane@company.com"
+                        placeholder="name@company.com"
                         className="w-full bg-white/ dark:bg-slate-900/0 dark:bg-[rgba(10,5,16,0.4)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.18)] rounded-xl px-4 py-3 text-[var(--ig-text)] focus:outline-none focus:border-[#8A53D6] focus:ring-2 focus:ring-[#8A53D6]/20 transition-all" 
                       />
                     </div>
@@ -265,8 +309,13 @@ function ContactPage() {
                         type="tel" 
                         required
                         value={formData.mobile}
-                        onChange={e => setFormData({ ...formData, mobile: e.target.value })}
-                        placeholder="e.g. +91 98765 43210"
+                        onChange={e => {
+                          const val = e.target.value;
+                          if (/^[\d+\s\-()]*$/.test(val) && val.length <= 20) {
+                            setFormData({ ...formData, mobile: val });
+                          }
+                        }}
+                        placeholder="+ [country code] phone number"
                         className="w-full bg-white/ dark:bg-slate-900/0 dark:bg-[rgba(10,5,16,0.4)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.18)] rounded-xl px-4 py-3 text-[var(--ig-text)] focus:outline-none focus:border-[#8A53D6] focus:ring-2 focus:ring-[#8A53D6]/20 transition-all" 
                       />
                     </div>
@@ -277,7 +326,7 @@ function ContactPage() {
                         required
                         value={formData.company}
                         onChange={e => setFormData({ ...formData, company: e.target.value })}
-                        placeholder="e.g. Acme Corp"
+                        placeholder="Your company name"
                         className="w-full bg-white/ dark:bg-slate-900/0 dark:bg-[rgba(10,5,16,0.4)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.18)] rounded-xl px-4 py-3 text-[var(--ig-text)] focus:outline-none focus:border-[#8A53D6] focus:ring-2 focus:ring-[#8A53D6]/20 transition-all" 
                       />
                     </div>
@@ -290,22 +339,49 @@ function ContactPage() {
                         type="text" 
                         value={formData.role}
                         onChange={e => setFormData({ ...formData, role: e.target.value })}
-                        placeholder="e.g. Cloud Architect"
+                        placeholder="e.g. DevOps / Cloud Architect"
                         className="w-full bg-white/ dark:bg-slate-900/0 dark:bg-[rgba(10,5,16,0.4)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.18)] rounded-xl px-4 py-3 text-[var(--ig-text)] focus:outline-none focus:border-[#8A53D6] focus:ring-2 focus:ring-[#8A53D6]/20 transition-all" 
                       />
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-2 relative" ref={cloudRef}>
                       <label className="text-xs font-bold uppercase tracking-wider text-[var(--ig-dim)]">Primary Cloud</label>
-                      <select 
-                        value={formData.cloud}
-                        onChange={e => setFormData({ ...formData, cloud: e.target.value })}
-                        className="w-full bg-white/ dark:bg-slate-900/0 dark:bg-[rgba(10,5,16,0.4)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.18)] rounded-xl px-4 py-3 text-[var(--ig-text)] focus:outline-none focus:border-[#8A53D6] focus:ring-2 focus:ring-[#8A53D6]/20 transition-all"
+                      <button
+                        type="button"
+                        onClick={() => setCloudOpen(!cloudOpen)}
+                        className="w-full flex items-center justify-between bg-white dark:bg-[rgba(10,5,16,0.6)] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.18)] rounded-xl px-4 py-3 text-[var(--ig-text)] focus:outline-none focus:border-[#8A53D6] focus:ring-2 focus:ring-[#8A53D6]/20 transition-all text-left"
+                        aria-haspopup="listbox"
+                        aria-expanded={cloudOpen}
                       >
-                        <option value="AWS">AWS</option>
-                        <option value="Azure">Azure</option>
-                        <option value="GCP">GCP</option>
-                        <option value="Multi-cloud">Multi-cloud</option>
-                      </select>
+                        <span className="font-medium text-sm">{formData.cloud}</span>
+                        <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${cloudOpen ? 'rotate-180 text-[#8A53D6]' : 'text-[var(--ig-dim)]'}`} />
+                      </button>
+
+                      {cloudOpen && (
+                        <div className="absolute top-[calc(100%+6px)] left-0 right-0 z-50 bg-white dark:bg-[#120a1f] border border-[var(--ig-border)] dark:border-[rgba(138,83,214,0.3)] rounded-xl shadow-2xl p-1.5 backdrop-blur-xl">
+                          {['AWS', 'Azure', 'GCP', 'Multi-cloud'].map((c) => {
+                            const isSelected = formData.cloud === c;
+                            return (
+                              <div
+                                key={c}
+                                role="option"
+                                aria-selected={isSelected}
+                                onClick={() => {
+                                  setFormData({ ...formData, cloud: c });
+                                  setCloudOpen(false);
+                                }}
+                                className={`flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm cursor-pointer transition-all ${
+                                  isSelected
+                                    ? 'bg-[#8A53D6]/15 text-[#8A53D6] dark:text-[#b07eff] font-semibold'
+                                    : 'text-[var(--ig-text)] hover:bg-[#8A53D6]/10 hover:text-[#8A53D6]'
+                                }`}
+                              >
+                                <span>{c}</span>
+                                {isSelected && <Check className="w-4 h-4 text-[#8A53D6] shrink-0" />}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
                     </div>
                   </div>
 
@@ -324,7 +400,8 @@ function ContactPage() {
 
                   <button 
                     type="submit" 
-                    disabled={submitting}
+                    disabled={submitting || !isFormValid}
+                    style={{ opacity: !isFormValid || submitting ? 0.6 : 1, cursor: !isFormValid || submitting ? 'not-allowed' : 'pointer' }}
                     className="w-full py-4 rounded-xl ig-cta font-semibold flex items-center justify-center gap-2"
                   >
                     {submitting ? (
