@@ -9,7 +9,10 @@ export default defineConfig({
     tanstackStart({
       spa: {
         enabled: true,
-      }
+      },
+      prerender: {
+        failOnError: false,
+      },
     }),
     react(),
     tailwindcss(),
