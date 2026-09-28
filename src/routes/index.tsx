@@ -360,16 +360,16 @@ function Hero() {
         </div>
 
         {/* Purple Bottom Tile statistics pill */}
-        <div className="relative w-full max-w-6xl mx-auto rounded-3xl bg-gradient-to-r from-[#8A53D6] to-[#6366f1] p-6 md:p-8 shadow-xl text-[var(--ig-text)] select-none">
+        <div className="relative w-full max-w-6xl mx-auto rounded-3xl bg-gradient-to-r from-[#8A53D6] to-[#6366f1] p-5 sm:p-6 md:p-8 shadow-xl text-[var(--ig-text)] select-none overflow-hidden">
           <div className="absolute inset-0 bg-white/10 dark:bg-slate-900/20 opacity-10 pointer-events-none rounded-3xl"
             style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
           <div className="relative z-10 flex flex-wrap items-center justify-between gap-6">
 
-            <div className="flex items-center gap-4 flex-1 min-w-[280px]">
-              <div className="w-11 h-11 rounded-full bg-white/15 dark:bg-slate-900/30 flex items-center justify-center border border-white/20 shrink-0 shadow-inner">
+            <div className="flex items-start sm:items-center gap-3.5 sm:gap-4 flex-1 min-w-0">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/15 dark:bg-slate-900/30 flex items-center justify-center border border-white/20 shrink-0 shadow-inner mt-0.5 sm:mt-0">
                 <Sparkles className="w-5 h-5 text-white" />
               </div>
-              <p className="text-sm font-semibold leading-relaxed text-white text-left">
+              <p className="text-xs sm:text-sm font-semibold leading-relaxed text-white text-left break-words">
                 Everything you need to design, deploy, and manage modern infrastructure — visually.
               </p>
             </div>

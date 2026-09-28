@@ -129,7 +129,11 @@ export function Nav() {
         )}
 
         <div className="flex items-center gap-2">
-          <button onClick={toggleTheme} className="inline-flex ig-ghost p-2 rounded-full text-[var(--ig-muted)] hover:text-[var(--ig-text)]" aria-label="Toggle Theme">
+          <button
+            onClick={toggleTheme}
+            className={`${isDemo ? 'inline-flex' : 'hidden md:inline-flex'} ig-ghost p-2 rounded-full text-[var(--ig-muted)] hover:text-[var(--ig-text)]`}
+            aria-label="Toggle Theme"
+          >
             {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
           
@@ -163,7 +167,8 @@ export function Nav() {
           <Link to="/about" onClick={() => setOpen(false)} className="px-3 py-2 rounded-lg text-sm text-[var(--ig-muted)] hover:bg-[var(--ig-border-soft)] hover:text-[var(--ig-text)]">About</Link>
           <a href="https://docs.infraglide.com" onClick={() => setOpen(false)} className="px-3 py-2 rounded-lg text-sm text-[var(--ig-muted)] hover:bg-[var(--ig-border-soft)] hover:text-[var(--ig-text)]">Documentation</a>
 
-          <div className="pt-2 mt-1 border-t border-[var(--ig-border-soft)] flex items-center px-1">
+          <div className="pt-2 mt-1 border-t border-[var(--ig-border-soft)] flex items-center justify-between px-3 py-1">
+            <span className="text-xs text-[var(--ig-muted)] font-medium">Appearance</span>
             <button
               type="button"
               onClick={toggleTheme}
