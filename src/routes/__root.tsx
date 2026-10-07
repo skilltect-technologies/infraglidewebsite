@@ -235,15 +235,9 @@ function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
         {/* Google Analytics (GA4) */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-K0E69BHTLT" />
         <script
-          type="text/javascript"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -253,6 +247,11 @@ function RootShell({ children }: { children: React.ReactNode }) {
             `,
           }}
         />
+        <HeadContent />
+      </head>
+      <body>
+        {children}
+        <Scripts />
         {/* LinkedIn Insight Tag */}
         <script
           type="text/javascript"
