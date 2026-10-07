@@ -241,7 +241,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
         {children}
         <Scripts />
         {/* Google Analytics (GA4) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-INFRAGLIDE" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-K0E69BHTLT" />
         <script
           type="text/javascript"
           dangerouslySetInnerHTML={{
@@ -249,7 +249,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-INFRAGLIDE');
+              gtag('config', 'G-K0E69BHTLT');
             `,
           }}
         />
