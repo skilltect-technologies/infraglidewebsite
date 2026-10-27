@@ -38,20 +38,26 @@ export function OneStepDemoForm() {
   const [submitted, setSubmitted] = useState(false);
   const { executeRecaptcha } = useGoogleReCaptcha();
 
-  // Selected date and time slot
+  // Selected date and time slot (only upcoming days allowed, defaulting to tomorrow)
   const [selectedDate, setSelectedDate] = useState<Date>(() => {
     const d = new Date();
     d.setDate(d.getDate() + 1); // default to tomorrow
-    if (d.getDay() === 6) d.setDate(d.getDate() + 2); // if Saturday, jump to Monday
-    if (d.getDay() === 0) d.setDate(d.getDate() + 1); // if Sunday, jump to Monday
     return d;
   });
   const [selectedTime, setSelectedTime] = useState<string>("02:00 PM");
 
   // Calendar popover & month navigation
   const [calendarOpen, setCalendarOpen] = useState(false);
-  const [viewMonth, setViewMonth] = useState<number>(() => (new Date()).getMonth());
-  const [viewYear, setViewYear] = useState<number>(() => (new Date()).getFullYear());
+  const [viewMonth, setViewMonth] = useState<number>(() => {
+    const d = new Date();
+    d.setDate(d.getDate() + 1);
+    return d.getMonth();
+  });
+  const [viewYear, setViewYear] = useState<number>(() => {
+    const d = new Date();
+    d.setDate(d.getDate() + 1);
+    return d.getFullYear();
+  });
   const calendarRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -89,18 +95,16 @@ export function OneStepDemoForm() {
     );
   }, [formData.name, formData.email, formData.company, selectedDate, selectedTime]);
 
-  // Quick select days: 4 distinct choices
+  // Quick select upcoming days: 4 distinct choices starting tomorrow
   const quickDays = useMemo(() => {
     const list: { label: string; date: Date }[] = [];
     const today = new Date();
-    
-    list.push({ label: 'Today', date: new Date(today) });
     
     const tomorrow = new Date(today);
     tomorrow.setDate(tomorrow.getDate() + 1);
     list.push({ label: 'Tomorrow', date: tomorrow });
     
-    for (let i = 2; i <= 3; i++) {
+    for (let i = 2; i <= 4; i++) {
       const d = new Date(today);
       d.setDate(d.getDate() + i);
       const label = `${DAY_NAMES[d.getDay()]}, ${MONTH_NAMES[d.getMonth()].slice(0, 3)} ${d.getDate()}`;
@@ -109,7 +113,7 @@ export function OneStepDemoForm() {
     return list;
   }, []);
 
-  // Calendar days grid
+  // Calendar days grid: today and past days are disabled
   const calendarGrid = useMemo(() => {
     const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
     const firstDayIndex = new Date(viewYear, viewMonth, 1).getDay();
@@ -124,7 +128,7 @@ export function OneStepDemoForm() {
 
     for (let day = 1; day <= daysInMonth; day++) {
       const d = new Date(viewYear, viewMonth, day);
-      const isPast = d < todayOnly;
+      const isPast = d <= todayOnly; // Today and past days are disabled
       cells.push({ day, date: d, isPast });
     }
 
@@ -166,6 +170,14 @@ export function OneStepDemoForm() {
     }
     if (!emailRegex.test(formData.email.trim())) {
       setError('Please enter a valid email address.');
+      return;
+    }
+
+    const today = new Date();
+    const todayOnly = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    const chosenDateOnly = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
+    if (chosenDateOnly <= todayOnly) {
+      setError('Please select an upcoming date (tomorrow or later).');
       return;
     }
 
@@ -428,13 +440,14 @@ export function OneStepDemoForm() {
                               setSelectedDate(cell.date!);
                               setCalendarOpen(false);
                             }}
+                            title={isToday ? "Today (slots unavailable for same day)" : undefined}
                             className={`h-7 w-7 rounded-lg text-xs font-medium flex items-center justify-center mx-auto transition-all ${
                               isSelected
                                 ? 'bg-[#8A53D6] text-white font-bold shadow-md shadow-purple-500/30 scale-105'
-                                : isToday
-                                ? 'border border-[#8A53D6] text-[#8A53D6] font-bold'
                                 : disabled
-                                ? 'text-[var(--t3)] opacity-25 cursor-not-allowed'
+                                ? isToday
+                                  ? 'text-[var(--t3)] opacity-40 cursor-not-allowed border border-dashed border-[var(--border)]'
+                                  : 'text-[var(--t3)] opacity-25 cursor-not-allowed'
                                 : 'text-[var(--t1)] hover:bg-[var(--p-light)] hover:text-[#8A53D6] cursor-pointer'
                             }`}
                           >
