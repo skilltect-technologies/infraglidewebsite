@@ -5,7 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node build-vercel.js",
+    "build": "vite build && node scripts/ensure-shell.mjs && node build-vercel.js",
+    "build:hostinger": "vite build && node scripts/ensure-shell.mjs",
+    "build:vercel": "vite build && node build-vercel.js",
+    "start": "node server.js",
+    "copy-build": "node copy-build.js",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "format": "prettier --write ."
@@ -66,7 +70,11 @@
     "tw-animate-css": "^1.3.4",
     "vaul": "^1.1.2",
     "vite-tsconfig-paths": "^6.0.2",
-    "zod": "^3.24.2"
+    "zod": "^3.24.2",
+    "vite": "^7.3.1",
+    "@vitejs/plugin-react": "^5.0.4",
+    "typescript": "^5.8.3",
+    "@types/node": "^22.16.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
