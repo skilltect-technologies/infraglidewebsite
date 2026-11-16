@@ -18,4 +18,16 @@ export default defineConfig({
     tailwindcss(),
     tsConfigPaths(),
   ],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://api.infraglide.com',
+        changeOrigin: true,
+        secure: true,
+        headers: {
+          Origin: 'https://infraglide.com'
+        }
+      }
+    }
+  }
 });

@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import "./OneStepDemoForm.css";
 import { CalendarCheck, Calendar, Check, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
-import { submitDemoRequest } from '../services/api';
+import { submitDemoRequest, fetchBookedSlots, BookedSlot } from '../services/api';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 const MONTH_NAMES = [
@@ -17,6 +17,13 @@ const TIME_SLOTS = [
   "03:30 PM",
   "05:00 PM",
 ];
+
+function toLocalDateKey(d: Date): string {
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
 
 function formatDateLabel(d: Date): string {
   const dayName = DAY_NAMES[d.getDay()];
@@ -45,6 +52,50 @@ export function OneStepDemoForm() {
     return d;
   });
   const [selectedTime, setSelectedTime] = useState<string>("02:00 PM");
+  const [bookedSlots, setBookedSlots] = useState<BookedSlot[]>([]);
+  const [loadingSlots, setLoadingSlots] = useState(false);
+
+  // Load booked slots from the backend
+  useEffect(() => {
+    let isMounted = true;
+    async function loadSlots() {
+      try {
+        setLoadingSlots(true);
+        const slots = await fetchBookedSlots();
+        if (isMounted) setBookedSlots(slots);
+      } catch (err) {
+        console.warn('Failed to load booked slots:', err);
+      } finally {
+        if (isMounted) setLoadingSlots(false);
+      }
+    }
+    loadSlots();
+    return () => { isMounted = false; };
+  }, []);
+
+  const isSlotBooked = (date: Date, slotTime: string): boolean => {
+    const dateKey = toLocalDateKey(date);
+    const dateLabel = formatDateLabel(date);
+    return bookedSlots.some(b => {
+      const bDate = b.preferred_date;
+      const bTime = b.preferred_time;
+      if (!bDate || !bTime) return false;
+      const dateMatches = bDate === dateKey || bDate === dateLabel;
+      const timeMatches = bTime.trim().toLowerCase() === slotTime.trim().toLowerCase();
+      return dateMatches && timeMatches;
+    });
+  };
+
+  const availableTimeSlots = useMemo(() => {
+    return TIME_SLOTS.filter(slot => !isSlotBooked(selectedDate, slot));
+  }, [selectedDate, bookedSlots]);
+
+  // Ensure selectedTime is valid when availableTimeSlots change
+  useEffect(() => {
+    if (availableTimeSlots.length > 0 && !availableTimeSlots.includes(selectedTime)) {
+      setSelectedTime(availableTimeSlots[0]);
+    }
+  }, [availableTimeSlots, selectedTime]);
 
   // Calendar popover & month navigation
   const [calendarOpen, setCalendarOpen] = useState(false);
@@ -90,10 +141,11 @@ export function OneStepDemoForm() {
       formData.company.trim() &&
       selectedDate &&
       selectedTime &&
+      availableTimeSlots.includes(selectedTime) &&
       nameRegex.test(formData.name.trim()) &&
       emailRegex.test(formData.email.trim())
     );
-  }, [formData.name, formData.email, formData.company, selectedDate, selectedTime]);
+  }, [formData.name, formData.email, formData.company, selectedDate, selectedTime, availableTimeSlots]);
 
   // Quick select upcoming days: 4 distinct choices starting tomorrow
   const quickDays = useMemo(() => {
@@ -209,6 +261,8 @@ export function OneStepDemoForm() {
         name: formData.name.trim(),
         email: formData.email.trim(),
         company: formData.company.trim(),
+        preferred_date: toLocalDateKey(selectedDate),
+        preferred_time: selectedTime,
         role: `Preferred Slot: ${formattedSlot}`,
         ...utmParams,
         'g-recaptcha-response': token
@@ -219,6 +273,12 @@ export function OneStepDemoForm() {
         `Preferred Appointment: ${formattedSlot}`,
         `[Live Demo Booking] ${formData.name} (${formData.company}) - ${formattedSlot}`
       );
+
+      // Immediately mark this slot as booked locally
+      setBookedSlots(prev => [
+        ...prev,
+        { preferred_date: toLocalDateKey(selectedDate), preferred_time: selectedTime }
+      ]);
 
       // LinkedIn Conversion Event Tracking
       if (typeof window !== 'undefined' && (window as any).lintrk) {
@@ -461,26 +521,37 @@ export function OneStepDemoForm() {
 
                 {/* Time Slots Grid */}
                 <div>
-                  <label className="ds-field-label mb-2">Available Time Slots</label>
-                  <div className="grid grid-cols-5 gap-2">
-                    {TIME_SLOTS.map((slot) => {
-                      const isSelected = selectedTime === slot;
-                      return (
-                        <button
-                          key={slot}
-                          type="button"
-                          onClick={() => setSelectedTime(slot)}
-                          className={`py-2 px-1 rounded-lg text-xs font-semibold transition-all text-center cursor-pointer ${
-                            isSelected
-                              ? 'bg-gradient-to-r from-[#8A53D6] to-[#7942c2] text-white shadow-md shadow-purple-500/25 scale-[1.02]'
-                              : 'bg-[var(--surface2)] text-[var(--t1)] border border-[var(--border)] hover:border-[#8A53D6] hover:text-[#8A53D6]'
-                          }`}
-                        >
-                          {slot}
-                        </button>
-                      );
-                    })}
+                  <div className="flex items-center justify-between mb-2">
+                    <label className="ds-field-label mb-0">Available Time Slots</label>
+                    {loadingSlots && (
+                      <span className="text-[10px] text-[var(--t3)] animate-pulse">Syncing slots...</span>
+                    )}
                   </div>
+                  {availableTimeSlots.length === 0 ? (
+                    <div className="p-3 text-center text-xs rounded-lg border border-[var(--border)] bg-[var(--surface2)] text-[var(--t2)]">
+                      All slots are booked for {formatDateLabel(selectedDate)}. Please choose another date.
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                      {availableTimeSlots.map((slot) => {
+                        const isSelected = selectedTime === slot;
+                        return (
+                          <button
+                            key={slot}
+                            type="button"
+                            onClick={() => setSelectedTime(slot)}
+                            className={`py-2 px-1 rounded-lg text-xs font-semibold transition-all text-center cursor-pointer ${
+                              isSelected
+                                ? 'bg-gradient-to-r from-[#8A53D6] to-[#7942c2] text-white shadow-md shadow-purple-500/25 scale-[1.02]'
+                                : 'bg-[var(--surface2)] text-[var(--t1)] border border-[var(--border)] hover:border-[#8A53D6] hover:text-[#8A53D6]'
+                            }`}
+                          >
+                            {slot}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
 
                 {/* Live Appointment Summary Badge */}
