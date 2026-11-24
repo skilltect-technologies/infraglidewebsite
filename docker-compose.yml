@@ -1,0 +1,41 @@
+# InfraGlide sits behind the Coolify Traefik proxy that already owns 80/443
+# and the Let's Encrypt certificate for skilltect.com.
+# This service publishes no host port, so it does not take 8081.
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        VITE_RECAPTCHA_SITE_KEY: ${VITE_RECAPTCHA_SITE_KEY:-}
+        VITE_WEB3FORMS_ACCESS_KEY: ${VITE_WEB3FORMS_ACCESS_KEY:-}
+    image: infraglide-web:latest
+    container_name: infraglide-web
+    restart: unless-stopped
+    networks:
+      - coolify
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=coolify
+      - traefik.http.routers.infraglide.rule=Host(`${INFRAGLIDE_HOST:-infraglide.com}`) || Host(`${INFRAGLIDE_WWW:-www.infraglide.com}`)
+      - traefik.http.routers.infraglide.entrypoints=https
+      - traefik.http.routers.infraglide.tls=true
+      - traefik.http.routers.infraglide.tls.certresolver=letsencrypt
+      - traefik.http.routers.infraglide.service=infraglide
+      - traefik.http.services.infraglide.loadbalancer.server.port=80
+      - traefik.http.routers.infraglide-http.rule=Host(`${INFRAGLIDE_HOST:-infraglide.com}`) || Host(`${INFRAGLIDE_WWW:-www.infraglide.com}`)
+      - traefik.http.routers.infraglide-http.entrypoints=http
+      - traefik.http.routers.infraglide-http.middlewares=infraglide-redirect
+      - traefik.http.routers.infraglide-http.service=infraglide
+      - traefik.http.middlewares.infraglide-redirect.redirectscheme.scheme=https
+      - traefik.http.middlewares.infraglide-redirect.redirectscheme.permanent=true
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+networks:
+  coolify:
+    external: true

@@ -1,0 +1,15 @@
+.git
+.github
+node_modules
+dist
+postcss.config.js
+next.config.js
+.env
+.env.*
+!.env.example
+*.md
+npm-debug.log*
+.DS_Store
+coverage
+.vercel
+.netlify
