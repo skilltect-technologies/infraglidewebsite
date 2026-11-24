@@ -2,8 +2,10 @@
 // CLIENT-SIDE EXTERNAL API CALLS
 // ==========================================
 
-// In local development, use relative path to route through Vite proxy and avoid CORS 403
-const API_BASE = import.meta.env.DEV ? '' : (import.meta.env.VITE_API_URL || 'https://api.infraglide.com');
+// Calls /api on this site. Nginx forwards that to the API container.
+// The Vite dev server proxies the same path. Set VITE_API_URL only to use another origin.
+const configuredApi = import.meta.env.VITE_API_URL;
+const API_BASE = configuredApi ? String(configuredApi).replace(/\/$/, '') : '';
 const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
 export interface LeadSubmissionResponse {

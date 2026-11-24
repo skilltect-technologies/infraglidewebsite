@@ -1,6 +1,6 @@
-# InfraGlide sits behind the Coolify Traefik proxy that already owns 80/443
-# and the Let's Encrypt certificate for skilltect.com.
-# This service publishes no host port, so it does not take 8081.
+# coolify-proxy (Traefik) owns 80/443 and the letsencrypt certificate.
+# Only this frontend container is routed. Nginx sends /api to
+# skilltect-web-server-api-1 on the coolify network. No host ports.
 
 services:
   web:
